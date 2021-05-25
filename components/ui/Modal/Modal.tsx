@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect, useCallback } from 'react'
+import React, { FC, useRef, useEffect, useCallback } from 'react'
 import Portal from '@reach/portal'
 import s from './Modal.module.css'
 import { Cross } from '@components/icons'

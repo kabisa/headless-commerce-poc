@@ -1,6 +1,6 @@
 import s from './Sidebar.module.css'
 import Portal from '@reach/portal'
-import { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import {
   disableBodyScroll,
   enableBodyScroll,
