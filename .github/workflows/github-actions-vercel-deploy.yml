@@ -14,6 +14,8 @@ jobs:
       - run: npm install --global yarn
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: copy .env
+      - run: cp framework/shopify/.env.template .env.local
       - run: ls
       - run: yarn install
       - run: yarn run build
