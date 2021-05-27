@@ -12,8 +12,8 @@ jobs:
 #           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
 #           node-version: 14.x
 #       - run: npm install --global yarn
-#       - name: Check out repository code
-#         uses: actions/checkout@v2
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: copy .env
         run: cp framework/shopify/.env.template .env.local
 #       - run: ls
