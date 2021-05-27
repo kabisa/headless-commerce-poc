@@ -5,8 +5,8 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
+#      - name: Check out repository code
+#        uses: actions/checkout@v2
 #      - name: copy .env
 #        run: cp framework/shopify/.env.template .env.local
 
