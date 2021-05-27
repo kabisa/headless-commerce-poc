@@ -22,6 +22,7 @@ jobs:
         # uses: xmflsct/action-vercel-deployment@dfd18ea029d56a90ce06c154cb40de413840f151
         uses: xmflsct/action-vercel-deployment@v0.5.3
         with:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
           # Your token at Vercel. See https://vercel.com/account/tokens
           vercelToken: 3MIW1GLzgtSZBC8qM4AExuOD
           # Your Organization ID at Vercel.
