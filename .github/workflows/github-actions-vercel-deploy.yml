@@ -6,20 +6,20 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
-        with:
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 14.x
-      - run: npm install --global yarn
-      - name: Check out repository code
-        uses: actions/checkout@v2
+#       - name: Setup Node.js environment
+#         uses: actions/setup-node@v2.1.5
+#         with:
+#           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+#           node-version: 14.x
+#       - run: npm install --global yarn
+#       - name: Check out repository code
+#         uses: actions/checkout@v2
       - name: copy .env
         run: cp framework/shopify/.env.template .env.local
-      - run: ls
-      - run: yarn install
-      - run: yarn run build
-      - run: ls
+#       - run: ls
+#       - run: yarn install
+#       - run: yarn run build
+#       - run: ls
 
       - name: Vercel Action
         # You may pin to the exact commit or the version.
@@ -37,7 +37,7 @@ jobs:
           # if you want to create github deployment, set true, default: false
   #         github-deployment: # optional, default is false
           # the working directory
-          working-directory: .next
+#           working-directory: .next
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
           vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
