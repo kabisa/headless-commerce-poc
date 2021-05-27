@@ -33,15 +33,15 @@ jobs:
           # if you want to comment on pr and commit, set true, default: true
   #         github-comment: # optional, default is true
           # if you want to comment on pr and commit, set token
-          github-token: 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
+          github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
           # if you want to create github deployment, set true, default: false
   #         github-deployment: # optional, default is false
           # the working directory
           working-directory: .next
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-          vercel-project-id: prj_KioAQSlipB8ZqJsBOM9deTU3ikea
+          vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-          vercel-org-id: team_yHJ4ZdQz7zAbFuEcmiiPiTBW
+          vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO
           # The name of the project; if absent we'll use the `vercel inspect` command to determine.
 #           vercel-project-name: headless-commerce-poc-github-actions-deploy # optional
           # If you are work in team scope, you should set this value to your team id.
