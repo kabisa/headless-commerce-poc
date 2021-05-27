@@ -12,6 +12,7 @@ jobs:
           # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
           node-version: 14.x
       - run: npm install --global yarn
+      - run: ls
       - run: yarn install
       - run: next build
   
