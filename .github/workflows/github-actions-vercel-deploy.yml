@@ -15,8 +15,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: ls
-      - name: copy .env
-      - run: cp framework/shopify/.env.template .env.local
       - run: yarn install
       - run: yarn run build
       - run: ls
