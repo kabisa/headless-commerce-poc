@@ -3,7 +3,7 @@ name: GitHub Actions Vercel Deploy
 on: [push]
 jobs:
   build_and_deploy:
-    name: Build
+    name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js environment
@@ -45,7 +45,7 @@ jobs:
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
   #         vercel-org-id: # optional
           # The name of the project; if absent we'll use the `vercel inspect` command to determine.
-  #         vercel-project-name: # optional
+          vercel-project-name: nextjs-commerce # optional
           # If you are work in team scope, you should set this value to your team id.
   #         scope: # optional
           # zeit.co token
