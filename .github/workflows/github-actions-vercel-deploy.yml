@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: copy .env
-        run: cp framework/shopify/.env.template .env.local
+#      - name: copy .env
+#        run: cp framework/shopify/.env.template .env.local
 
       - name: Vercel Action
         uses: amondnet/vercel-action@v20.0.0
