@@ -41,11 +41,11 @@ jobs:
           # the working directory
   #         working-directory: # optional
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-  #         vercel-project-id: # optional
+          vercel-project-id: prj_KioAQSlipB8ZqJsBOM9deTU3ikea
           # Vercel CLI 17+, ❗️  The `name` property in vercel.json is deprecated (https://zeit.ink/5F)
-  #         vercel-org-id: # optional
+          vercel-org-id: team_yHJ4ZdQz7zAbFuEcmiiPiTBW
           # The name of the project; if absent we'll use the `vercel inspect` command to determine.
-          vercel-project-name: nextjs-commerce # optional
+#           vercel-project-name: headless-commerce-poc-github-actions-deploy # optional
           # If you are work in team scope, you should set this value to your team id.
   #         scope: # optional
           # zeit.co token
