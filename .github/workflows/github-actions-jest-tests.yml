@@ -10,9 +10,6 @@ jobs:
       - name: copy .env
         run: cp framework/shopify/.env.template .env.local
 
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: yarn install
         run: yarn install
 
