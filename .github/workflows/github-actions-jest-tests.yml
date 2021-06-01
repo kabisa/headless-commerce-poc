@@ -1,4 +1,4 @@
-name: GitHub Actions Vercel Deploy
+name: GitHub Actions Jest Test
 on: [push]
 jobs:
   clone_and_test:
@@ -11,10 +11,10 @@ jobs:
         run: cp framework/shopify/.env.template .env.local
 
       - name: Install yarn
-      - run: npm install -g yarn
+        run: npm install -g yarn
 
       - name: yarn install
-      - run: yarn install
+        run: yarn install
 
       - name: Run test
-      - run: yarn run test
+        run: yarn run test
