@@ -15,6 +15,17 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
     router.prefetch('/search')
   }, [])
 
+  const doQuery = (q: string) => {
+    router.push(
+      {
+        pathname: `/search`,
+        query: q ? { q } : {},
+      },
+      undefined,
+      { shallow: true }
+    )
+  }
+
   return useMemo(
     () => (
       <div
@@ -33,22 +44,17 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
           defaultValue={router.query.q}
           onKeyUp={(e) => {
             e.preventDefault()
-
             if (e.key === 'Enter') {
-              const q = e.currentTarget.value
-
-              router.push(
-                {
-                  pathname: `/search`,
-                  query: q ? { q } : {},
-                },
-                undefined,
-                { shallow: true }
-              )
+              doQuery(e.currentTarget.value)
             }
           }}
         />
-        <div className={s.iconContainer}>
+        <div
+          className={s.iconContainer}
+          onClick={() => {
+            doQuery((document.getElementById(id) as HTMLInputElement).value)
+          }}
+        >
           <svg className={s.icon} fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
