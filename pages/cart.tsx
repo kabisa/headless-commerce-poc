@@ -7,6 +7,7 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import { LineItem } from '@framework/types'
 import Link from "next/link";
 
 export async function getStaticProps({
@@ -77,7 +78,7 @@ export default function Cart() {
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b border-accents-2">
-              {data!.lineItems.map((item) => (
+              {data!.lineItems.map((item: LineItem) => (
                 <CartItem
                   key={item.id}
                   item={item}
