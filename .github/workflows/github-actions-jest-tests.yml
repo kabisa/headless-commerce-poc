@@ -1,0 +1,17 @@
+name: GitHub Actions Jest Test
+on: [push]
+jobs:
+  clone_and_test:
+    name: Clone & test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: copy .env
+        run: cp framework/shopify/.env.template .env.local
+
+      - name: yarn install
+        run: yarn install
+
+      - name: Run test
+        run: yarn run test

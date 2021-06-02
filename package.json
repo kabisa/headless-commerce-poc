@@ -7,9 +7,12 @@
     "start": "next start",
     "analyze": "BUNDLE_ANALYZE=both yarn build",
     "prettier-fix": "prettier --write .",
+    "eslint-fix": "eslint --fix ./components ./pages",
     "find:unused": "next-unused",
     "generate": "graphql-codegen",
-    "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js"
+    "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "sideEffects": false,
   "license": "MIT",
@@ -67,16 +70,19 @@
     "@typescript-eslint/parser": "^4.25.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.27.0",
+    "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "graphql": "^15.4.0",
     "husky": "^4.3.8",
+    "jest": "^27.0.1",
     "lint-staged": "^10.5.3",
     "next-unused": "^0.0.3",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "vercel": "^23.0.0"
   },
   "husky": {
     "hooks": {
