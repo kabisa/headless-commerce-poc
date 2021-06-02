@@ -11,7 +11,8 @@
     "find:unused": "next-unused",
     "generate": "graphql-codegen",
     "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "sideEffects": false,
   "license": "MIT",
