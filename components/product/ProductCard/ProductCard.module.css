@@ -82,7 +82,6 @@
 .simple {
   & .squareBg {
     @apply bg-accents-0 !important;
-    background-image: url('/bg-products.svg');
   }
 
   & .productTitle {
@@ -124,7 +123,6 @@
 
 .imageContainer {
   @apply flex items-center justify-center;
-  overflow: hidden;
 
   & > div {
     min-width: 100%;
