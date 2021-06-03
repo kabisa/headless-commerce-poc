@@ -23,7 +23,6 @@ export async function getStaticProps({
   }
 }
 
-
 const Orders: FC = () => {
   // let locale = 'en-US';
   // const config = getConfig({locale})
@@ -68,6 +67,7 @@ const Orders: FC = () => {
   )
 }
 
+// @ts-ignore
 Orders.Layout = Layout
 
 export default Orders
