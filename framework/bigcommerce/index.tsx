@@ -24,6 +24,7 @@ export type BigcommerceProps = {
 export function CommerceProvider({ children, ...config }: BigcommerceProps) {
   return (
     <CoreCommerceProvider
+      // @ts-ignore
       provider={bigcommerceProvider}
       config={{ ...bigcommerceConfig, ...config }}
     >
@@ -32,4 +33,5 @@ export function CommerceProvider({ children, ...config }: BigcommerceProps) {
   )
 }
 
+// @ts-ignore
 export const useCommerce = () => useCoreCommerce<BigcommerceProvider>()

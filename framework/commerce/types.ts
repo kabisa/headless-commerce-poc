@@ -1,5 +1,6 @@
 import type { Wishlist as BCWishlist } from '../bigcommerce/api/wishlist'
 import type { Customer as ShopifyCustomer } from '../shopify/schema'
+import type { Customer as BCCustomer } from '../bigcommerce/schema'
 import type { SearchProductsData as BCSearchProductsData } from '../bigcommerce/api/catalog/products'
 
 export type Discount = {
