@@ -11,7 +11,15 @@
 }
 
 .iconContainer {
-  @apply absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none;
+  @apply absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer transition transform duration-200;
+
+  &:hover {
+    @apply transition transform duration-100 transform scale-110;
+  }
+
+  &:active {
+    @apply scale-100
+  }
 }
 
 .icon {

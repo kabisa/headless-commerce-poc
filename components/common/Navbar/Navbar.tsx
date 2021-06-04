@@ -4,6 +4,7 @@ import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import NavbarRoot from './NavbarRoot'
 import s from './Navbar.module.css'
+import { useRouter } from 'next/router'
 
 interface Link {
   href: string
@@ -13,7 +14,10 @@ interface NavbarProps {
   links?: Link[]
 }
 
-const Navbar: FC<NavbarProps> = ({ links }) => (
+const Navbar: FC<NavbarProps> = ({ links }) => {
+  const router = useRouter()
+
+  return (
   <NavbarRoot>
     <Container>
       <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
@@ -24,14 +28,23 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             </a>
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
-            <Link href="/search">
-              <a className={s.link}>All</a>
+            <Link href="/search?sort=latest-desc">
+              <a className={`${s.link} ${router.asPath.substring(0, router.asPath.indexOf('?')).endsWith("/search") && !!router.query.sort ? s.active : ""}`}>All</a>
             </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
-                <a className={s.link}>{l.label}</a>
+                <a className={`${s.link} ${router.asPath.includes(`/search${l.href.substring(l.href.lastIndexOf('/'), l.href.length)}`) ? s.active : ""}`}>{l.label}</a>
               </Link>
             ))}
+            <Link href="/search?q=clothes">
+              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'clothes' ? s.active : ""}`}>Clothes</a>
+            </Link>
+            <Link href="/search?q=accessories">
+              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'accessories' ? s.active : ""}`}>Accessories</a>
+            </Link>
+            <Link href="/search?q=shoes">
+              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'shoes' ? s.active : ""}`}>Shoes</a>
+            </Link>
           </nav>
         </div>
 
@@ -49,6 +62,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       </div>
     </Container>
   </NavbarRoot>
-)
+  )
+}
 
 export default Navbar

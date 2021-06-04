@@ -14,6 +14,10 @@
   @apply outline-none text-accents-8;
 }
 
+.link.active {
+  @apply underline;
+}
+
 .logo {
   @apply cursor-pointer rounded-full border transform duration-100 ease-in-out;
 

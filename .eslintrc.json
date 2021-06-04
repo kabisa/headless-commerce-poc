@@ -30,6 +30,11 @@
   "plugins": ["react", "@typescript-eslint", "jest"],
   "rules": {
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-empty-interface": "off"
   }
 }
