@@ -92,12 +92,10 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "eslint --fix ./components ./pages",
-      "git add"
+      "eslint --fix ./components ./pages"
     ],
     "**/*.{md,mdx,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "next-unused": {
