@@ -3,7 +3,6 @@ import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import { Grid, Marquee, Hero } from '@components/ui'
-// import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 export async function getStaticProps({
@@ -32,7 +31,10 @@ export async function getStaticProps({
 }
 
 export default function Home({
-  products,
+   products,
+   categories,
+   brands,
+   pages,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
