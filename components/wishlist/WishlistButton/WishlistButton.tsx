@@ -6,7 +6,7 @@ import useAddItem from '@framework/wishlist/use-add-item'
 import useCustomer from '@framework/customer/use-customer'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
-import type { Product, ProductVariant } from '@commerce/types'
+import type { Product, ProductVariant } from '@commerce/types/product'
 
 type Props = {
   productId: Product['id']
@@ -31,7 +31,7 @@ const WishlistButton: FC<Props> = ({
     // @ts-ignore Wishlist is not always enabled
     (item) =>
       item.product_id === Number(productId) &&
-      (item.variant_id as any) === Number(variant.id)
+      (item.variant_id ) === Number(variant.id)
   )
 
   const handleWishlistChange = async (e: any) => {
@@ -53,7 +53,7 @@ const WishlistButton: FC<Props> = ({
       } else {
         await addItem({
           productId,
-          variantId: variant?.id!,
+          variantId: variant?.id,
         })
       }
 

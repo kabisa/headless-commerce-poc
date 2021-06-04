@@ -2,7 +2,7 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import type { Page } from '@framework/common/get-all-pages'
+import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
 import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
@@ -41,20 +41,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <Link href="/">
                   <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                     Home
-                  </a>
-                </Link>
-              </li>
-              <li className="py-3 md:py-0 md:pb-4">
-                <Link href="/">
-                  <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                    Careers
-                  </a>
-                </Link>
-              </li>
-              <li className="py-3 md:py-0 md:pb-4">
-                <Link href="/blog">
-                  <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                    Blog
                   </a>
                 </Link>
               </li>
@@ -102,7 +88,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex items-center text-primary">
             <span className="text-primary">Crafted by</span>
             <a
-              rel="noopener"
+              rel="noopener noreferrer"
               href="https://vercel.com"
               aria-label="Vercel.com Link"
               target="_blank"

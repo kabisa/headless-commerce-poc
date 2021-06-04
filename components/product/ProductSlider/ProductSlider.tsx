@@ -51,7 +51,7 @@ const ProductSlider: FC = ({ children }) => {
 
     return () => {
       if (sliderContainerRef.current) {
-        sliderContainerRef.current!.removeEventListener(
+        sliderContainerRef.current.removeEventListener(
           'touchstart',
           preventNavigation
         )

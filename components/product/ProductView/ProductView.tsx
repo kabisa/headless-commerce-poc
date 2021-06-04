@@ -5,7 +5,7 @@ import { FC, useEffect, useState } from 'react'
 import s from './ProductView.module.css'
 import { Swatch, ProductSlider } from '@components/product'
 import { Button, Container, Text, useUI } from '@components/ui'
-import type { Product } from '@commerce/types'
+import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
 import { getVariant, SelectedOptions } from '../helpers'
@@ -18,6 +18,8 @@ interface Props {
 }
 
 const ProductView: FC<Props> = ({ product }) => {
+  // TODO: fix this missing argument issue
+  /* @ts-ignore */
   const addItem = useAddItem()
   const { price } = usePrice({
     amount: product.price.value,
@@ -65,7 +67,7 @@ const ProductView: FC<Props> = ({ product }) => {
           description: product.description,
           images: [
             {
-              url: product.images[0]?.url!,
+              url: product.images[0]?.url,
               width: 800,
               height: 600,
               alt: product.name,
@@ -90,7 +92,7 @@ const ProductView: FC<Props> = ({ product }) => {
                 <div key={image.url} className={s.imageContainer}>
                   <Image
                     className={s.img}
-                    src={image.url!}
+                    src={image.url}
                     alt={image.alt || 'Product Image'}
                     width={1050}
                     height={1050}
@@ -146,8 +148,11 @@ const ProductView: FC<Props> = ({ product }) => {
               className={s.button}
               onClick={addToCart}
               loading={loading}
+              disabled={variant?.availableForSale === false}
             >
-              Add to Cart
+              {variant?.availableForSale === false
+                ? 'Not Available'
+                : 'Add To Cart'}
             </Button>
           </div>
         </div>
