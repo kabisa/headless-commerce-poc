@@ -34,7 +34,7 @@ const OrderCard: FC<Props> = ({
       <h3 className={s.h3}>Items</h3>
     {order.node.lineItems.edges && order.node.lineItems.edges.map((product) => (
       <div key={product.node.title}>
-        <a href={getProductUrlFromTitle(product.node.variant!.product.title)}><h4>{product.node.title}: {product.node.quantity}x</h4></a>
+        <a href={getProductUrlFromTitle(product.node.variant!.product.title)}><span className={s.variant}>{product.node.title}</span></a><span>: {product.node.quantity}x</span>
       </div>
     ))}
   </div>
