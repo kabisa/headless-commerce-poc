@@ -11,8 +11,9 @@
     "find:unused": "next-unused",
     "generate": "graphql-codegen",
     "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
-    "test": "jest",
-    "test-watch": "jest --watch"
+    "test-jest": "jest",
+    "jest-watch": "jest --watch",
+    "cypress-test": "yarn run cypress open"
   },
   "sideEffects": false,
   "license": "MIT",
@@ -56,6 +57,7 @@
     "@graphql-codegen/typescript-operations": "^1.17.13",
     "@manifoldco/swagger-to-ts": "^2.1.0",
     "@next/bundle-analyzer": "^10.0.1",
+    "@testing-library/cypress": "^7.0.6",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.2.10",
     "@types/cookie": "^0.4.0",
@@ -68,6 +70,7 @@
     "@types/shopify-buy": "^2.10.5",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
+    "cypress": "^7.4.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.27.0",
     "eslint-plugin-jest": "^24.3.6",
