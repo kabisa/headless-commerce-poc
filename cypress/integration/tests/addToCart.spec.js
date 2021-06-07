@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Add product to cart', () => {
   beforeEach(() => {
-    cy.visit('localhost:3000') // Run project with `yarn run build` & `yarn run start`
+    cy.visit('/') // Uses baseUrl: 'http://localhost:3000' Run project with `yarn run build` & `yarn run start`
   })
 
   it('Adds product to cart and asserts shopping cart contents', () => {
