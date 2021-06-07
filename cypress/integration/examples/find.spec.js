@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('find* dom-testing-library commands', () => {
+describe('find* dom-testing-library commands', {baseUrl: null}, () => {
   beforeEach(() => {
     cy.visit('cypress/fixtures/test-app/')
   })
