@@ -84,20 +84,6 @@
     "typescript": "^4.0.3",
     "vercel": "^23.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix ./components ./pages"
-    ],
-    "**/*.{md,mdx,json}": [
-      "prettier --write"
-    ]
-  },
   "next-unused": {
     "alias": {
       "@lib/*": [

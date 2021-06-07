@@ -1,40 +1,13 @@
-import type {GetStaticPropsContext} from 'next'
-import {Bag} from '@components/icons'
-import {Layout} from '@components/common'
-import {Container, Text} from '@components/ui'
-import {getConfig} from '@framework/api'
-import getAllPages from '@framework/common/get-all-pages'
-import {FC} from "react";
-import useCustomer from "@framework/customer/use-customer";
-import {OrderEdge} from "@framework/schema";
-
-export async function getStaticProps({
-                                       preview,
-                                       locale,
-                                     }: GetStaticPropsContext) {
-  const config = getConfig({locale})
-  // console.log(config);
-  const serializedConfig = JSON.stringify(config)
-  const {pages} = await getAllPages({config, preview})
-  // const customerToken = getCustomerToken()
-  // const { orders } = await getCustomerOrders({customerToken, config })
-  return {
-    props: {pages},
-  }
-}
+import { FC } from "react";
+import { Layout } from '@components/common'
+import { Container, Text } from '@components/ui'
+import { useCustomerOrders } from "@framework/customer";
+import { Bag } from "@components/icons";
+import OrderCard from "@components/orders/OrderCard";
 
 const Orders: FC = () => {
-  // let locale = 'en-US';
-  // const config = getConfig({locale})
-  // const customerToken = getCustomerToken() || '';
-  // console.log(customerToken);
-  // const {data} = useCustomer();
-  // console.log(data);
+  const { data: customer } = useCustomerOrders()
 
-  const {data: customer, isLoading, error} = useCustomer()
-  // const { data: customer } = useCustomer()
-  // const customerOrders = customer.orders
-  // console.log(customerOrders.orders.edges)
   console.log(customer)
 
   return (
@@ -42,12 +15,9 @@ const Orders: FC = () => {
       <Text variant="pageHeading">My Orders</Text>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
         {customer && customer.orders.edges.length > 0 ?
-          customer.orders.edges.map((order: OrderEdge) => (
-            <li key={order.node.id}>
-              <span> {order.node.name} </span>
-              <span> {order.node.totalPrice} </span>
-              <span> {order.node.fulfillmentStatus} </span>
-            </li>))
+          customer.orders.edges.map((order) => (
+            <OrderCard key={order.node.id} order={order}/>
+          ))
           :
           <div className="flex-1 p-24 flex flex-col justify-center items-center ">
           <span
