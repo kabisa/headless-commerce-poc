@@ -1,21 +1,20 @@
-import { FC } from "react";
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
 import { useCustomerOrders } from "@framework/customer";
 import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
 
-const Orders: FC = () => {
-  const { data: customer } = useCustomerOrders()
+export default function Orders() {
+  const { data } = useCustomerOrders()
 
-  console.log(customer)
+  console.log(data)
 
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
       <div className="flex-1 p-24 flex flex-col justify-center items-center ">
-        {customer && customer.orders.edges.length > 0 ?
-          customer.orders.edges.map((order) => (
+        {data && data.orders.edges.length > 0 ?
+          data.orders.edges.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
           :
@@ -37,7 +36,4 @@ const Orders: FC = () => {
   )
 }
 
-// @ts-ignore
 Orders.Layout = Layout
-
-export default Orders
