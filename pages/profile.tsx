@@ -18,6 +18,7 @@ export async function getStaticProps({
 
 export default function Profile() {
   const { data } = useCustomer()
+
   return (
     <Container>
       <Text variant="pageHeading">My Profile</Text>
@@ -33,6 +34,10 @@ export default function Profile() {
             <div className="mt-5">
               <Text variant="sectionHeading">Email</Text>
               <span>{data.email}</span>
+            </div>
+            <div className="mt-5">
+              <Text variant="sectionHeading">Created at</Text>
+              <span>{new Date(Date.parse(data.createdAt)).toDateString()}</span>
             </div>
           </div>
         </div>
