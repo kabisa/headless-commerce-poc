@@ -13,7 +13,8 @@
     "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
     "jest-test": "jest",
     "jest-watch": "jest --watch",
-    "cypress-test": "yarn run cypress open"
+    "cypress-open": "yarn run cypress open",
+    "cypress-test": "cypress run"
   },
   "sideEffects": false,
   "license": "MIT",
@@ -86,22 +87,6 @@
     "prettier": "^2.2.1",
     "typescript": "^4.0.3",
     "vercel": "^23.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix ./components ./pages",
-      "git add"
-    ],
-    "**/*.{md,mdx,json}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "next-unused": {
     "alias": {
