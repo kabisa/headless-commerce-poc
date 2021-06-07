@@ -1,9 +1,6 @@
 export const getCustomerOrdersQuery = /* GraphQL */ `
 query getCustomerOrders($customerAccessToken: String!) {
   customer(customerAccessToken: $customerAccessToken) {
-    id
-    firstName
-    lastName
     orders(first: 10) {
       edges {
         node {
@@ -11,10 +8,26 @@ query getCustomerOrders($customerAccessToken: String!) {
           name
           totalPrice
           fulfillmentStatus
+          currencyCode
+          lineItems(first: 5) {
+            edges {
+              node {
+                quantity
+                title
+                variant {
+                  id
+                  product {
+                    id
+                    title
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 }
-`
+` // Get first 10 customer orders
 export default getCustomerOrdersQuery

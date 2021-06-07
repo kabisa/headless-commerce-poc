@@ -10,16 +10,6 @@ export const getCustomerQuery = /* GraphQL */ `
     tags
     acceptsMarketing
     createdAt
-    orders(first: 10) {
-      edges {
-        node {
-          id
-          name
-          totalPrice
-          fulfillmentStatus
-        }
-      }
-    }
   }
 }
 `
