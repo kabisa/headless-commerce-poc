@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: copy .env
+        run: cp framework/shopify/.env.template .env.local # Copy env.template to root directory as env.local
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
