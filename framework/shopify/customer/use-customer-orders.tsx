@@ -1,10 +1,11 @@
-import {getCustomerOrdersQuery, getCustomerToken} from "@framework/utils";
-import {SWRHook} from "@commerce/utils/types";
-import getCustomerOrders, {GetCustomerOrders} from "@commerce/customer/get-customer-orders";
+import useCustomerOrders, { UseCustomerOrders } from "@commerce/customer/use-customer-orders";
+import { Customer } from "@commerce/types";
+import { SWRHook } from "@commerce/utils/types";
+import { getCustomerOrdersQuery, getCustomerToken } from "@framework/utils";
 
-export default getCustomerOrders as GetCustomerOrders<typeof handler>
+export default useCustomerOrders as UseCustomerOrders<typeof handler>
 
-export const handler: SWRHook<any | null> = {
+export const handler: SWRHook<Customer | null> = {
   fetchOptions: {
     query: getCustomerOrdersQuery,
   },
@@ -15,7 +16,7 @@ export const handler: SWRHook<any | null> = {
         ...options,
         variables: { customerAccessToken: getCustomerToken() },
       })
-      return data.orders
+      return data.customer
     }
     return null
   },
