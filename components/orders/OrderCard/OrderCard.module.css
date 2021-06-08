@@ -1,19 +1,55 @@
 .orderCard {
-  @apply block w-full rounded-md p-4 border border-solid;
+  @apply block w-full rounded-md p-4 border border-solid relative my-4 flex-grow flex-shrink-0;
+  flex-basis: 49%;
 
-  & .h1 {
-    @apply text-4xl;
+  &:last-child {
+    @apply mb-0;
   }
 
-  & .h2 {
+  & .orderName {
+    @apply text-4xl mt-4 xsm:mt-0;
+  }
+
+  & .orderTotal {
     @apply text-3xl;
   }
 
-  & .h3 {
+  & .orderStatus {
+    @apply text-2xl;
+    & span {
+      &.fulfilled {
+        @apply text-green;
+      }
+      @apply text-yellow-500 font-bold;
+    }
+  }
+
+  & .orderProducts {
     @apply text-2xl;
   }
 
-  & .variant {
-    @apply hover:underline;
+  & .orderDate {
+    @apply absolute top-0 right-0 m-2 text-lg;
+  }
+
+  & .orderItems {
+    @apply overflow-auto;
+    max-height: 552px;
+
+    & .orderItem {
+      @apply rounded-md p-4 border border-solid my-4;
+
+      &:last-child {
+        @apply mb-0;
+      }
+
+      & .variant {
+        @apply hover:underline text-lg;
+      }
+
+      & .itemImage {
+        @apply xsm:inline-block xsm:mr-4 transition-transform duration-150 hover:scale-110 transform block m-auto;
+      }
+    }
   }
 }
