@@ -51,7 +51,7 @@ export type HookFetcherOptions = { method?: string } & (
   | { query?: string; url: string }
 )
 
-export type HookInputValue = string | number | boolean | undefined
+export type HookInputValue = string | number | boolean | undefined | null
 
 export type HookSWRInput = [string, HookInputValue][]
 

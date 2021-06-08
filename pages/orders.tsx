@@ -5,16 +5,20 @@ import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
 
 export default function Orders() {
-  const { data } = useCustomerOrders()
+  const { data } = useCustomerOrders({ numberOfOrders: 1, cursor: '' })
 
   console.log(data)
+
+  function loadNextPage() {
+    return;
+  }
 
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
       <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
-        {data && data.orders.edges.length > 0 ?
-          data.orders.edges.map((order) => (
+        {data && data!.orders.edges.length > 0 ?
+          data!.orders.edges.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
           :
@@ -31,6 +35,7 @@ export default function Orders() {
             </p>
           </div>
         }
+        {data && data!.orders.pageInfo.hasNextPage && <button onClick={loadNextPage}>Load next</button>}
       </div>
     </Container>
   )

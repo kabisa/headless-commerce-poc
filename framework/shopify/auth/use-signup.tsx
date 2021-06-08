@@ -14,12 +14,7 @@ import { handleAutomaticLogin, throwUserErrors } from '../utils'
 
 export default useSignup as UseSignup<typeof handler>
 
-export const handler: MutationHook<
-  null,
-  {},
-  CustomerCreateInput,
-  CustomerCreateInput
-> = {
+export const handler: MutationHook<null, {}, CustomerCreateInput, CustomerCreateInput> = {
   fetchOptions: {
     query: customerCreateMutation,
   },

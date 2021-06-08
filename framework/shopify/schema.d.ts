@@ -460,6 +460,14 @@ export type CheckoutAttributesUpdatePayload = {
 }
 
 /** Specifies the fields required to update a checkout's attributes. */
+export type GetOrdersInput = {
+  /** The text of an optional note that a shop owner can attach to the checkout. */
+  numberOfOrders?: Maybe<Scalars['Int']>
+  /** A list of extra information that is added to the checkout. */
+  cursor?: Maybe<Scalars['String']>
+}
+
+/** Specifies the fields required to update a checkout's attributes. */
 export type CheckoutAttributesUpdateV2Input = {
   /** The text of an optional note that a shop owner can attach to the checkout. */
   note?: Maybe<Scalars['String']>
