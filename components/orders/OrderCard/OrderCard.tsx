@@ -14,7 +14,7 @@ const OrderCard: FC<Props> = ({
 }) => (
     <div className={s.orderCard}>
     <h1 className={s.orderName}>Order: {order.node.name}</h1>
-    <p className={s.orderTotal}>Total: {order.node.totalPrice} {order.node.currencyCode}</p>
+    <p className={s.orderTotal}>Total: {order.node.totalPriceV2.amount} {order.node.totalPriceV2.currencyCode}</p>
     <p className={s.orderStatus}>Status: <span className={order.node.fulfillmentStatus.toLowerCase() == 'fulfilled' ? s.fulfilled : ''}>{capitalize(order.node.fulfillmentStatus)}</span></p>
       <p className={s.orderDate}>{new Date(Date.parse(order.node.processedAt)).toDateString()}</p>
       <br/>
