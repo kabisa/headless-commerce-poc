@@ -25,7 +25,7 @@
   }
 
   & .orderProducts {
-    @apply text-2xl;
+    @apply text-2xl mb-4;
   }
 
   & .orderDate {
@@ -35,9 +35,14 @@
   & .orderItems {
     @apply overflow-auto;
     max-height: 552px;
+    scroll-margin: 1em;
 
     & .orderItem {
       @apply rounded-md p-4 border border-solid my-4;
+
+      &:first-child {
+        @apply mt-0;
+      }
 
       &:last-child {
         @apply mb-0;
@@ -45,6 +50,10 @@
 
       & .variant {
         @apply hover:underline text-lg;
+      }
+
+      & .amount {
+        @apply text-lg;
       }
 
       & .itemImage {
