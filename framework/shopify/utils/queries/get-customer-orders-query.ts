@@ -9,6 +9,7 @@ query getCustomerOrders($customerAccessToken: String!) {
           totalPrice
           fulfillmentStatus
           currencyCode
+          processedAt
           lineItems(first: 5) {
             edges {
               node {
@@ -19,6 +20,15 @@ query getCustomerOrders($customerAccessToken: String!) {
                   product {
                     id
                     title
+                    handle
+                    images(first: 1) {
+                      edges {
+                        node {
+                          id
+                          transformedSrc(maxWidth:128, maxHeight:128)
+                        }
+                      }
+                    }
                   }
                 }
               }
