@@ -61,6 +61,9 @@ module.exports = {
       scale: {
         120: '1.2',
       },
+      screens: {
+        'xsm': '480px',
+      },
     },
   },
 }
