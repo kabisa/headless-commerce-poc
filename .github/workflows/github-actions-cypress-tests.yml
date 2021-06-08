@@ -1,0 +1,25 @@
+name: End-to-end Cypress tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: copy .env
+        run: cp framework/shopify/.env.template .env.local # Copy env.template to root directory as env.local
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn run build
+          start: yarn run start
+          browser: chrome
+          record: true
+          spec: cypress/integration/tests/**/*
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: c51ae0dc-ad45-4c9e-b6d3-f19d3e11dfc7 # Should be secret!
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
