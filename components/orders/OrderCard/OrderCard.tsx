@@ -21,7 +21,7 @@ const OrderCard: FC<Props> = ({
       <p className={s.orderProducts}>Items:</p>
       <div className={s.orderItems}>
     {order.node.lineItems.edges && order.node.lineItems.edges.map((product) => (
-      <div className={s.orderItem} key={product.node.title}>
+      <div className={s.orderItem} key={product.node.variant?.id}>
         <a href={`/product/${product.node.variant?.product.handle}`}>
         <img className={s.itemImage} src={product.node.variant?.product.images.edges[0].node.transformedSrc}/>
         <span className={s.variant}>{product.node.variant?.product.title}</span></a><span>: {product.node.quantity}x</span>
