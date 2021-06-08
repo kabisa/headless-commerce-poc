@@ -12,13 +12,13 @@ export default function Orders() {
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
-      <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+      <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
         {data && data.orders.edges.length > 0 ?
           data.orders.edges.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
           :
-          <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+          <div className="flex-1 px-4 py-24 sm:p-24 self-center flex flex-col justify-center items-center ">
           <span
             className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
           <Bag className="absolute"/>
