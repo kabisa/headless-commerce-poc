@@ -1,14 +1,21 @@
 export const getCustomerOrdersQuery = /* GraphQL */ `
-query getCustomerOrders($customerAccessToken: String!) {
+query getCustomerOrders($customerAccessToken: String!, $cursor: String, $numberOfOrders: Int = 10) {
   customer(customerAccessToken: $customerAccessToken) {
-    orders(first: 10) {
+    orders(first: $numberOfOrders, after: $cursor) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
       edges {
+        cursor
         node {
           id
           name
-          totalPrice
+          totalPriceV2 {
+            currencyCode
+            amount
+          }
           fulfillmentStatus
-          currencyCode
           processedAt
           lineItems(first: 5) {
             edges {
