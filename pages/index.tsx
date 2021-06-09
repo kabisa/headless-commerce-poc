@@ -1,8 +1,6 @@
 import { Layout } from '@components/common'
-import { Grid, Marquee, Hero } from '@components/ui'
-import { ProductCard } from '@components/product'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
 
 import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/product/get-all-products'
@@ -16,7 +14,7 @@ export async function getStaticProps({
   const config = getConfig({ locale })
 
   const { products } = await getAllProducts({
-    variables: { first: 12 },
+    variables: { first: 12, sortKey: 'CREATED_AT', reverse: true },
     config,
     preview,
   })
