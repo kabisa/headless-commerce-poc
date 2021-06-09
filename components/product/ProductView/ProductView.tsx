@@ -1,15 +1,16 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
-import { FC, useEffect, useState } from 'react'
+import React, {createRef, FC, Ref, useEffect, useState} from 'react'
 import s from './ProductView.module.css'
 import { Swatch, ProductSlider } from '@components/product'
 import { Button, Container, Text, useUI } from '@components/ui'
 import type { Product } from '@commerce/types'
-import usePrice from '@framework/product/use-price'
+import usePrice, { formatVariantPrice } from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
 import { getVariant, SelectedOptions } from '../helpers'
 import WishlistButton from '@components/wishlist/WishlistButton'
+import { useCommerce } from "@commerce";
 
 interface Props {
   children?: any
@@ -19,14 +20,37 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
-  const { price } = usePrice({
+  let { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
+
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({})
+  const [choice, setChoice] = useState<any>(
+    {optionName: product.variants[0].options[0].displayName,
+    optionValue: product.variants[0].options[0].values[0].label})
+
+  product.variants.map(variant => {
+    variant.options.map(option => {
+      if (option.displayName.toLowerCase() == choice.optionName.toLowerCase()) {
+        option.values.map(value => {
+            if (value.label.toLowerCase() == choice.optionValue.toLowerCase()) {
+              price = formatVariantPrice(
+                {
+                  amount: variant.price,
+                  baseAmount: product.price.retailPrice!,
+                  currencyCode: product.price.currencyCode!,
+                  locale: useCommerce().locale
+                }).price
+            }
+          }
+        )
+      }
+    })
+  })
 
   useEffect(() => {
     // Selects the default option
@@ -127,6 +151,7 @@ const ProductView: FC<Props> = ({ product }) => {
                               [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
                             }
                           })
+                          setChoice({optionName: opt.displayName.toLowerCase(), optionValue: v.label.toLowerCase()})
                         }}
                       />
                     )
