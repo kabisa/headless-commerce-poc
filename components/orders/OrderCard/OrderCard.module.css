@@ -35,10 +35,21 @@
   & .orderItems {
     @apply overflow-auto;
     max-height: 552px;
-    scroll-margin: 1em;
+
+    &.atBottom .fadeout {
+      @apply opacity-0;
+    }
+
+    & .fadeout {
+      @apply sticky -mt-16 h-16 w-full bottom-0 transition-opacity duration-300 ease-in-out;
+      background: -webkit-linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 100%
+      );
+    }
 
     & .orderItem {
-      @apply rounded-md p-4 border border-solid my-4;
+      @apply rounded-md p-4 border border-solid my-4 transition-colors duration-200 hover:bg-gray-50;
 
       &:first-child {
         @apply mt-0;
