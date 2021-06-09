@@ -459,11 +459,11 @@ export type CheckoutAttributesUpdatePayload = {
   userErrors: Array<UserError>
 }
 
-/** Specifies the fields required to update a checkout's attributes. */
+/** Specifies the fields required to get a customer's orders. */
 export type GetOrdersInput = {
-  /** The text of an optional note that a shop owner can attach to the checkout. */
+  /** Number of orders to retrieve */
   numberOfOrders?: Maybe<Scalars['Int']>
-  /** A list of extra information that is added to the checkout. */
+  /** A cursor for use in pagination. */
   cursor?: Maybe<Scalars['String']>
 }
 
