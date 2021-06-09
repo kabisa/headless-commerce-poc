@@ -3,7 +3,6 @@ import { SWRFetcher } from '../utils/default-fetcher'
 import type { HookFetcherFn, SWRHook } from '../utils/types'
 import { Provider } from '..'
 import {Customer} from "@commerce/types";
-import {Order} from "@framework/schema";
 
 export type UseCustomerOrders<
   H extends SWRHook<any, any, any> = SWRHook<Customer | null>
