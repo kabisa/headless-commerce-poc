@@ -14,9 +14,9 @@ const OrderCard: FC<Props> = ({
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
     const target = event.target! as HTMLElement
-    const scrolled = target.scrollTop === (target.scrollHeight - target.offsetHeight)
+    const scrolledToBottom = target.scrollTop === (target.scrollHeight - target.offsetHeight)
 
-    scrolled ? target.classList.add(s.atBottom) : target.classList.remove(s.atBottom);
+    scrolledToBottom ? target.classList.add(s.atBottom) : target.classList.remove(s.atBottom)
   };
 
   return (
@@ -33,7 +33,7 @@ const OrderCard: FC<Props> = ({
       {order.node.lineItems.edges && order.node.lineItems.edges.map((product) => (
         <div className={s.orderItem} key={product.node.variant?.id}>
           <a href={`/product/${product.node.variant?.product.handle}`}>
-            <img className={s.itemImage} src={product.node.variant?.product.images.edges[0].node.transformedSrc}/>
+            <img className={s.itemImage} src={product.node.variant?.product.images.edges[0].node.transformedSrc} alt={product.node.variant?.product.images.edges[0].node.altText!}/>
             <span className={s.variant}>{product.node.variant?.product.title}</span></a><span
           className={s.amount}>: {product.node.quantity}x</span>
         </div>
