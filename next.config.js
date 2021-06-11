@@ -41,6 +41,9 @@ module.exports = withPWA(
       },
     ].filter((x) => x)
   },
+  future: {
+    webpack5: true
+  }
 }))
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
