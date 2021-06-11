@@ -1,7 +1,7 @@
 export const getCustomerOrdersQuery = /* GraphQL */ `
-query getCustomerOrders($customerAccessToken: String!, $cursor: String, $numberOfOrders: Int = 10) {
+query getCustomerOrders($customerAccessToken: String!, $cursor: String = null, $numberOfOrders: Int = 10) {
   customer(customerAccessToken: $customerAccessToken) {
-    orders(first: $numberOfOrders, after: $cursor) {
+    orders(first: $numberOfOrders, sortKey: PROCESSED_AT, reverse: true, after: $cursor) {
       pageInfo {
         hasNextPage
         hasPreviousPage
