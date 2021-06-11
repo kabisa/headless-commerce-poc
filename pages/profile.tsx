@@ -22,7 +22,7 @@ export default function Profile() {
   return (
     <Container>
       <Text variant="pageHeading">My Profile</Text>
-      {data && (
+      {data ?
         <div className="grid lg:grid-cols-12">
           <div className="lg:col-span-8 pr-4">
             <div>
@@ -41,7 +41,9 @@ export default function Profile() {
             </div>
           </div>
         </div>
-      )}
+        :
+        <Text variant="sectionHeading">Not logged in!</Text>
+      }
     </Container>
   )
 }
