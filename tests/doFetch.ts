@@ -1,3 +1,9 @@
+const fetch = require('node-fetch');
+
+if (!globalThis.fetch) {
+  globalThis.fetch = fetch;
+}
+
 export default async function doFetch(method: string, body: {}) {
 
   const response = fetch(`https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2021-04/graphql.json`, {

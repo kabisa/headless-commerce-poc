@@ -4,12 +4,6 @@ import customerAccessTokenCreateMutation from "../framework/shopify/utils/mutati
 import {customerAccessTokenCreate} from "./customerAccessTokenCreate";
 import doFetch from "./doFetch";
 
-const fetch = require('node-fetch');
-
-if (!globalThis.fetch) {
-  globalThis.fetch = fetch;
-}
-
 beforeAll(() => {
   require('dotenv').config({path: '.env.local'})
 })
