@@ -11,8 +11,6 @@
     "find:unused": "next-unused",
     "generate": "graphql-codegen",
     "generate:definitions": "node framework/bigcommerce/scripts/generate-definitions.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "jest-test": "jest",
     "jest-watch": "jest --watch",
     "cypress-open": "yarn run cypress open",
