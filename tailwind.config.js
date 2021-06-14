@@ -16,6 +16,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      spacing: {
+        '128': '128px',
+      },
       maxWidth: {
         '8xl': '1920px',
       },
