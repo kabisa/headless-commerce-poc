@@ -7,13 +7,15 @@ interface Props {
   order: OrderEdge
 }
 
+const placeholderImg = "/product-img-placeholder.svg"
+
 const OrderCard: FC<Props> = ({
   order,
   ...props
 }) => {
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
-    const target = event.target! as HTMLElement
+    const target = event.target as HTMLElement
     const scrolledToBottom = target.scrollTop === (target.scrollHeight - target.offsetHeight)
 
     scrolledToBottom ? target.classList.add(s.atBottom) : target.classList.remove(s.atBottom)
@@ -32,10 +34,9 @@ const OrderCard: FC<Props> = ({
     <div className={s.orderItems} onScroll={handleScroll}>
       {order.node.lineItems.edges && order.node.lineItems.edges.map((product) => (
         <div className={s.orderItem} key={product.node.variant?.id}>
-          <a href={`/product/${product.node.variant?.product.handle}`}>
-            <img className={s.itemImage} src={product.node.variant?.product.images.edges[0].node.transformedSrc} alt={product.node.variant?.product.images.edges[0].node.altText!}/>
-            <span className={s.variant}>{product.node.variant?.product.title}</span></a><span
-          className={s.amount}>: {product.node.quantity}x</span>
+          <a href={`/product/${product.node.variant?.product.handle || ''}`}>
+            <img className={s.itemImage} src={product.node.variant?.product.images.edges[0].node.transformedSrc || placeholderImg} alt={product.node.variant?.product.images.edges[0].node.altText || 'Product image'}/>
+            <span className={s.variant}>{product.node.variant?.product.title}</span></a><span className={s.amount}>: {product.node.quantity}x</span>
         </div>
       ))}
       {order.node.lineItems.edges.length > 3 && <div className={s.fadeout}/>}

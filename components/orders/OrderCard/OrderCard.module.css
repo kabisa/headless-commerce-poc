@@ -7,7 +7,7 @@
   }
 
   & .orderName {
-    @apply text-4xl mt-4 xsm:mt-0;
+    @apply text-4xl mt-4 xsm:mt-0 font-bold;
   }
 
   & .orderTotal {
@@ -68,7 +68,7 @@
       }
 
       & .itemImage {
-        @apply xsm:inline-block xsm:mr-4 transition-transform duration-150 hover:scale-110 transform block m-auto;
+        @apply xsm:inline-block xsm:mr-4 transition-transform duration-150 hover:scale-110 transform block m-auto w-128;
       }
     }
   }
