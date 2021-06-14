@@ -17,8 +17,8 @@ export default function Orders() {
     <Container>
       <Text variant="pageHeading">My Orders</Text>
       <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
-        {data && data!.orders.edges.length > 0 ?
-          data!.orders.edges.map((order) => (
+        {data && data.orders.edges.length > 0 ?
+          data.orders.edges.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
           :
@@ -35,7 +35,7 @@ export default function Orders() {
             </p>
           </div>
         }
-        {data && data!.orders.pageInfo.hasNextPage && <button onClick={loadNextPage}>Load next</button>}
+        {data && data.orders.pageInfo.hasNextPage && <button onClick={loadNextPage}>Load next</button>}
       </div>
     </Container>
   )
