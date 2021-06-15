@@ -1,8 +1,8 @@
 import { getCustomerOrdersQuery } from "@framework/utils";
-import {OrderConnection, ProductConnection} from "@framework/schema";
-import customerAccessTokenCreateMutation from "../framework/shopify/utils/mutations/customer-access-token-create";
-import {customerAccessTokenCreate} from "./customerAccessTokenCreate";
+import { OrderConnection } from "@framework/schema";
+import { customerAccessTokenCreate } from "./customerAccessTokenCreate";
 import doFetch from "./doFetch";
+import { expect } from '@jest/globals';
 
 beforeAll(() => {
   require('dotenv').config({path: '.env.local'})
