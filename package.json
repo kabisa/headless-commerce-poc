@@ -76,7 +76,7 @@
     "@types/shopify-buy": "^2.10.5",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
-    "cypress": "^7.4.0",
+    "cypress": "^7.5.0",
     "deepmerge": "^4.2.2",
     "eslint": "^7.27.0",
     "eslint-plugin-cypress": "^2.11.3",
