@@ -4,7 +4,7 @@ import doFetch from "./doFetch";
 export const customerAccessTokenCreate = async () => {
 
   const tokenBody = {
-    variables: {input: {email: "janwillemvanbremen@live.nl", password: "Tjukeprie12@2TF"}},
+    variables: {input: {email: "janwillemvanbremen@live.nl", password: "JanWillem123"}},
     query: customerAccessTokenCreateMutation
   };
 
