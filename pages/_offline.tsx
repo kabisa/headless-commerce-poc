@@ -1,37 +1,29 @@
-import type { GetStaticPropsContext } from 'next'
-import { Bag } from '@components/icons'
-import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
-import { getConfig } from '@framework/api'
-import getAllPages from '@framework/common/get-all-pages'
-
-export async function getStaticProps({
-                                       preview,
-                                       locale,
-                                     }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
-  return {
-    props: { pages },
-  }
-}
+import Head from 'next/head'
+import { Container, Text } from "@components/ui";
+import { Bars } from "@components/icons";
 
 export default function Offline() {
   return (
-    <Container>
-      <Text variant="pageHeading">You are offline</Text>
-      <div className="flex-1 p-24 flex flex-col justify-center items-center ">
-        <span className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
-          <Bag className="absolute" />
+    <>
+      <Head>
+        <title>Offline fallback page</title>
+      </Head>
+      <Container className="p-12">
+        <Text variant="pageHeading" className="text-center">You are offline</Text>
+        <div className="flex-1 p-24 flex flex-col justify-center items-center ">
+        <span
+          className="border border-dashed border-secondary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-primary text-primary">
+          <Bars className="absolute"/>
         </span>
-        <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-          No internet connection...
-        </h2>
-        <p className="text-accents-6 px-10 text-center pt-2">
-          Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-        </p>
-      </div>
-    </Container>
+          <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
+            No internet connection...
+          </h2>
+          <p className="text-accents-6 px-10 text-center pt-2">
+            Please reconnect to access the website. Click <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href={'/'} onClick={() => location.reload()}>here</a> to try again!
+          </p>
+        </div>
+      </Container>
+    </>
   )
 }
 
