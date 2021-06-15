@@ -7,7 +7,7 @@ describe('Retrieve orders', () => {
   })
 
   it('Logs in user with orders and assert orders in dom', () => {
-    const credentials = {email: 'janwillemvanbremen@live.nl', password: 'Tjukeprie12@2TF'}
+    const credentials = {email: 'janwillemvanbremen@live.nl', password: 'JanWillem123'}
 
     cy.wait(250)
     cy.findByText('Accept cookies').click()
