@@ -1,11 +1,12 @@
 import { getCustomerOrdersQuery } from "@framework/utils";
-import { OrderConnection } from "@framework/schema";
+import { Customer } from "@framework/schema";
 import { customerAccessTokenCreate } from "./customerAccessTokenCreate";
 import doFetch from "./doFetch";
 import { expect } from '@jest/globals';
+import { config } from "dotenv";
 
 beforeAll(() => {
-  require('dotenv').config({path: '.env.local'})
+  config({path: '.env.local'})
 })
 
 let customerAccessToken: string;
@@ -19,7 +20,7 @@ test('customerAccessTokenCreate', async () => {
 
 test('retrieve orders', async () => {
 
-  if (!customerAccessToken) { await customerAccessTokenCreate(); }
+  if (!customerAccessToken) { customerAccessToken = await customerAccessTokenCreate(); }
 
   const orderBody = { variables: { customerAccessToken: customerAccessToken, numberOfOrders: 5 }, query: getCustomerOrdersQuery };
 
@@ -27,7 +28,9 @@ test('retrieve orders', async () => {
 
   const orderData = await orderResponse.json();
 
-  const orders: OrderConnection = orderData.data.customer.orders;
+  const customer = orderData.data.customer as Customer
+
+  const orders = customer.orders;
 
   // console.log(orders);
   //

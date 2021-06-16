@@ -2,15 +2,10 @@ import {getAllProductsQuery} from "@framework/utils";
 import { ProductConnection } from "@framework/schema";
 import doFetch from "./doFetch";
 import { expect } from '@jest/globals';
-
-const fetch = require('node-fetch');
-
-if (!globalThis.fetch) {
-  globalThis.fetch = fetch;
-}
+import { config } from "dotenv";
 
 beforeAll(() => {
-  require('dotenv').config({path: '.env.local'})
+  config({path: '.env.local'})
 })
 
 test('Retrieve products', async () => {
