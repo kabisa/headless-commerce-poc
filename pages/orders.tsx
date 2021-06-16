@@ -21,7 +21,7 @@ export default function Orders() {
     setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
   }, [data?.orders.edges])
 
-  // useEffect(() => { Scroll eventlistener for when at bottom of list
+  // useEffect(() => { // Scroll eventListener for when at bottom of list
   //   const footer = document.getElementsByTagName('footer')[0]
   //   window.addEventListener('scroll', () => {
   //     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
