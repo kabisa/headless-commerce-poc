@@ -15,14 +15,20 @@ export const handler: SWRHook<Customer | null, GetOrdersInput, GetOrdersInput> =
     if (customerAccessToken) {
       const data = await fetch({
         ...options,
-        variables: { customerAccessToken: getCustomerToken(), numberOfOrders: numberOfOrders, cursor: cursor },
+        variables: { customerAccessToken: customerAccessToken, numberOfOrders: numberOfOrders, cursor: cursor },
       })
       return data.customer
     }
     return null
   },
   useHook: ({ useData }) => (input) => {
+    const { numberOfOrders, cursor } = input || {}
+
     return useData({
+      input: {
+        numberOfOrders,
+        cursor,
+      },
       swrOptions: {
         revalidateOnFocus: false,
         ...input?.swrOptions,
