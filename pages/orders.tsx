@@ -4,80 +4,37 @@ import { useCustomerOrders } from "@framework/customer";
 import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
 import { useEffect, useState } from "react";
-import {getCustomerOrdersQuery, getCustomerToken} from "@framework/utils";
-import fetch from "node-fetch";
-import throttle from "lodash.throttle"
-import {Customer} from "@framework/schema";
-
-let numberOfOrders = 1;
+import { OrderEdge } from "@framework/schema";
 
 export default function Orders() {
-  const [{ data }, setData] = useState(useCustomerOrders({ numberOfOrders: numberOfOrders }));
-  // let data = useCustomerOrders({ numberOfOrders: numberOfOrders }).data
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [orders, setOrders] = useState<OrderEdge[]>([])
 
-  console.log(data)
+  const { data } = useCustomerOrders({ numberOfOrders: 3, cursor })
 
-  const loadNextPage = async (customer: Customer) => {
-    // if (data?.orders?.pageInfo?.hasNextPage) {
-      numberOfOrders = numberOfOrders + 1;
-
-      console.log('doLoad!');
-
-      console.log(customer);
-
-      console.log(numberOfOrders);
-
-      const body = {
-        variables: {customerAccessToken: getCustomerToken(), numberOfOrders: numberOfOrders},
-        query: getCustomerOrdersQuery
-      };
-
-      const headers = {
-        'X-Shopify-Storefront-Access-Token': process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN?.toString() || '',
-        'Content-Type': 'application/json',
-      }
-
-      const response = fetch(`https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || ''}/api/2021-04/graphql.json`, {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: headers
-      })
-
-      const dataObj = await response.then(response => { return response.json() }).then(data => { return { data: data.data.customer } })
-
-      console.log(dataObj);
-
-      setData(dataObj)
-
-      // data = dataObj
-    // }
+  function loadNext() {
+    setCursor(orders[orders.length - 1].cursor)
   }
 
   useEffect(() => {
-    let didLoad = false;
-    const footer = document.getElementsByTagName('footer')[0]
-    window.addEventListener('scroll', () => {
-      if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
-        console.log(data);
-        if (data?.orders.pageInfo.hasNextPage) {
-        if (!didLoad) {
-          void loadNextPage(data)
-          didLoad = true;
-          setTimeout(function(){ didLoad = false }, 1000);
-        }
-        }
-      }
-    })
-  }, [data])
+    if (!data?.orders.edges) return;
+    setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
+  }, [data?.orders.edges])
 
+  // useEffect(() => { Scroll eventlistener for when at bottom of list
+  //   const footer = document.getElementsByTagName('footer')[0]
+  //   window.addEventListener('scroll', () => {
+  //     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
+  //       loadNext() // orders in undefined when call loadNext() function from here
+  //     }
+  //   })
+  // }, [])
 
   return (
     <Container>
-      {/*{JSON.stringify(data)}*/}
       <Text variant="pageHeading">My Orders</Text>
       <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
-        {data && data.orders.edges.length > 0 ?
-          data.orders.edges.map((order) => (
+        {orders.length ? orders.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
           :
@@ -94,7 +51,7 @@ export default function Orders() {
             </p>
           </div>
         }
-        {data && data.orders.pageInfo.hasNextPage && <button onClick={() => loadNextPage(data)}>Load next</button>}
+        {orders.length && data?.orders.pageInfo.hasNextPage && <button id='next' onClick={loadNext}>More...</button>}
       </div>
     </Container>
   )
