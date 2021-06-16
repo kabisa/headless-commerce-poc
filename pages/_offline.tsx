@@ -19,7 +19,7 @@ export default function Offline() {
             No internet connection...
           </h2>
           <p className="text-accents-6 px-10 text-center pt-2">
-            Please reconnect to the network to access the website. Click <a className="underline" href={'/'} onClick={() => location.reload()}>here</a> to try again!
+            Please reconnect to the network to access the website. Click <a className="underline" href='.' onClick={() => location.reload()}>here</a> to try again!
           </p>
         </div>
       </Container>
