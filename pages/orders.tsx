@@ -1,39 +1,48 @@
-import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
-import { useCustomerOrders } from "@framework/customer";
-import { Bag } from "@components/icons";
+import {Layout} from '@components/common'
+import {Container, Text} from '@components/ui'
+import {useCustomerOrders} from "@framework/customer";
+import {Bag} from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
-import { useEffect, useState } from "react";
-import { OrderEdge } from "@framework/schema";
+import {useEffect, useState} from "react";
+import {Customer, OrderEdge} from "@framework/schema";
 
 export default function Orders() {
   const [cursor, setCursor] = useState<string | null>(null);
   const [orders, setOrders] = useState<OrderEdge[]>([])
+  const [atBottom, setAtBottom] = useState<boolean>(false)
 
-  const { data } = useCustomerOrders({ numberOfOrders: 3, cursor })
+  const { data } = useCustomerOrders({numberOfOrders: 1, cursor})
 
-  function loadNext() {
+  const loadNext = () => {
     setCursor(orders[orders.length - 1].cursor)
   }
+
+  useEffect(() => {
+    if (orders.length && data?.orders.pageInfo.hasNextPage) {
+      loadNext()
+    }
+    setAtBottom(false)
+  }, [atBottom])
 
   useEffect(() => {
     if (!data?.orders.edges) return;
     setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
   }, [data?.orders.edges])
 
-  // useEffect(() => { // Scroll eventListener for when at bottom of list
-  //   const footer = document.getElementsByTagName('footer')[0]
-  //   window.addEventListener('scroll', () => {
-  //     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
-  //       loadNext() // orders in undefined when call loadNext() function from here
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => { // Scroll eventListener for when at bottom of list
+    const footer = document.getElementsByTagName('footer')[0]
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
+        setAtBottom(true);
+      }
+    })
+  }, [])
 
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
-      <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+      <div
+        className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
         {orders.length ? orders.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
