@@ -11,7 +11,15 @@ query getCustomerOrders($customerAccessToken: String!, $cursor: String = null, $
         node {
           id
           name
+          subtotalPriceV2 {
+            currencyCode
+            amount
+          }
           totalPriceV2 {
+            currencyCode
+            amount
+          }
+          totalShippingPriceV2 {
             currencyCode
             amount
           }
