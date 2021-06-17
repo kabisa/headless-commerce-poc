@@ -1,6 +1,6 @@
 import { GraphQLFetcherResult } from '@commerce/api'
 import { getConfig, ShopifyConfig } from '../api'
-import { ProductEdge } from '../schema'
+import {ProductEdge, ProductSortKeys} from '../schema'
 import { getAllProductsQuery } from '../utils/queries'
 import { normalizeProduct } from '@framework/utils'
 import { Product } from '@commerce/types'
@@ -8,6 +8,9 @@ import { Product } from '@commerce/types'
 type Variables = {
   first?: number
   field?: string
+  query?: string
+  sortKey?: ProductSortKeys | string
+  reverse?: Boolean
 }
 
 type ReturnType = {
