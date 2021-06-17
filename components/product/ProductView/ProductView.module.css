@@ -42,11 +42,6 @@
 
   & .price {
     @apply px-6 py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide;
-
-    &.animate {
-      transform: scale(2);
-      background-color: red;
-    }
   }
 
   @screen lg {
