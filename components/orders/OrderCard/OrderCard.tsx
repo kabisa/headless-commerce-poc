@@ -10,10 +10,7 @@ interface Props {
 
 const placeholderImg = "/product-img-placeholder.svg"
 
-const OrderCard: FC<Props> = ({
-  order,
-  ...props
-}) => {
+const OrderCard: FC<Props> = ({order}) => {
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
     const target = event.target as HTMLElement
