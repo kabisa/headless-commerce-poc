@@ -25,7 +25,24 @@ cp framework/shopify/.env.template .env.local
 ```
 
 - run `yarn install`
-- run `npm run dev`
+- run `yarn run dev`
+
+## Additional yarn commands
+
+"dev"\
+"build"\
+"start"\
+"analyze"\
+"prettier-fix"\
+"eslint-fix"\
+"find:unused"\
+"generate"\
+"generate:definitions"\
+"jest-test"\
+"jest-watch"\
+"cypress-open"\
+"cypress-test"\
+"cypress-test-ci"
 
 # Next.js Commerce
 
