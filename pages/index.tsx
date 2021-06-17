@@ -1,8 +1,6 @@
 import { Layout } from '@components/common'
-import { Grid, Marquee, Hero } from '@components/ui'
-import { ProductCard } from '@components/product'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
 
 import { getConfig } from '@framework/api'
 import getAllProducts from '@framework/product/get-all-products'
@@ -16,7 +14,7 @@ export async function getStaticProps({
   const config = getConfig({ locale })
 
   const { products } = await getAllProducts({
-    variables: { first: 12 },
+    variables: { first: 12, sortKey: 'UPDATED_AT', reverse: true },
     config,
     preview,
   })
@@ -42,18 +40,19 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
+      {/*Commented out because it is an alternative layout for the homepage, HomeAllProductsGrid used instead*/}
+      {/*<Grid>*/}
+      {/*  {products.slice(0, 3).map((product, i) => (*/}
+      {/*    <ProductCard*/}
+      {/*      key={product.id}*/}
+      {/*      product={product}*/}
+      {/*      imgProps={{*/}
+      {/*        width: i === 0 ? 1080 : 540,*/}
+      {/*        height: i === 0 ? 1080 : 540,*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*  ))}*/}
+      {/*</Grid>*/}
       {/*<Marquee variant="secondary">*/}
       {/*  {products.slice(0, 3).map((product, i) => (*/}
       {/*    <ProductCard*/}
@@ -89,19 +88,19 @@ export default function Home({
       {/*    />*/}
       {/*  ))}*/}
       {/*</Grid>*/}
-      <Marquee>
-        {products.slice(0, 3).map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            variant="slim"
-            imgProps={{
-              width: 320,
-              height: 320,
-            }}
-          />
-        ))}
-      </Marquee>
+      {/*<Marquee>*/}
+      {/*  {products.slice(0, 3).map((product, i) => (*/}
+      {/*    <ProductCard*/}
+      {/*      key={product.id}*/}
+      {/*      product={product}*/}
+      {/*      variant="slim"*/}
+      {/*      imgProps={{*/}
+      {/*        width: 320,*/}
+      {/*        height: 320,*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*  ))}*/}
+      {/*</Marquee>*/}
       {
         <HomeAllProductsGrid
           products={products}
