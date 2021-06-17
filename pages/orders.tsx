@@ -11,7 +11,7 @@ export default function Orders() {
   const [orders, setOrders] = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
 
-  const { data } = useCustomerOrders({numberOfOrders: 1, cursor})
+  const { data } = useCustomerOrders({numberOfOrders: 10, cursor})
 
   const loadNext = () => {
     setCursor(orders[orders.length - 1].cursor)
