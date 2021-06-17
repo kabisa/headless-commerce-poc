@@ -52,7 +52,7 @@
 
   & .orderItems {
     @apply overflow-auto;
-    max-height: 482px;
+    max-height: 518px;
 
     &.atBottom .fadeout {
       @apply opacity-0;
@@ -80,7 +80,6 @@
 
     & .orderItem {
       @apply rounded-md p-4 border border-solid border-accents-4 my-4 transition-colors duration-200 hover:bg-gray-50;
-      height: 150px;
 
       &:first-child {
         @apply mt-0;
@@ -99,7 +98,7 @@
       }
 
       & .itemImage {
-        @apply xsm:inline-block xsm:mr-4 transition-transform duration-150 hover:scale-110 transform block m-auto w-128;
+        @apply xsm:inline-block xsm:mr-4 transition-transform duration-150 hover:scale-110 transform block m-auto h-128;
       }
     }
   }

@@ -34,8 +34,8 @@ const OrderCard: FC<Props> = ({order}) => {
     <p className={s.orderDate}>{new Date(Date.parse(order.node.processedAt)).toDateString()}</p>
     <br/>
     <p className={s.orderProducts}>You bought:</p>
-    <div className={`${s.orderItems} ${s.atTop}`} onScroll={handleScroll}>
-      {order.node.lineItems.edges.length > 3 && <section className={s.fadein}/>}
+    <div className={`${s.orderItems} ${s.atTop} ${order.node.lineItems.edges.length < 4 ? s.atBottom : ''}`} onScroll={handleScroll}>
+      <section className={s.fadein}/>
       {order.node.lineItems.edges && order.node.lineItems.edges.map((product) => (
         <div className={s.orderItem} key={product.node.variant?.id}>
           <a href={`/product/${product.node.variant?.product.handle || ''}`}>
@@ -43,7 +43,7 @@ const OrderCard: FC<Props> = ({order}) => {
             <span className={s.variant}>{product.node.variant?.product.title}</span></a><span className={s.amount}>: {product.node.quantity}x</span>
         </div>
       ))}
-      {order.node.lineItems.edges.length > 3 && <section className={s.fadeout}/>}
+      <section className={s.fadeout}/>
     </div>
   </div>
   )
