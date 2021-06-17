@@ -15,7 +15,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
     router.prefetch('/search')
   }, [])
 
-  const doQuery = (q: string) => {
+  const updateSearchQuery = (q: string) => {
     router.push(
       {
         pathname: `/search`,
@@ -44,16 +44,12 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
           defaultValue={router.query.q}
           onKeyUp={(e) => {
             e.preventDefault()
-            if (e.key === 'Enter') {
-              doQuery(e.currentTarget.value)
-            }
+            if (e.key === 'Enter') { updateSearchQuery(e.currentTarget.value) }
           }}
         />
         <button
           className={s.iconContainer}
-          onClick={() => {
-            doQuery((document.getElementById(id) as HTMLInputElement).value)
-          }}
+          onClick={() => { updateSearchQuery((document.getElementById(id) as HTMLInputElement).value) }}
         >
           <svg className={s.icon} fill="currentColor" viewBox="0 0 20 20">
             <path
