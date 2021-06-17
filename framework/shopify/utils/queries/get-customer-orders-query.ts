@@ -25,7 +25,7 @@ query getCustomerOrders($customerAccessToken: String!, $cursor: String = null, $
           }
           fulfillmentStatus
           processedAt
-          lineItems(first: 5) {
+          lineItems(first: 10) {
             edges {
               node {
                 quantity
