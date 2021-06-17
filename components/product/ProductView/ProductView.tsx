@@ -45,12 +45,12 @@ const ProductView: FC<Props> = ({ product }) => {
                   currencyCode: product.price.currencyCode!,
                   locale: useCommerce().locale
                 }).price
+              }
             }
-          }
-        )
-      }
+          )
+        }
+      })
     })
-  })
 
   useEffect(() => {
     // Selects the default option
