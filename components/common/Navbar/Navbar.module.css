@@ -15,7 +15,7 @@
 }
 
 .link.active {
-  @apply underline;
+  @apply underline text-accents-9;
 }
 
 .logo {
