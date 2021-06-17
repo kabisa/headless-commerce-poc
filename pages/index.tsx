@@ -40,6 +40,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
+      {/*Commented out because it is an alternative layout for the homepage, HomeAllProductsGrid used instead*/}
       {/*<Grid>*/}
       {/*  {products.slice(0, 3).map((product, i) => (*/}
       {/*    <ProductCard*/}
