@@ -60,7 +60,6 @@ export default function Orders() {
             </p>
           </div>
         }
-        {orders.length && data?.orders.pageInfo.hasNextPage && <button id='next' onClick={loadNext}>More...</button>}
       </div>
     </Container>
   )
