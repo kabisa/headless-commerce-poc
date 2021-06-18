@@ -90,7 +90,7 @@
       }
 
       & .variant {
-        @apply hover:underline text-lg;
+        @apply hover:underline text-lg font-semibold;
       }
 
       & .amount {

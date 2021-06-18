@@ -32,6 +32,10 @@ query getCustomerOrders($customerAccessToken: String!, $cursor: String = null, $
                 title
                 variant {
                   id
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
                   product {
                     id
                     title
