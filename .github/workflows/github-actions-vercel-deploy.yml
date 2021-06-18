@@ -18,7 +18,7 @@ jobs:
           vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
           vercel-args: '--prod'
           
-        if: ${{ github.ref !== 'refs/heads/main' }}
+        if: ${{ github.ref != 'refs/heads/main' }}
       - name: Vercel Action Preview
         uses: amondnet/vercel-action@v20.0.0
         id: vercel-action-preview
