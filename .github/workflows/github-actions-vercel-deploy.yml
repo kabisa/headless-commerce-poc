@@ -6,16 +6,24 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-#      - name: copy .env
-#        run: cp framework/shopify/.env.template .env.local
 
-      - name: Vercel Action
+        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Vercel Action Production
         uses: amondnet/vercel-action@v20.0.0
-        id: vercel-action
+        id: vercel-action-production
         with:
           github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
           vercel-token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
           vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
           vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
-          if: github.ref == 'refs/heads/main'
           vercel-args: '--prod'
+          
+        if: ${{ github.ref !== 'refs/heads/main' }}
+      - name: Vercel Action Preview
+        uses: amondnet/vercel-action@v20.0.0
+        id: vercel-action-preview
+        with:
+          github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
+          vercel-token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
+          vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
+          vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
