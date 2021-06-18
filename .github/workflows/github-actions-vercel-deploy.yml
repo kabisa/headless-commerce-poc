@@ -1,8 +1,7 @@
 name: GitHub Actions Vercel Deploy
 on: [push]
 jobs:
-  build_and_deploy:
-    name: Build & Deploy
+  vercel_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -18,3 +17,5 @@ jobs:
           vercel-token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
           vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
           vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
+          if: github.ref == 'refs/heads/main'
+          vercel-args: '--prod'
