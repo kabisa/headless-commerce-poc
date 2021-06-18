@@ -13,7 +13,7 @@ jobs:
         token: yXpD9B1UQ48ixgz5PaHbtC9j
         await-build: true
     - name: Echo preview url
-    - run: echo ${{ steps.wait-for-vercel.outputs.url }}
+      run: echo ${{ steps.wait-for-vercel.outputs.url }}
 
     - uses: actions/checkout@v2
     - name: Audit preview URL with Lighthouse
