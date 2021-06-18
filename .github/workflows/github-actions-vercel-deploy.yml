@@ -22,7 +22,7 @@ jobs:
         
       - name: Vercel Action Preview
         uses: amondnet/vercel-action@v20.0.0
-        if: github.ref !== 'refs/heads/main'
+        if: github.ref != 'refs/heads/main'
         id: vercel-action-preview
         with:
           github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
