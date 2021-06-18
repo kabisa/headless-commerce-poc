@@ -1,7 +1,7 @@
 name: Lighthouse CI
 on: push
 jobs:
-  lighthouse:
+  clone_build_serve:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -12,11 +12,17 @@ jobs:
         run: yarn install
       - name: build
         run: yarn run build
-#       - name: Start server
-#         run: yarn run start 
+      - name: Start server
+        run: yarn run start &
+        
+  lighthouse_CI:
+    runs-on: ubuntu-latest
+    needs: [clone_build_serve]
+    steps:
       - name: Audit URLs using Lighthouse against static dir
         uses: treosh/lighthouse-ci-action@v7
         with:
-          configPath: './lighthouserc.json'
+          urls: |
+            http://localhost:3001/
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
