@@ -9,8 +9,8 @@ import { useRouter } from 'next/router'
 const Navbar: FC = () => {
   const router = useRouter()
 
-  const menuItemClassName = (target: string | undefined): string => {
-    return `${s.link} ${router.pathname == "/search" && router.query.q == target ? s.active : ""}`
+  const menuItemClassName = (pathname: string, query: string, target: string | undefined): string => {
+    return `${s.link} ${router.pathname == `/${pathname}` && router.query[query] == target ? s.active : ''}`
   }
 
   return (
@@ -25,16 +25,16 @@ const Navbar: FC = () => {
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
             <Link href={"/search?sort=latest-desc"}>
-              <a className={menuItemClassName(undefined)}>All</a>
+              <a className={menuItemClassName('search','q', undefined)}>All</a>
             </Link>
             <Link href={"/search?q=clothes"}>
-              <a className={menuItemClassName('clothes')}>Clothes</a>
+              <a className={menuItemClassName('search','q', 'clothes')}>Clothes</a>
             </Link>
             <Link href={"/search?q=accessories"}>
-              <a className={menuItemClassName('accessories')}>Accessories</a>
+              <a className={menuItemClassName('search','q', 'accessories')}>Accessories</a>
             </Link>
             <Link href={"/search?q=shoes"}>
-              <a className={menuItemClassName('shoes')}>Shoes</a>
+              <a className={menuItemClassName('search','q', 'shoes')}>Shoes</a>
             </Link>
           </nav>
         </div>
