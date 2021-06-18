@@ -12,6 +12,7 @@ jobs:
         prod-url: https://headless-commerce-poc-alianza.vercel.app/
         token: yXpD9B1UQ48ixgz5PaHbtC9j
         await-build: true
+        timeout: 300
     - name: Echo preview url
       run: echo ${{ steps.wait-for-vercel.outputs.url }}
 
@@ -23,3 +24,4 @@ jobs:
           ${{ steps.wait-for-vercel.outputs.url }}
         uploadArtifacts: true # save results as an action artifacts
         temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+      
