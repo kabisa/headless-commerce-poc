@@ -1,21 +1,29 @@
 name: GitHub Actions Vercel Deploy
 on: [push]
 jobs:
-  vercel_deploy:
+  vercel_deploy_prod:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-#      - name: copy .env
-#        run: cp framework/shopify/.env.template .env.local
 
-      - name: Vercel Action
+      - name: Vercel Action Production
         uses: amondnet/vercel-action@v20.0.0
-        id: vercel-action
+        if: github.ref == 'refs/heads/main'
+        id: vercel-action-production
         with:
           github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
           vercel-token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
           vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
           vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
-          if: github.ref == 'refs/heads/main'
           vercel-args: '--prod'
+
+      - name: Vercel Action Preview
+        uses: amondnet/vercel-action@v20.0.0
+        if: github.ref != 'refs/heads/main'
+        id: vercel-action-preview
+        with:
+          github-token: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
+          vercel-token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
+          vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
+          vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
