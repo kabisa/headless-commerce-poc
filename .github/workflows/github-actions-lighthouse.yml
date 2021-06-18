@@ -4,13 +4,13 @@ jobs:
   lighthouse_CI:
     runs-on: ubuntu-latest
     steps:
-    
+
     - name: Waiting for Vercel deployment
       uses: mskelton/wait-for-vercel-action@v1
       id: wait-for-vercel
       with:
         prod-url: https://headless-commerce-poc-alianza.vercel.app/
-        token: yXpD9B1UQ48ixgz5PaHbtC9j
+        token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
         await-build: true
         timeout: 300
     - name: Echo preview url
@@ -24,4 +24,3 @@ jobs:
           ${{ steps.wait-for-vercel.outputs.url }}
         uploadArtifacts: true # save results as an action artifacts
         temporaryPublicStorage: true # upload lighthouse report to the temporary storage
-      
