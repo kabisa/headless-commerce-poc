@@ -9,7 +9,11 @@ import { useRouter } from 'next/router'
 const Navbar: FC = () => {
   const router = useRouter()
 
-return (
+  const menuItemClassName = (target: string | undefined): string => {
+    return `${s.link} ${router.pathname == "/search" && router.query.q == target ? s.active : ""}`
+  }
+
+  return (
   <NavbarRoot>
     <Container>
       <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
@@ -20,17 +24,17 @@ return (
             </a>
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
-            <Link href="/search?sort=latest-desc">
-              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == undefined ? s.active : ""}`}>All</a>
+            <Link href={"/search?sort=latest-desc"}>
+              <a className={menuItemClassName(undefined)}>All</a>
             </Link>
-            <Link href="/search?q=clothes">
-              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'clothes' ? s.active : ""}`}>Clothes</a>
+            <Link href={"/search?q=clothes"}>
+              <a className={menuItemClassName('clothes')}>Clothes</a>
             </Link>
-            <Link href="/search?q=accessories">
-              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'accessories' ? s.active : ""}`}>Accessories</a>
+            <Link href={"/search?q=accessories"}>
+              <a className={menuItemClassName('accessories')}>Accessories</a>
             </Link>
-            <Link href="/search?q=shoes">
-              <a className={`${s.link} ${router.pathname == "/search" && router.query.q == 'shoes' ? s.active : ""}`}>Shoes</a>
+            <Link href={"/search?q=shoes"}>
+              <a className={menuItemClassName('shoes')}>Shoes</a>
             </Link>
           </nav>
         </div>
