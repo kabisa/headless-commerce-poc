@@ -1,13 +1,11 @@
 name: GitHub Actions Vercel Deploy
 on: [push]
 jobs:
-  vercel_deploy_prod:
+  vercel_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-#      - name: copy .env
-#        run: cp framework/shopify/.env.template .env.local
 
       - name: Vercel Action Production
         uses: amondnet/vercel-action@v20.0.0
@@ -19,7 +17,7 @@ jobs:
           vercel-project-id: prj_ZGX8fkQ1nWJmobraXgELoO8uU6dk # Should be secret!
           vercel-org-id: YS1zeOc6zcgMQJK3ExDOxrrO # Should be secret!
           vercel-args: '--prod'
-        
+
       - name: Vercel Action Preview
         uses: amondnet/vercel-action@v20.0.0
         if: github.ref != 'refs/heads/main'
