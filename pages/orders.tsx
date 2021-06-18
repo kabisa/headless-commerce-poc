@@ -1,30 +1,30 @@
-import {Layout} from '@components/common'
-import {Container, Text} from '@components/ui'
-import {useCustomerOrders} from "@framework/customer";
-import {Bag} from "@components/icons";
+import { Layout } from '@components/common'
+import { Container, Text } from '@components/ui'
+import { useCustomerOrders } from "@framework/customer";
+import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
-import {useEffect, useState} from "react";
-import {Customer, OrderEdge} from "@framework/schema";
+import { useEffect, useState } from "react";
+import { OrderEdge } from "@framework/schema";
 
 export default function Orders() {
-  const [cursor, setCursor] = useState<string | null>(null);
-  const [orders, setOrders] = useState<OrderEdge[]>([])
+  const [cursor, setCursor]     = useState<string | null>(null);
+  const [orders, setOrders]     = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
 
-  const { data } = useCustomerOrders({numberOfOrders: 10, cursor})
+  const { data } = useCustomerOrders({ numberOfOrders: 10, cursor } )
 
-  const loadNext = () => {
+  const loadNext = () => { // Update cursor with latest one
     setCursor(orders[orders.length - 1].cursor)
   }
 
-  useEffect(() => {
+  useEffect(() => { // When scrolled to bottom, if there are more items available, load them
     if (orders.length && data?.orders.pageInfo.hasNextPage) {
       loadNext()
     }
     setAtBottom(false)
   }, [atBottom])
 
-  useEffect(() => {
+  useEffect(() => { // Append new orders to previous orders
     if (!data?.orders.edges) return;
     setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
   }, [data?.orders.edges])
