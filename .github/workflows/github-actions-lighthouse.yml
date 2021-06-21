@@ -16,7 +16,6 @@ jobs:
     - name: Echo preview url
       run: echo ${{ steps.wait-for-vercel.outputs.url }}
 
-    - uses: actions/checkout@v2
     - name: Audit preview URL with Lighthouse
       uses: treosh/lighthouse-ci-action@v7
       with:
