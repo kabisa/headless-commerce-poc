@@ -1,14 +1,14 @@
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import config from '@config/seo.json'
 
-const Head: FC = () => {
-  const [primaryColor, setPrimaryColor]: any | null = useState(null)
+const Head: VFC = () => {
+  const [primaryColor, setPrimaryColor] = useState<string>('')
 
   useEffect(() => {
-    const root = document.querySelector(':root');
-    const style = getComputedStyle(root!);
+    const root = document.querySelector(':root')
+    const style = getComputedStyle(root!)
     setPrimaryColor(style.getPropertyValue('--primary'))
 
     const observer = new MutationObserver(function(mutations) {
