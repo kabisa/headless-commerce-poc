@@ -32,11 +32,5 @@ test('retrieve orders', async () => {
 
   const orders = customer.orders;
 
-  // console.log(orders);
-  //
-  // orders.edges.map(order => {
-  //   console.log(order);
-  // });
-
   expect(orders.edges.length).toBe(orderBody.variables.numberOfOrders);
 });

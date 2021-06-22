@@ -18,11 +18,5 @@ test('Retrieve products', async () => {
 
   const products: ProductConnection = data.data.products;
 
-  // // console.log(products);
-  //
-  // products.edges.map(product => {
-  //   console.log(product);
-  // });
-
   expect(products.edges.length).toBe(body.variables.first);
 });
