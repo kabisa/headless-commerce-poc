@@ -8,6 +8,7 @@ import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import Link from "next/link";
+import { CurrencyCode } from "@framework/schema";
 
 export async function getStaticProps({
   preview,
@@ -77,11 +78,11 @@ export default function Cart() {
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-2 border-b border-accents-2">
-              {data!.lineItems.map((item) => (
+              {data?.lineItems.map((item) => (
                 <CartItem
                   key={item.id}
                   item={item}
-                  currencyCode={data?.currency.code!}
+                  currencyCode={data?.currency.code || CurrencyCode.Eur}
                 />
               ))}
             </ul>
