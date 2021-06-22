@@ -1,5 +1,6 @@
 import customerAccessTokenCreateMutation from "../framework/shopify/utils/mutations/customer-access-token-create";
 import doFetch from "./doFetch";
+import {CustomerAccessToken} from "@framework/schema";
 
 export const customerAccessTokenCreate = async (): Promise<string> => {
 
@@ -12,7 +13,7 @@ export const customerAccessTokenCreate = async (): Promise<string> => {
 
   const tokenData = await tokenResponse.json();
 
-  const customerAccessToken = tokenData.data.customerAccessTokenCreate.customerAccessToken.accessToken
+  const customerAccessToken: CustomerAccessToken = tokenData.data.customerAccessTokenCreate.customerAccessToken
 
-  return customerAccessToken as string
+  return customerAccessToken.accessToken
 }

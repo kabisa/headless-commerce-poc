@@ -6,7 +6,7 @@ import { expect } from '@jest/globals';
 import { config } from "dotenv";
 
 beforeAll(() => {
-  config({path: '.env.local'})
+  config({ path: '.env.local' })
 })
 
 let customerAccessToken: string;
@@ -28,7 +28,7 @@ test('retrieve orders', async () => {
 
   const orderData = await orderResponse.json();
 
-  const customer = orderData.data.customer as Customer
+  const customer: Customer = orderData.data.customer
 
   const orders = customer.orders;
 
