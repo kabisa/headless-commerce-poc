@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Add product to cart', () => {
+describe('Add products to cart', () => {
   beforeEach(() => {
     cy.visit('/') // Uses baseUrl: 'http://localhost:3000' Run project with `yarn run build` & `yarn run start`
   })

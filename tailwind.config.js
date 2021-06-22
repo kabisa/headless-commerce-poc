@@ -16,6 +16,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      spacing: {
+        '128': '128px',
+      },
       maxWidth: {
         '8xl': '1920px',
       },
@@ -60,6 +63,9 @@ module.exports = {
       },
       scale: {
         120: '1.2',
+      },
+      screens: {
+        'xsm': '480px',
       },
     },
   },

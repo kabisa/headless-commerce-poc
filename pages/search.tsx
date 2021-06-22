@@ -266,7 +266,6 @@ export default function Search({
                         className={cn(
                           'block text-sm leading-5 text-gray-700 hover:bg-gray-100 lg:hover:bg-transparent hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
                           {
-                            // @ts-ignore Shopify - Fix this types
                             underline: activeBrand?.entityId === node.entityId,
                           }
                         )}

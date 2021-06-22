@@ -12,6 +12,7 @@ const LoginView: FC<Props> = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [loggedIn, setLoggedIn] = useState(false)
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const { setModalView, closeModal } = useUI()
@@ -34,7 +35,10 @@ const LoginView: FC<Props> = () => {
         password,
       })
       setLoading(false)
-      closeModal()
+      setLoggedIn(true)
+      setTimeout(() => {
+        closeModal()
+      }, 1000)
     } catch ({ errors }) {
       setMessage(errors[0].message)
       setLoading(false)
@@ -75,27 +79,33 @@ const LoginView: FC<Props> = () => {
             </a>
           </div>
         )}
+        {!loggedIn ?
+        <>
         <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+          <Input type="password" placeholder="Password" onChange={setPassword} />
 
-        <Button
-          variant="slim"
-          type="submit"
-          loading={loading}
-          disabled={disabled}
-        >
-          Log In
-        </Button>
-        <div className="pt-1 text-center text-sm">
-          <span className="text-accents-7">Don't have an account?</span>
-          {` `}
-          <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
-            onClick={() => setModalView('SIGNUP_VIEW')}
+          <Button
+            variant="slim"
+            type="submit"
+            loading={loading}
+            disabled={disabled}
           >
-            Sign Up
-          </a>
-        </div>
+            Log In
+          </Button>
+          <div className="pt-1 text-center text-sm">
+            <span className="text-accents-7">Don't have an account?</span>
+            {` `}
+            <a
+              className="text-accent-9 font-bold hover:underline cursor-pointer"
+              onClick={() => setModalView('SIGNUP_VIEW')}
+            >
+              Sign Up
+            </a>
+          </div>
+        </>
+          :
+          <span className="text-center text-xl">Successfully logged in!</span>
+        }
       </div>
     </form>
   )

@@ -25,6 +25,7 @@ export type AddItemBody = { item: ItemBody }
 export type RemoveItemBody = { itemId: Product['id'] }
 
 export type WishlistBody = {
+  // @ts-ignore
   customer_id: Customer['entityId']
   is_public: number
   name: string
