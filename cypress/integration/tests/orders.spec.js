@@ -11,7 +11,6 @@ describe('Retrieve orders', () => {
 
     cy.wait(250)
     cy.findByText('Accept cookies').click()
-    // cy.contains('VANS |AUTHENTIC | LO PRO | BURGANDY/WHITE').click()
 
     login(credentials)
 
@@ -20,12 +19,10 @@ describe('Retrieve orders', () => {
 
     cy.location('pathname').should('include', 'orders')
     cy.findByText('My Orders')
-    cy.wait(2500)
-    const orders = cy.get('.mx-auto > .flex-1.justify-center').find('> div')
+    const orders = cy.get('.mx-auto > .flex-1.justify-center').find('> div', { timeout: 5000 })
     orders.should('contain.text', 'Order: #')
     orders.should('have.length.above', 1)
   })
-
 })
 
 /* global cy */
