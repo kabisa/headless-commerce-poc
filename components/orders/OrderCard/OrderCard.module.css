@@ -54,11 +54,7 @@
     @apply overflow-auto;
     max-height: 518px;
 
-    &.atBottom .fadeout {
-      @apply opacity-0;
-    }
-
-    &.atTop .fadein {
+    &.atBottom .fadeout, &.atTop .fadein {
       @apply opacity-0;
     }
 
