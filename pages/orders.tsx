@@ -5,6 +5,7 @@ import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
 import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
+import throttle from "lodash.throttle";
 
 export default function Orders(): JSX.Element {
   const [cursor, setCursor]     = useState<string | null>(null);
@@ -29,11 +30,17 @@ export default function Orders(): JSX.Element {
 
   useEffect(() => { // Scroll eventListener for when at bottom of list
     const footer = document.getElementsByTagName('footer')[0]
-    window.addEventListener('scroll', () => {
+
+    const scrollListener = throttle(function () {
       if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
         setAtBottom(true);
-      }
-    })
+    } }, 500);
+
+    window.addEventListener('scroll', scrollListener)
+
+    return function cleanup() {
+      window.removeEventListener('scroll', scrollListener)
+    }
   }, [])
 
   return (
