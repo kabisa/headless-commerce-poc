@@ -20,6 +20,10 @@ const Head: FC = () => {
     });
 
     observer.observe(document.documentElement, { attributes: true })
+
+    return function cleanup() {
+      observer.disconnect()
+    };
   }, [])
 
   return (
