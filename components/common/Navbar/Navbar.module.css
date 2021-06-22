@@ -4,14 +4,18 @@
 
 .link {
   @apply inline-flex items-center text-primary leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accents-6;
-}
 
-.link:hover {
-  @apply text-accents-9;
-}
+  &:hover {
+    @apply text-accents-9;
+  }
 
-.link:focus {
-  @apply outline-none text-accents-8;
+  &:focus {
+    @apply outline-none text-accents-8;
+  }
+
+  &.active {
+    @apply underline text-accents-9;
+  }
 }
 
 .logo {
