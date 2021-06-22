@@ -1,7 +1,7 @@
-import { FC} from 'react'
+import { VFC } from 'react'
 import { Logo, Input } from '@components/ui'
 
-const LogoutView: FC = () => {
+const LogoutView: VFC = () => {
   return (
     <div
       className="w-80 flex flex-col justify-between p-3"
