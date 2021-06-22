@@ -37,7 +37,7 @@ const CartSidebarView: FC = () => {
         [s.empty]: error || success || isLoading || isEmpty,
       })}
     >
-      <header className="px-4 pt-4 pb-4 sm:px-6">
+      <header className="px-6 pt-4 pb-4">
         <div className="flex items-start justify-between space-x-3">
           <div className="h-7 flex items-center">
             <button
@@ -88,7 +88,7 @@ const CartSidebarView: FC = () => {
       ) : (
         <>
           <div className="px-4 sm:px-6 flex-1">
-            <Link href="/cart">
+            <Link href={"/cart"}>
               <h2
                 className="pt-1 pb-4 text-2xl leading-7 font-bold text-base tracking-wide cursor-pointer inline-block"
                 onClick={handleClose}
@@ -97,11 +97,11 @@ const CartSidebarView: FC = () => {
               </h2>
             </Link>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3">
-              {data!.lineItems.map((item: any) => (
+              {data?.lineItems.map((item) => (
                 <CartItem
                   key={item.id}
                   item={item}
-                  currencyCode={data!.currency.code}
+                  currencyCode={data?.currency.code}
                 />
               ))}
             </ul>
