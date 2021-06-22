@@ -7,6 +7,7 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import Link from "next/link";
 
 export async function getStaticProps({
   preview,
@@ -154,15 +155,19 @@ export default function Cart() {
             </div>
           </div>
           <div className="flex flex-row justify-end">
-            <div className="w-full lg:w-72">
+            <div className="w-full">
               {isEmpty ? (
-                <Button href="/" Component="a" width="100%">
-                  Continue Shopping
-                </Button>
+                <Link href={"/"}>
+                  <Button Component="a" width="100%">
+                    Continue Shopping
+                  </Button>
+                </Link>
               ) : (
-                <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
-                </Button>
+                <Link href={"/checkout"}>
+                  <Button Component="a" width="100%">
+                    Proceed to Checkout
+                  </Button>
+                </Link>
               )}
             </div>
           </div>

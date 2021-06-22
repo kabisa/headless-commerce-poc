@@ -128,6 +128,11 @@ a {
   }
 }
 
+div#nprogress .spinner {
+  top: 23px;
+  right: 31px;
+}
+
 /* Scrollbar styles */
 /* width */
 ::-webkit-scrollbar {
