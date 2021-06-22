@@ -4,7 +4,7 @@ import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import NavbarRoot from './NavbarRoot'
 import s from './Navbar.module.css'
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 const Navbar: VFC = () => {
   const router = useRouter()

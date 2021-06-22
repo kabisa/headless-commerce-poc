@@ -8,7 +8,6 @@ import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import Link from "next/link";
-import { CurrencyCode } from "@framework/schema";
 
 export async function getStaticProps({
   preview,
@@ -82,7 +81,7 @@ export default function Cart() {
                 <CartItem
                   key={item.id}
                   item={item}
-                  currencyCode={data?.currency.code || CurrencyCode.Eur}
+                  currencyCode={data?.currency.code}
                 />
               ))}
             </ul>
