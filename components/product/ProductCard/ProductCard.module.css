@@ -126,6 +126,7 @@
 
   & > div {
     min-width: 100%;
+    overflow: visible !important; /* To avoid images being cut off with use of next.js <Image> */
   }
 }
 
