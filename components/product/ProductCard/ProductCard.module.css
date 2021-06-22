@@ -126,6 +126,7 @@
 
   & > div {
     min-width: 100%;
+    overflow: visible !important;
   }
 }
 
