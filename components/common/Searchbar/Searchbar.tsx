@@ -50,6 +50,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         <button
           className={s.iconContainer}
           onClick={() => { updateSearchQuery((document.getElementById(id) as HTMLInputElement).value) }}
+          aria-label={"Search now"}
         >
           <svg className={s.icon} fill="currentColor" viewBox="0 0 20 20">
             <path

@@ -19,8 +19,8 @@ export default function Orders(): JSX.Element {
   useEffect(() => { // When scrolled to bottom, if there are more items available, load them by setting new cursor
     if (atBottom) {
       if (orders.length && data?.orders.pageInfo.hasNextPage) {
-        setCursor(orders[orders.length - 1].cursor)
         void router.push({ pathname: router.pathname }, undefined, { shallow: true }) // Trigger loader
+        setCursor(orders[orders.length - 1].cursor)
       }
     }
     setAtBottom(false)
