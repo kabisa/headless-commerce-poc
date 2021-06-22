@@ -13,16 +13,14 @@ export default function Orders() {
 
   const { data } = useCustomerOrders({ numberOfOrders: 10, cursor } )
 
-  const loadNext = () => { // Update cursor with latest one
-    setCursor(orders[orders.length - 1].cursor)
-  }
-
-  useEffect(() => { // When scrolled to bottom, if there are more items available, load them
-    if (orders.length && data?.orders.pageInfo.hasNextPage) {
-      loadNext()
+  useEffect(() => { // When scrolled to bottom, if there are more items available, load them by setting new cursor
+    if (atBottom) {
+      if (orders.length && data?.orders.pageInfo.hasNextPage) {
+        setCursor(orders[orders.length - 1].cursor)
+      }
     }
     setAtBottom(false)
-  }, [atBottom])
+  }, [atBottom, data?.orders.pageInfo.hasNextPage, orders, orders.length])
 
   useEffect(() => { // Append new orders to previous orders
     if (!data?.orders.edges) return;
