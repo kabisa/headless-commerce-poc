@@ -6,7 +6,7 @@ import OrderCard from "@components/orders/OrderCard";
 import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
 
-export default function Orders() {
+export default function Orders(): JSX.Element {
   const [cursor, setCursor]     = useState<string | null>(null);
   const [orders, setOrders]     = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
