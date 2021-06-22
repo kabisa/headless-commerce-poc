@@ -6,6 +6,8 @@ import { handler as useUpdateItem } from './cart/use-update-item'
 import { handler as useRemoveItem } from './cart/use-remove-item'
 
 import { handler as useCustomer } from './customer/use-customer'
+import { handler as useCustomerOrders } from './customer/use-customer-orders'
+
 import { handler as useSearch } from './product/use-search'
 
 import { handler as useLogin } from './auth/use-login'
@@ -19,7 +21,7 @@ export const shopifyProvider = {
   cartCookie: SHOPIFY_CHECKOUT_ID_COOKIE,
   fetcher,
   cart: { useCart, useAddItem, useUpdateItem, useRemoveItem },
-  customer: { useCustomer },
+  customer: { useCustomer, useCustomerOrders },
   products: { useSearch },
   auth: { useLogin, useLogout, useSignup },
 }

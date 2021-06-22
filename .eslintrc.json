@@ -28,9 +28,11 @@
     "tsconfigRootDir": "./",
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "jest", "cypress"],
+  "plugins": ["react", "@typescript-eslint", "jest", "cypress", "react-hooks"],
   "rules": {
     "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
   }
 }

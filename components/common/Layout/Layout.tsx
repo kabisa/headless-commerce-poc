@@ -12,6 +12,7 @@ import CartSidebarView from '@components/cart/CartSidebarView'
 import LoginView from '@components/auth/LoginView'
 import { CommerceProvider } from '@framework'
 import type { Page } from '@framework/common/get-all-pages'
+import LogoutView from "@components/auth/LogoutView";
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -69,6 +70,7 @@ const Layout: FC<Props> = ({
           {modalView === 'LOGIN_VIEW' && <LoginView />}
           {modalView === 'SIGNUP_VIEW' && <SignUpView />}
           {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
+          {modalView === 'LOGOUT_VIEW' && <LogoutView />}
         </Modal>
 
         <Sidebar open={displaySidebar} onClose={closeSidebar}>

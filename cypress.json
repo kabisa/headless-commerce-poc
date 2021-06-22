@@ -1,4 +1,5 @@
 {
   "projectId": "nfoj7q",
-  "baseUrl": "http://localhost:3000"
+  "baseUrl": "http://localhost:3000",
+  "supportFile": "cypress/support/commands.js"
 }

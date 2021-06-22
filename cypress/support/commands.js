@@ -27,3 +27,5 @@
 // Testing library commands
 import '@testing-library/cypress/add-commands'
 
+// Cypress wait until
+import 'cypress-wait-until';

@@ -1,5 +1,6 @@
 import type { Wishlist as BCWishlist } from '../bigcommerce/api/wishlist'
-import type { Customer as BCCustomer } from '../bigcommerce/api/customers'
+import type { Customer as ShopifyCustomer } from '../shopify/schema'
+import type { Customer as BCCustomer } from '../bigcommerce/schema'
 import type { SearchProductsData as BCSearchProductsData } from '../bigcommerce/api/catalog/products'
 
 export type Discount = {
@@ -95,7 +96,7 @@ export type Cart = {
 export interface Wishlist extends BCWishlist {}
 
 // TODO: Properly define this type
-export interface Customer extends BCCustomer {}
+export interface Customer extends ShopifyCustomer {}
 
 // TODO: Properly define this type
 export interface SearchProductsData extends BCSearchProductsData {}

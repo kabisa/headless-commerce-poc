@@ -27,6 +27,8 @@ export type Provider = CommerceConfig & {
   }
   customer?: {
     useCustomer?: SWRHook<Customer | null, any, any>
+    useCustomers?: SWRHook<Customer | null, any, any>
+    useCustomerOrders?: SWRHook<Customer | null, any, any>
   }
   products?: {
     useSearch?: SWRHook<SearchProductsData, any, any>
