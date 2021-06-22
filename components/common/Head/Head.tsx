@@ -33,6 +33,7 @@ const Head: FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href={"/site.webmanifest"} key="site-manifest" />
         <meta name="theme-color" content={primaryColor} />
+        <link rel="apple-touch-icon" href={"icon-192x192.png"} />
       </NextHead>
     </>
   )
