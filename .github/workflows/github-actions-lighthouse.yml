@@ -54,13 +54,15 @@ jobs:
             ].join('\n')
 
              core.setOutput("comment", comment);
+      - uses: jwalton/gh-find-current-pr@v1
+        id: finder
 
       - name: Add comment to PR
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
-          number: ${{ github.event.issue.number }}
+          number: ${{ steps.finder.outputs.pr }}
           header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
