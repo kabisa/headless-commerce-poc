@@ -15,7 +15,7 @@ jobs:
           timeout: 300
       - name: Echo preview url
         run: echo ${{ steps.wait-for-vercel.outputs.url }}
-        
+
       - name: Sleep for 15 seconds to settle deployment
         run: sleep 15s
         shell: bash
@@ -58,6 +58,7 @@ jobs:
             ].join('\n')
 
              core.setOutput("comment", comment);
+
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
 
