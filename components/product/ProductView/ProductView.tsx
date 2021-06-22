@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
-import React, {createRef, FC, Ref, useEffect, useState} from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import s from './ProductView.module.css'
 import { Swatch, ProductSlider } from '@components/product'
 import { Button, Container, Text, useUI } from '@components/ui'
@@ -29,9 +29,9 @@ const ProductView: FC<Props> = ({ product }) => {
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({})
-  const [choice, setChoice] = useState<any>(
-    {optionName: product.variants[0].options[0].displayName,
-    optionValue: product.variants[0].options[0].values[0].label})
+  const [choice, setChoice] = useState<{optionName: string, optionValue: string}>(
+    { optionName: product.variants[0].options[0].displayName,
+      optionValue: product.variants[0].options[0].values[0].label })
 
   product.variants.map(variant => {
     variant.options.map(option => {
