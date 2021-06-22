@@ -6,11 +6,13 @@ import OrderCard from "@components/orders/OrderCard";
 import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
 import throttle from "lodash.throttle";
+import { useRouter } from "next/router";
 
 export default function Orders(): JSX.Element {
   const [cursor, setCursor]     = useState<string | null>(null);
   const [orders, setOrders]     = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
+  const router = useRouter()
 
   const { data } = useCustomerOrders({ numberOfOrders: 10, cursor } )
 
@@ -18,10 +20,11 @@ export default function Orders(): JSX.Element {
     if (atBottom) {
       if (orders.length && data?.orders.pageInfo.hasNextPage) {
         setCursor(orders[orders.length - 1].cursor)
+        void router.push({ pathname: router.pathname }, undefined, { shallow: true }) // Trigger loader
       }
     }
     setAtBottom(false)
-  }, [atBottom, data?.orders.pageInfo.hasNextPage, orders, orders.length])
+  }, [atBottom, data?.orders.pageInfo.hasNextPage, orders, orders.length, router])
 
   useEffect(() => { // Append new orders to previous orders
     if (!data?.orders.edges) return;
