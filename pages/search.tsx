@@ -125,7 +125,7 @@ export default function Search({
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'categories' || !toggleFilter
+                activeFilter !== 'categories' || toggleFilter !== true
                   ? 'hidden'
                   : ''
               }`}
@@ -151,7 +151,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'categories')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4 text-black'
+                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           All Categories
@@ -224,7 +224,7 @@ export default function Search({
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'brands' || !toggleFilter
+                activeFilter !== 'brands' || toggleFilter !== true
                   ? 'hidden'
                   : ''
               }`}
@@ -253,7 +253,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'brands')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4 text-black'
+                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           All Designers
@@ -399,7 +399,7 @@ export default function Search({
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'sort' || !toggleFilter ? 'hidden' : ''
+                activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
               }`}
             >
               <div className="rounded-sm bg-white shadow-xs lg:bg-none lg:shadow-none">
@@ -421,7 +421,7 @@ export default function Search({
                         <a
                           onClick={(e) => handleClick(e, 'sort')}
                           className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4 text-black'
+                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
                           Relevance
