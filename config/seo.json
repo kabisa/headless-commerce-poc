@@ -1,14 +1,14 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
+  "title": "Headless e-commerce POC | Powered by Next.js Commerce",
   "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "description": "Headless e-commerce - https://www.nextjs.org/commerce",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "Headless e-commerce POC | Powered by Next.js Commerce",
+    "description": "Headless e-commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "locale": "en_IE",
     "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "site_name": "Headless e-commerce proof of concept",
     "images": [
       {
         "url": "/card.png",
@@ -19,8 +19,8 @@
     ]
   },
   "twitter": {
-    "handle": "@nextjs",
-    "site": "@nextjs",
+    "handle": "@kabisasoftware",
+    "site": "@kabisasoftware",
     "cardType": "summary_large_image"
   }
 }

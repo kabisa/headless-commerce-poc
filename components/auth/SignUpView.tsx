@@ -15,6 +15,7 @@ const SignUpView: FC<Props> = () => {
   const [lastName, setLastName] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [loggedIn, setLoggedIn] = useState(false)
   const [dirty, setDirty] = useState(false)
   const [disabled, setDisabled] = useState(false)
 
@@ -39,7 +40,10 @@ const SignUpView: FC<Props> = () => {
         password,
       })
       setLoading(false)
-      closeModal()
+      setLoggedIn(true)
+      setTimeout(() => {
+        closeModal()
+      }, 1500)
     } catch ({ errors }) {
       setMessage(errors[0].message)
       setLoading(false)
@@ -72,40 +76,45 @@ const SignUpView: FC<Props> = () => {
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
-        <span className="text-accent-8">
+        {!loggedIn ? <>
+          <Input placeholder="First Name" onChange={setFirstName} />
+          <Input placeholder="Last Name" onChange={setLastName} />
+          <Input type="email" placeholder="Email" onChange={setEmail} />
+          <Input type="password" placeholder="Password" onChange={setPassword} />
+          <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
           </span>{' '}
-          <span className="leading-6 text-sm">
+            <span className="leading-6 text-sm">
             <strong>Info</strong>: Passwords must be longer than 7 chars and
             include numbers.{' '}
           </span>
         </span>
-        <div className="pt-2 w-full flex flex-col">
-          <Button
-            variant="slim"
-            type="submit"
-            loading={loading}
-            disabled={disabled}
-          >
-            Sign Up
-          </Button>
-        </div>
+          <div className="pt-2 w-full flex flex-col">
+            <Button
+              variant="slim"
+              type="submit"
+              loading={loading}
+              disabled={disabled}
+            >
+              Sign Up
+            </Button>
+          </div>
 
-        <span className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
-          {` `}
-          <a
-            className="text-accent-9 font-bold hover:underline cursor-pointer"
-            onClick={() => setModalView('LOGIN_VIEW')}
-          >
+          <span className="pt-1 text-center text-sm">
+          <span className="text-accent-7">Already have an account?</span>
+            {` `}
+            <a
+              className="text-accent-9 font-bold hover:underline cursor-pointer"
+              onClick={() => setModalView('LOGIN_VIEW')}
+            >
             Log In
           </a>
         </span>
+        </>
+        :
+          <span className="text-center text-xl">Successfully registered and logged in!</span>
+        }
       </div>
     </form>
   )

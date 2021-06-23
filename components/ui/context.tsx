@@ -55,6 +55,7 @@ type MODAL_VIEWS =
   | 'SIGNUP_VIEW'
   | 'LOGIN_VIEW'
   | 'FORGOT_VIEW'
+  | 'LOGOUT_VIEW'
   | 'NEW_SHIPPING_ADDRESS'
   | 'NEW_PAYMENT_METHOD'
 
@@ -195,7 +196,7 @@ export const UIProvider: FC = (props) => {
       setSidebarView,
       setUserAvatar,
     }),
-    [state]
+    [closeDropdown, closeModal, closeSidebar, closeSidebarIfPresent, openDropdown, openModal, openSidebar, setModalView, setSidebarView, setUserAvatar, state, toggleSidebar]
   )
 
   return <UIContext.Provider value={value} {...props} />

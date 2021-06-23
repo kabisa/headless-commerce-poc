@@ -21,7 +21,7 @@ export function useSearchMeta(asPath: string) {
     setPathname(path)
     if (c !== category) setCategory(c)
     if (b !== brand) setBrand(b)
-  }, [asPath])
+  }, [asPath, brand, category])
 
   return { pathname, category, brand }
 }

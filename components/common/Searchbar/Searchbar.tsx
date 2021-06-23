@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes, useEffect, useMemo } from 'react'
+import { FC, useCallback, useEffect, useMemo } from 'react'
 import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
@@ -12,25 +12,19 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.prefetch('/search')
-  }, [])
+    void router.prefetch('/search')
+  }, [router])
 
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault()
-
-    if (e.key === 'Enter') {
-      const q = e.currentTarget.value
-
-      router.push(
-        {
-          pathname: `/search`,
-          query: q ? { q } : {},
-        },
-        undefined,
-        { shallow: true }
-      )
-    }
-  }
+  const updateSearchQuery = useCallback((q: string) => {
+    void router.push(
+      {
+        pathname: `/search`,
+        query: q ? { q } : {},
+      },
+      undefined,
+      { shallow: true }
+    )
+  }, [router])
 
   return useMemo(
     () => (
@@ -43,9 +37,16 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
           className={s.input}
           placeholder="Search for products..."
           defaultValue={router.query.q}
-          onKeyUp={handleKeyUp}
+          onKeyUp={(e) => {
+            e.preventDefault()
+            if (e.key === 'Enter') { updateSearchQuery(e.currentTarget.value) }
+          }}
         />
-        <div className={s.iconContainer}>
+        <button
+          className={s.iconContainer}
+          onClick={() => { updateSearchQuery((document.getElementById(id) as HTMLInputElement).value) }}
+          aria-label={"Search now"}
+        >
           <svg className={s.icon} fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
@@ -53,10 +54,10 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
               d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
             />
           </svg>
-        </div>
+        </button>
       </div>
     ),
-    []
+    [className, id, router.query.q, updateSearchQuery]
   )
 }
 

@@ -1,8 +1,6 @@
 const commerce = require('./commerce.config.json')
-const {
-  withCommerceConfig,
-  getProviderName,
-} = require('./framework/commerce/config')
+const { withCommerceConfig, getProviderName } = require('./framework/commerce/config')
+const withPWA = require('next-pwa')
 
 const provider = commerce.provider || getProviderName()
 const isBC = provider === 'bigcommerce'
@@ -11,10 +9,11 @@ const isSaleor = provider === 'saleor'
 const isSwell = provider === 'swell'
 const isVendure = provider === 'vendure'
 
-module.exports = withCommerceConfig({
+module.exports = withPWA(
+  withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
+    locales: ['en-US', 'es', 'nl'],
     defaultLocale: 'en-US',
   },
   rewrites() {
@@ -38,7 +37,14 @@ module.exports = withCommerceConfig({
         },
     ].filter(Boolean)
   },
-})
+    esLint: {
+      dirs: ['lib'],
+      ignoreDuringBuilds: true,
+    },
+  pwa: {
+    dest: 'public'
+  },
+}))
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
 console.log('next.config.js', JSON.stringify(module.exports, null, 2))

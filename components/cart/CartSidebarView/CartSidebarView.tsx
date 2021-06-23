@@ -9,6 +9,7 @@ import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
+import {UserNav} from "@components/common";
 
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
@@ -73,17 +74,17 @@ const CartSidebarView: FC = () => {
       ) : (
         <>
           <div className="px-4 sm:px-6 flex-1">
-            <Link href="/cart">
+            <Link href={"/cart"}>
               <Text variant="sectionHeading" onClick={handleClose}>
                 My Cart
               </Text>
             </Link>
             <ul className={s.lineItemsList}>
-              {data!.lineItems.map((item: any) => (
+              {data?.lineItems.map((item) => (
                 <CartItem
                   key={item.id}
                   item={item}
-                  currencyCode={data!.currency.code}
+                  currencyCode={data?.currency.code}
                 />
               ))}
             </ul>
@@ -108,17 +109,11 @@ const CartSidebarView: FC = () => {
               <span>Total</span>
               <span>{total}</span>
             </div>
-            <div>
-              {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
-                <Button Component="a" width="100%" onClick={goToCheckout}>
-                  Proceed to Checkout ({total})
-                </Button>
-              ) : (
-                <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
-                </Button>
-              )}
-            </div>
+            <Link href={"/checkout"}>
+              <Button Component="a" width="100%">
+                Proceed to Checkout
+              </Button>
+            </Link>
           </div>
         </>
       )}

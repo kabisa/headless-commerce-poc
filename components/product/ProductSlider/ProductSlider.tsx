@@ -73,7 +73,8 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
 
     return () => {
       if (sliderContainerRef.current) {
-        sliderContainerRef.current!.removeEventListener(
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        sliderContainerRef.current.removeEventListener(
           'touchstart',
           preventNavigation
         )

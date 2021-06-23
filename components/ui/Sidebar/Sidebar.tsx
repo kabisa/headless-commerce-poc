@@ -1,6 +1,7 @@
-import { FC, useEffect, useRef } from 'react'
-import s from './Sidebar.module.css'
 import cn from 'classnames'
+import s from './Sidebar.module.css'
+import React, { FC, useEffect, useRef } from 'react'
+
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -21,6 +22,7 @@ const Sidebar: FC<SidebarProps> = ({ children, onClose }) => {
     }
     return () => {
       if (ref && ref.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         enableBodyScroll(ref.current)
       }
       clearAllBodyScrollLocks()

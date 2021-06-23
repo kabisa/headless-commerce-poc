@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types/product'
-import { Container, Grid, Skeleton } from '@components/ui'
+import { Container, Skeleton } from '@components/ui'
 
 import useSearch from '@framework/product/use-search'
 
@@ -49,7 +49,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
     categoryId: activeCategory?.id,
-    brandId: (activeBrand as any)?.entityId,
+    brandId: (activeBrand)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
   })
@@ -99,7 +99,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'categories' || toggleFilter !== true
+                activeFilter !== 'categories' || !toggleFilter
                   ? 'hidden'
                   : ''
               }`}
@@ -197,7 +197,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={`origin-top-left absolute lg:relative left-0 mt-2 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
-                activeFilter !== 'brands' || toggleFilter !== true
+                activeFilter !== 'brands' || !toggleFilter
                   ? 'hidden'
                   : ''
               }`}
@@ -282,7 +282,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     Showing {data.products.length} results{' '}
                     {q && (
                       <>
-                        for "<strong>{q}</strong>"
+                        for &quot;<strong>{q}</strong>&quot;
                       </>
                     )}
                   </span>
@@ -294,7 +294,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     {q ? (
                       <>
-                        There are no products that match "<strong>{q}</strong>"
+                        There are no products that match &quot;;<strong>{q}</strong>&quot;;
                       </>
                     ) : (
                       <>
@@ -305,7 +305,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </>
               ) : q ? (
                 <>
-                  Searching for: "<strong>{q}</strong>"
+                  Searching for: &quot;;<strong>{q}</strong>&quot;;
                 </>
               ) : (
                 <>Searching...</>
@@ -351,7 +351,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  {sort ? `Sort: ${sort}` : 'Relevance'}
+                  {sort ? `Sort: ${sort.toString()}` : 'Relevance'}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"

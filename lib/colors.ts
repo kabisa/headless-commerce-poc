@@ -15,7 +15,7 @@ export function getRandomPairOfColors() {
   return [colors[idx], colors[idx2]]
 }
 
-function hexToRgb(hex: string = '') {
+function hexToRgb(hex = '') {
   // @ts-ignore
   const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i)
 
@@ -197,7 +197,7 @@ export const colorMap: Record<string, string> = {
   yellowgreen: '#9ACD32',
 }
 
-export function isDark(color: string = ''): boolean {
+export function isDark(color = ''): boolean {
   color = color.toLowerCase()
   // Equation from http://24ways.org/2010/calculating-color-contrast
   let rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)

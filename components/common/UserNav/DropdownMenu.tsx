@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import { FC, useRef, useState, useEffect } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import s from './DropdownMenu.module.css'
@@ -39,8 +39,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
   const { pathname } = useRouter()
   const { theme, setTheme } = useTheme()
-  const [display, setDisplay] = useState(false)
+  const [ display, setDisplay ] = useState(false)
   const { closeSidebarIfPresent } = useUI()
+  const { setModalView, closeModal, openModal } = useUI()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
 
   useEffect(() => {
@@ -55,6 +56,16 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
       clearAllBodyScrollLocks()
     }
   }, [display])
+
+  function doLogout () {
+    void logout()
+    setModalView('LOGOUT_VIEW')
+    openModal()
+    setTimeout(() => {
+      closeModal()
+      setModalView('LOGIN_VIEW')
+    }, 1500)
+  }
 
   return (
     <ClickOutside active={display} onClick={() => setDisplay(false)}>
@@ -108,10 +119,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
               </a>
             </li>
             <li>
-              <a
-                className={cn(s.link, 'border-t border-accent-2 mt-4')}
-                onClick={() => logout()}
-              >
+              <a className={cn(s.link, 'border-t border-accent-2 mt-4')} onClick={doLogout}>
                 Logout
               </a>
             </li>

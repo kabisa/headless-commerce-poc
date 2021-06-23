@@ -17,6 +17,7 @@ export default function FocusTrap({ children, focusFirst = false }: Props) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const trapFocus = () => {
     // Focus the container element
     if (root.current) {
@@ -53,7 +54,7 @@ export default function FocusTrap({ children, focusFirst = false }: Props) {
     return () => {
       returnFocus()
     }
-  }, [root, children])
+  }, [root, children, trapFocus])
 
   return React.createElement('div', {
     ref: root,

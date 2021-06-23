@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import s from './FeatureBar.module.css'
+import React from 'react'
 
 interface FeatureBarProps {
   className?: string

@@ -16,6 +16,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      spacing: {
+        '128': '128px',
+      },
       maxWidth: {
         '8xl': '1920px',
       },
@@ -37,6 +40,7 @@ module.exports = {
         'accent-7': 'var(--accent-7)',
         'accent-8': 'var(--accent-8)',
         'accent-9': 'var(--accent-9)',
+        'border-1': 'var(--border-1)',
         violet: 'var(--violet)',
         'violet-light': 'var(--violet-light)',
         'violet-dark': 'var(--violet-dark)',
@@ -62,6 +66,9 @@ module.exports = {
       },
       scale: {
         120: '1.2',
+      },
+      screens: {
+        'xsm': '480px',
       },
     },
   },

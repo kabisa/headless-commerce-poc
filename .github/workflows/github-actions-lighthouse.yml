@@ -1,0 +1,73 @@
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse_CI:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Waiting for Vercel deployment
+        uses: mskelton/wait-for-vercel-action@v1
+        id: wait-for-vercel
+        with:
+          prod-url: https://headless-commerce-poc-alianza.vercel.app/
+          token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
+          await-build: true
+          timeout: 300
+      - name: Echo preview url
+        run: echo ${{ steps.wait-for-vercel.outputs.url }}
+
+      - name: Sleep for 15 seconds to settle deployment
+        run: sleep 15s
+        shell: bash
+
+      - uses: actions/checkout@v2
+      - name: Audit preview URL with Lighthouse
+        id: lighthouse_audit
+        uses: treosh/lighthouse-ci-action@v7
+        with:
+          urls: |
+            ${{ steps.wait-for-vercel.outputs.url }}
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+
+      - name: Format lighthouse score
+        id: format_lighthouse_score
+        uses: actions/github-script@v4.0.2
+        with:
+          github-token: ${{secrets.PERSONAL_TOKEN_GITHUB}}
+          script: |
+            const result = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary
+            const links = ${{ steps.lighthouse_audit.outputs.links }}
+
+            const formatResult = (res) => Math.round((res * 100))
+            Object.keys(result).forEach(key => result[key] = formatResult(result[key]))
+
+            const score = res => res >= 90 ? '🟢' : res >= 50 ? '🟠' : '🔴'
+
+            const comment = [
+                `⚡️ [Lighthouse report](${Object.values(links)[0]}) for the changes in this PR:`,
+                '| Category | Score |',
+                '| --- | --- |',
+                `| ${score(result.performance)} Performance | ${result.performance} |`,
+                `| ${score(result.accessibility)} Accessibility | ${result.accessibility} |`,
+                `| ${score(result['best-practices'])} Best practices | ${result['best-practices']} |`,
+                `| ${score(result.seo)} SEO | ${result.seo} |`,
+                `| ${score(result.pwa)} PWA | ${result.pwa} |`,
+                ' ',
+                `*Lighthouse ran on [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
+            ].join('\n')
+
+             core.setOutput("comment", comment);
+
+      - uses: jwalton/gh-find-current-pr@v1
+        id: finder
+
+      - name: Add comment to PR
+        id: comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2.1.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN_GITHUB }}
+          number: ${{ steps.finder.outputs.pr }}
+          header: lighthouse
+          message: |
+            ${{ steps.format_lighthouse_score.outputs.comment }}

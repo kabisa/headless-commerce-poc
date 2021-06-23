@@ -70,7 +70,7 @@ const CartItem = ({
     if (item.quantity !== Number(quantity)) {
       setQuantity(item.quantity)
     }
-  }, [item.quantity])
+  }, [item.quantity, quantity])
 
   return (
     <li

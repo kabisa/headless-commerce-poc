@@ -28,7 +28,7 @@ const Quantity: FC<QuantityProps> = ({
         <input
           className={s.input}
           onChange={(e) =>
-            Number(e.target.value) < max + 1 ? handleChange(e) : () => {}
+            Number(e.target.value) < max + 1 ? handleChange(e) : () => undefined
           }
           value={value}
           type="number"

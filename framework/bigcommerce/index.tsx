@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import {
   CommerceConfig,
-  CommerceProvider as CoreCommerceProvider,
+  CommerceProvider as CoreCommerceProvider, Provider,
   useCommerce as useCoreCommerce,
 } from '@commerce'
 import { bigcommerceProvider } from './provider'
@@ -33,4 +33,4 @@ export function CommerceProvider({ children, ...config }: BigcommerceProps) {
   )
 }
 
-export const useCommerce = () => useCoreCommerce<BigcommerceProvider>()
+export const useCommerce = () => useCoreCommerce<Provider>()

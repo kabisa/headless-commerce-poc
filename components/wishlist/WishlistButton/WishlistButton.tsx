@@ -32,7 +32,7 @@ const WishlistButton: FC<Props> = ({
     // @ts-ignore Wishlist is not always enabled
     (item) =>
       item.product_id === Number(productId) &&
-      (item.variant_id as any) === Number(variant.id)
+      (item.variant_id ) === Number(variant.id)
   )
 
   const handleWishlistChange = async (e: any) => {
@@ -54,7 +54,7 @@ const WishlistButton: FC<Props> = ({
       } else {
         await addItem({
           productId,
-          variantId: variant?.id!,
+          variantId: variant?.id,
         })
       }
 

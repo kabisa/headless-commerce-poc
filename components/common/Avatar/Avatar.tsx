@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react'
+import React, { FC, useRef } from 'react'
 import { useUserAvatar } from '@lib/hooks/useUserAvatar'
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
   children?: any
 }
 
-const Avatar: FC<Props> = ({}) => {
+const Avatar: FC<Props> = () => {
   let ref = useRef() as React.MutableRefObject<HTMLInputElement>
   let { userAvatar } = useUserAvatar()
 

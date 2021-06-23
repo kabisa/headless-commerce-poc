@@ -7,7 +7,9 @@ export interface RatingProps {
   value: number
 }
 
-const Quantity: React.FC<RatingProps> = React.memo(({ value = 5 }) => {
+const Quantity: React.FC<RatingProps> = React.memo(Rating)
+
+function Rating({value = 5}) {
   return (
     <div className="flex flex-row py-6 text-accent-9">
       {rangeMap(5, (i) => (
@@ -17,11 +19,11 @@ const Quantity: React.FC<RatingProps> = React.memo(({ value = 5 }) => {
             'text-accent-5': i >= Math.floor(value),
           })}
         >
-          <Star />
+          <Star/>
         </span>
       ))}
     </div>
   )
-})
+}
 
 export default Quantity

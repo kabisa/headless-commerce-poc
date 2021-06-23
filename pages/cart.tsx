@@ -6,6 +6,7 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import Link from "next/link";
 
 export async function getStaticProps({
   preview,
@@ -79,11 +80,11 @@ export default function Cart() {
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
-              {data!.lineItems.map((item: any) => (
+              {data?.lineItems.map((item: any) => (
                 <CartItem
                   key={item.id}
                   item={item}
-                  currencyCode={data?.currency.code!}
+                  currencyCode={data?.currency.code}
                 />
               ))}
             </ul>
@@ -93,7 +94,8 @@ export default function Cart() {
                 just for you
               </Text>
               <div className="flex py-6 space-x-6">
-                {[1, 2, 3, 4, 5, 6].map((x) => (
+                {[1, 2, 3, 4, 5, 6].map((x) => ( // TODO Make these actual recommendations
+
                   <div
                     key={x}
                     className="border border-accent-3 w-full h-24 bg-accent-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
@@ -156,15 +158,19 @@ export default function Cart() {
             </div>
           </div>
           <div className="flex flex-row justify-end">
-            <div className="w-full lg:w-72">
+            <div className="w-full">
               {isEmpty ? (
-                <Button href="/" Component="a" width="100%">
-                  Continue Shopping
-                </Button>
+                <Link href={"/"}>
+                  <Button Component="a" width="100%">
+                    Continue Shopping
+                  </Button>
+                </Link>
               ) : (
-                <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
-                </Button>
+                <Link href={"/checkout"}>
+                  <Button Component="a" width="100%">
+                    Proceed to Checkout
+                  </Button>
+                </Link>
               )}
             </div>
           </div>

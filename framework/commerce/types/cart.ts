@@ -1,3 +1,6 @@
+// import type { Wishlist as BCWishlist } from '../bigcommerce/api/wishlist'
+// import type { Customer as ShopifyCustomer } from '../shopify/schema'
+// import type { SearchProductsData as BCSearchProductsData } from '../bigcommerce/api/catalog/products'
 import type { Discount, Measurement, Image } from './common'
 
 export type SelectedOption = {
@@ -81,6 +84,15 @@ export type Cart = {
   // Discounts that have been applied on the cart.
   discounts?: Discount[]
 }
+
+// // TODO: Properly define this type
+// export interface Wishlist extends BCWishlist {}
+//
+// // TODO: Properly define this type
+// export interface Customer extends ShopifyCustomer {}
+//
+// // TODO: Properly define this type
+// export interface SearchProductsData extends BCSearchProductsData {}
 
 /**
  * Base cart item body used for cart mutations
@@ -169,7 +181,8 @@ export type UpdateItemHandler<T extends CartTypes = CartTypes> =
   UpdateItemHook<T> & {
     data: T['cart']
     body: { cartId: string }
-  }
+  price: number
+}
 
 export type RemoveItemHandler<T extends CartTypes = CartTypes> =
   RemoveItemHook<T> & {

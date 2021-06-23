@@ -1,7 +1,7 @@
 {
-  "name": "Next.js Commerce",
-  "short_name": "Next.js Commerce",
-  "description": "Next.js Commerce -> https://www.nextjs.org/commerce",
+  "name": "Headless e-commerce proof of concept",
+  "short_name": "Headless commerce POC",
+  "description": "Proof of Concept application demonstrating headless e-commerce architecture",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",

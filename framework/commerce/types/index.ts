@@ -23,3 +23,5 @@ export type {
   Site,
   Wishlist,
 }
+
+export default Product

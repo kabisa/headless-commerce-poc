@@ -5466,6 +5466,39 @@ export type GetCustomerQuery = { __typename?: 'QueryRoot' } & {
   >
 }
 
+
+/** Specifies the fields required to get a customer's orders. */
+export type GetOrdersInput = {
+  /** Number of orders to retrieve */
+  numberOfOrders?: Maybe<Scalars['Int']>
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['String']>
+}
+
+export type GetCustomerOrdersQueryVariables = Exact<{
+  /** Number of orders to retrieve */
+  numberOfOrders?: Maybe<Scalars['Int']>
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['String']>
+}>
+
+export type GetCustomerOrdersQuery = { __typename?: 'QueryRoot' } & {
+  customer?: Maybe<
+    { __typename?: 'Customer' } & Pick<
+    Customer,
+    | 'id'
+    | 'firstName'
+    | 'lastName'
+    | 'displayName'
+    | 'email'
+    | 'phone'
+    | 'tags'
+    | 'acceptsMarketing'
+    | 'createdAt'
+    >
+  >
+}
+
 export type GetPageQueryVariables = Exact<{
   id: Scalars['ID']
 }>

@@ -23,14 +23,14 @@ export async function getStaticProps({
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
   const path = params?.pages.join('/')
-  const slug = locale ? `${locale}/${path}` : path
+  const slug = locale ? `${locale}/${path || ''}` : path
   const pageItem = pages.find((p: Page) =>
     p.url ? getSlug(p.url) === slug : false
   )
   const data =
     pageItem &&
     (await commerce.getPage({
-      variables: { id: pageItem.id! },
+      variables: { id: pageItem.id },
       config,
       preview,
     }))
@@ -39,7 +39,7 @@ export async function getStaticProps({
 
   if (!page) {
     // We throw to make sure this fails at build time as this is never expected to happen
-    throw new Error(`Page with slug '${slug}' not found`)
+    throw new Error(`Page with slug '${slug || ''}' not found`)
   }
 
   return {

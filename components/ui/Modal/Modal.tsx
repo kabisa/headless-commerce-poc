@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect, useCallback } from 'react'
+import React, { FC, useRef, useEffect, useCallback } from 'react'
 import s from './Modal.module.css'
 import FocusTrap from '@lib/focus-trap'
 import { Cross } from '@components/icons'
@@ -33,6 +33,7 @@ const Modal: FC<ModalProps> = ({ children, onClose }) => {
     }
     return () => {
       if (ref && ref.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         enableBodyScroll(ref.current)
       }
       clearAllBodyScrollLocks()

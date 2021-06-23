@@ -1,5 +1,5 @@
 .root {
-  @apply py-12 flex flex-col w-full px-6;
+  @apply pb-12 pt-4 flex flex-col w-full px-6;
 
   @screen md {
     @apply flex-row;
@@ -17,7 +17,7 @@
     @apply flex flex-row w-full justify-around mb-12;
 
     @screen md {
-      @apply mb-0 block sticky top-32;
+      @apply mb-0 block sticky top-20;
     }
   }
 }

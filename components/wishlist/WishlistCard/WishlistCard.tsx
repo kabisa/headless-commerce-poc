@@ -20,9 +20,9 @@ const placeholderImg = '/product-img-placeholder.svg'
 
 const WishlistCard: FC<Props> = ({ product }) => {
   const { price } = usePrice({
-    amount: product.price?.value,
-    baseAmount: product.price?.retailPrice,
-    currencyCode: product.price?.currencyCode!,
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
   })
   // @ts-ignore Wishlist is not always enabled
   const removeItem = useRemoveItem({ wishlist: { includeProducts: true } })
@@ -40,7 +40,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      await removeItem({ id: product.id! })
+      await removeItem({ id: product.id })
     } catch (error) {
       setRemoving(false)
     }
