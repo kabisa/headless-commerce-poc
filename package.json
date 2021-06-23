@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "analyze": "BUNDLE_ANALYZE=both yarn build",
     "prettier-fix": "prettier --write .",
@@ -41,6 +42,7 @@
     "next": "^11.0.0",
     "next-pwa": "^5.2.21",
     "next-seo": "^4.26.0",
+    "next-sitemap": "^1.6.124",
     "next-themes": "^0.0.14",
     "nextjs-progressbar": "^0.0.11",
     "postcss": "^8.3.5",
