@@ -4,7 +4,7 @@
  */
 
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
-const { compilerOptions } = require('./tsconfig');
+const { compilerOptions } = require('./tsconfig.json');
 
 export default {
   // All imported modules in your tests should be mocked automatically
