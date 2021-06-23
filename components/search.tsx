@@ -294,7 +294,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     {q ? (
                       <>
-                        There are no products that match &quot;;<strong>{q}</strong>&quot;;
+                        There are no products that match &quot;<strong>{q}</strong>&quot;
                       </>
                     ) : (
                       <>
@@ -305,7 +305,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </>
               ) : q ? (
                 <>
-                  Searching for: &quot;;<strong>{q}</strong>&quot;;
+                  Searching for: &quot;<strong>{q}</strong>&quot;
                 </>
               ) : (
                 <>Searching...</>
