@@ -8,6 +8,7 @@ import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
+import Kabisa from "@components/icons/Kabisa";
 
 interface Props {
   className?: string
@@ -86,7 +87,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="flex space-x-6 items-center h-10">
               <a
                 aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
+                href="https://github.com/kabisa/headless-commerce-poc"
                 className={s.link}
               >
                 <Github />
@@ -95,11 +96,11 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </div>
           </div>
         </div>
-        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4">
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4 font-normal">
           <div>
             <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
           </div>
-          <div className="flex items-center text-primary">
+          <div className="flex items-center text-primary font-normal">
             <span className="text-primary">Crafted by</span>
             <a
               rel="noopener noreferrer"
@@ -109,8 +110,21 @@ const Footer: FC<Props> = ({ className, pages }) => {
               className="text-primary"
             >
               <Vercel
-                className="inline-block h-6 ml-4 text-primary"
+                className="inline-block h-6 mx-2 text-primary"
                 alt="Vercel.com Logo"
+              />
+            </a>
+            <span className="text-primary">&</span>
+            <a
+              rel="noopener noreferrer"
+              href="https://kabisa.nl"
+              aria-label="Kabisa.nl Link"
+              target="_blank"
+              className="text-primary"
+            >
+              <Kabisa
+                className="inline-block h-6 ml-2 text-primary"
+                alt="Kabisa.nl Logo"
               />
             </a>
           </div>
