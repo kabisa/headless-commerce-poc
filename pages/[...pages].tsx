@@ -11,6 +11,7 @@ import { getConfig } from '@framework/api'
 import getPage from '@framework/common/get-page'
 import getAllPages from '@framework/common/get-all-pages'
 import { defaultPageProps } from '@lib/defaults'
+import s from '@components/ui/Text/Text.module.css'
 
 export async function getStaticProps({
   preview,
@@ -66,7 +67,7 @@ export default function Pages({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
+      {page?.body && <Text className={`${s.prose} prose prose-purple`} html={page.body} />}
     </div>
   )
 }
