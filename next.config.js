@@ -41,9 +41,7 @@ module.exports = withPWA(
       },
     ].filter((x) => x)
   },
-  future: {
-    webpack5: true
-  },
+  webpack5: true,
   pwa: {
     dest: 'public'
   }

@@ -20,7 +20,6 @@ module.exports = {
         DEFAULT: {
           css: {
             color: 'var(--secondary)',
-            fontWeight: '400 !important',
             h1: {
               color: 'var(--secondary)',
             },
