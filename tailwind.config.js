@@ -16,6 +16,32 @@ module.exports = {
   },
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'var(--secondary)',
+            fontWeight: '400 !important',
+            h1: {
+              color: 'var(--secondary)',
+            },
+            h2: {
+              color: 'var(--secondary)',
+            },
+            h3: {
+              color: 'var(--secondary)',
+            },
+            h4: {
+              color: 'var(--secondary)',
+            },
+            h5: {
+              color: 'var(--secondary)',
+            },
+            strong: {
+              color: 'var(--secondary)',
+            },
+          }
+        }
+      },
       spacing: {
         '128': '128px',
       },
@@ -69,4 +95,7 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 }
