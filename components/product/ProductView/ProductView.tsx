@@ -6,11 +6,11 @@ import s from './ProductView.module.css'
 import type { Product } from '@commerce/types/product'
 import usePrice, { formatVariantPrice } from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
-import {ProductSlider, ProductCard, Swatch} from '@components/product'
-import {Button, Collapse, Container, Rating, Text, useUI} from '@components/ui'
+import { ProductSlider, ProductCard, Swatch } from '@components/product'
+import { Button, Collapse, Container, Rating, Text, useUI } from '@components/ui'
 import { useCommerce } from "@commerce";
 import ProductTag from '../ProductTag'
-import {SelectedOptions, getProductVariant, selectDefaultOptionFromProduct} from "@components/product/helpers";
+import { SelectedOptions, getProductVariant, selectDefaultOptionFromProduct } from "@components/product/helpers";
 import { useAddItem } from '@framework/cart'
 
 

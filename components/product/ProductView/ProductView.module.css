@@ -26,11 +26,11 @@
 }
 
 .sliderContainer .img {
-  @apply w-full h-auto max-h-full object-cover;
+  @apply w-full h-auto max-h-full object-contain;
 }
 
 .button {
-  width: 100%;
+  @apply w-full;
 }
 
 .wishlistButton {
