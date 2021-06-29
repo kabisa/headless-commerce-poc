@@ -11,12 +11,12 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
+    "next"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -28,11 +28,18 @@
     "tsconfigRootDir": "./",
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "jest", "cypress", "react-hooks"],
+  "plugins": ["@typescript-eslint", "jest", "cypress", "react-hooks"],
   "rules": {
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "error" // Checks effect dependencies
+    "react/react-in-jsx-scope": "off", // NEXT.JS does this for us
+    "react-hooks/rules-of-hooks": "warn", // Checks rules of Hooks, Voilated by Next.js Commerce framework
+    "react/no-children-prop": "warn",
+    "react/display-name": "off",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/restrict-template-expressions": "warn",
+    "@typescript-eslint/no-empty-interface": "warn"
   }
 }

@@ -53,8 +53,11 @@ Start right now at [nextjs.org/commerce](https://nextjs.org/commerce)
 
 Demo live at: [demo.vercel.store](https://demo.vercel.store/)
 
-- Shopify Demo: https://shopify.demo.vercel.store/
-- BigCommerce Demo: https://bigcommerce.demo.vercel.store/
+- Shopify Demo: https://shopify.vercel.store/
+- Swell Demo: https://swell.vercel.store/
+- BigCommerce Demo: https://bigcommerce.vercel.store/
+- Vendure Demo: https://vendure.vercel.store
+- Saleor Demo: https://saleor.vercel.store/
 
 ## Features
 
@@ -70,7 +73,7 @@ Demo live at: [demo.vercel.store](https://demo.vercel.store/)
 
 ## Integrations
 
-Next.js Commerce integrates out-of-the-box with BigCommerce and Shopify. We plan to support all major ecommerce backends.
+Next.js Commerce integrates out-of-the-box with BigCommerce, Shopify, Swell, Saleor and Vendure. We plan to support all major ecommerce backends.
 
 ## Considerations
 
@@ -86,22 +89,51 @@ Next.js Commerce integrates out-of-the-box with BigCommerce and Shopify. We plan
 
 Open `.env.local` and change the value of `COMMERCE_PROVIDER` to the provider you would like to use, then set the environment variables for that provider (use `.env.template` as the base).
 
+The setup for Shopify would look like this for example:
+
+```
+COMMERCE_PROVIDER=shopify
+NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=xxxxxxx.myshopify.com
+```
+
+And check that the `tsconfig.json` resolves to the chosen provider:
+
+```
+  "@framework": ["framework/shopify"],
+  "@framework/*": ["framework/shopify/*"]
+```
+
+That's it!
+
 ### Features
 
 Every provider defines the features that it supports under `framework/{provider}/commerce.config.json`
+
+#### Features Available
+
+The following features can be enabled or disabled. This means that the UI will remove all code related to the feature.
+For example: Turning `cart` off will disable Cart capabilities.
+
+- cart
+- search
+- wishlist
+- customerAuth
+- customCheckout
 
 #### How to turn Features on and off
 
 > NOTE: The selected provider should support the feature that you are toggling. (This means that you can't turn wishlist on if the provider doesn't support this functionality out the box)
 
-- Open `commerce.config.json`
+- Open `commerce.config.json` 
 - You'll see a config file like this:
   ```json
   {
     "features": {
-      "wishlist": false
+      "wishlist": false,
+      "customCheckout": true
     }
   }
   ```
-- Turn wishlist on by setting wishlist to true.
+- Turn `wishlist` on by setting `wishlist` to `true`.
 - Run the app and the wishlist functionality should be back on.

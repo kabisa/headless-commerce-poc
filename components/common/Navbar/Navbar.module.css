@@ -1,20 +1,29 @@
 .root {
   @apply sticky top-0 bg-primary z-40 transition-all duration-150;
+  min-height: 74px;
+}
+
+.nav {
+  @apply relative flex flex-row justify-between py-4 md:py-4;
+}
+
+.navMenu {
+  @apply hidden ml-6 space-x-4 lg:block;
 }
 
 .link {
-  @apply inline-flex items-center text-primary leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accents-6;
+  @apply inline-flex items-center text-primary leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accent-6;
 
   &:hover {
-    @apply text-accents-9;
+    @apply text-accent-9;
   }
 
   &:focus {
-    @apply outline-none text-accents-8;
+    @apply outline-none text-accent-8;
   }
 
   &.active {
-    @apply underline text-accents-9;
+    @apply underline text-accent-9;
   }
 }
 

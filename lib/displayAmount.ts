@@ -4,6 +4,6 @@
  * @param amount string value to convert
  */
 export const displayAmount = (amount: string): string => {
-  let formattedAmount: number = parseFloat(amount)
+  const formattedAmount: number = parseFloat(amount)
   return formattedAmount % 1 === 0 ? `${formattedAmount},-` : formattedAmount.toFixed(2);
 }

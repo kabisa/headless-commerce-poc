@@ -1,4 +1,4 @@
-import {FC, useCallback, useEffect, useMemo} from 'react'
+import { FC, useCallback, useEffect, useMemo } from 'react'
 import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
@@ -28,12 +28,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 
   return useMemo(
     () => (
-      <div
-        className={cn(
-          'relative text-sm bg-accents-1 text-base w-full transition-colors duration-150',
-          className
-        )}
-      >
+      <div className={cn(s.root, className)}>
         <label className="hidden" htmlFor={id}>
           Search
         </label>

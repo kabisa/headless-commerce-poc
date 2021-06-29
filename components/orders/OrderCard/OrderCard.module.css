@@ -1,5 +1,5 @@
 .orderCard {
-  @apply block w-full rounded-md p-4 border border-solid border-accents-4 relative my-4 flex-grow flex-shrink-0;
+  @apply block w-full rounded-md p-4 border border-solid border-border-1 relative my-4 flex-grow flex-shrink-0;
   flex-basis: 49%;
 
   &:last-child {
@@ -27,7 +27,7 @@
   }
 
   & .ruler {
-    @apply my-4;
+    @apply my-4 border-border-1;
   }
 
   & .orderStatus {
@@ -75,7 +75,7 @@
     }
 
     & .orderItem {
-      @apply rounded-md p-4 border border-solid border-accents-4 my-4 transition-colors duration-200 hover:bg-accents-0;
+      @apply rounded-md p-4 border border-solid border-border-1 my-4 transition-colors duration-200 hover:bg-accent-1;
 
       &:first-child {
         @apply mt-0;
