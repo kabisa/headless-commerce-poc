@@ -14,7 +14,7 @@ export type CustomerHook<T extends CustomerTypes = CustomerTypes> = {
 
 export type CustomerOrdersInput = {
   numberOfOrders: number,
-  cursor: string | null
+  cursor?: string | null
 }
 
 export type CustomerOrdersHook<T extends CustomerTypes = CustomerTypes> = {
