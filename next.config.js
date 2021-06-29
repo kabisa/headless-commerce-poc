@@ -37,10 +37,9 @@ module.exports = withPWA(
         },
     ].filter(Boolean)
   },
-    esLint: {
-      dirs: ['lib'],
-      ignoreDuringBuilds: true,
-    },
+  esLint: {
+    ignoreDuringBuilds: true,
+  },
   pwa: {
     dest: 'public'
   },
