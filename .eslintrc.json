@@ -30,7 +30,7 @@
   },
   "plugins": ["@typescript-eslint", "jest", "cypress", "react-hooks"],
   "rules": {
-    "react/react-in-jsx-scope": "off", // NEXT.JS does this
+    "react/react-in-jsx-scope": "off", // NEXT.JS does this for us
     "react-hooks/rules-of-hooks": "warn", // Checks rules of Hooks, Voilated by Next.js Commerce framework
     "react/no-children-prop": "warn",
     "react/display-name": "off",
