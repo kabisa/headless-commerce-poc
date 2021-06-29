@@ -3,7 +3,7 @@ import random from 'lodash.random'
 export function getRandomPairOfColors() {
   const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
   const getRandomIdx = () => random(0, colors.length - 1)
-  let idx = getRandomIdx()
+  const idx = getRandomIdx()
   let idx2 = getRandomIdx()
 
   // Has to be a different color
@@ -17,7 +17,7 @@ export function getRandomPairOfColors() {
 
 function hexToRgb(hex = '') {
   // @ts-ignore
-  const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i)
+  const match = /[a-f0-9]{6}|[a-f0-9]{3}/i.exec(hex.toString(16))
 
   if (!match) {
     return [0, 0, 0]
@@ -200,7 +200,7 @@ export const colorMap: Record<string, string> = {
 export function isDark(color = ''): boolean {
   color = color.toLowerCase()
   // Equation from http://24ways.org/2010/calculating-color-contrast
-  let rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
+  const rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
   const res = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
   return res < 128
 }

@@ -28,4 +28,6 @@ const ProductSliderControl: React.FC<ProductSliderControl> = React.memo(
     </div>
   )
 )
+ProductSliderControl.displayName = 'ProductSliderControl'
+
 export default ProductSliderControl

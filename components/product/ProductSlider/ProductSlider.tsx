@@ -1,7 +1,6 @@
 import { useKeenSlider } from 'keen-slider/react'
 import React, {
   Children,
-  FC,
   isValidElement,
   useState,
   useRef,

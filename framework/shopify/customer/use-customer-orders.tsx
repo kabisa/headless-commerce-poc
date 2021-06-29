@@ -1,7 +1,7 @@
 import useCustomerOrders, { UseCustomerOrders } from "@commerce/customer/use-customer-orders";
 import { SWRHook } from "@commerce/utils/types";
 import { getCustomerOrdersQuery, getCustomerToken } from "@framework/utils";
-import { GetCustomerOrdersQuery, GetCustomerOrdersQueryVariables } from "@framework/schema";
+import {Customer, GetCustomerOrdersQuery, GetCustomerOrdersQueryVariables} from "@framework/schema";
 import { CustomerOrdersHook } from "@commerce/types/customer";
 
 export default useCustomerOrders as UseCustomerOrders<typeof handler>
@@ -17,7 +17,7 @@ export const handler: SWRHook<CustomerOrdersHook> = {
         ...options,
         variables: { customerAccessToken: customerAccessToken, numberOfOrders: numberOfOrders, cursor: cursor },
       })
-      return data!.customer
+      return data.customer as Customer
     }
     return null
   },

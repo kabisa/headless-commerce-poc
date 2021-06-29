@@ -34,7 +34,7 @@ const CheckoutSidebarView: FC = () => {
       handleBack={() => setSidebarView('CART_VIEW')}
     >
       <div className="px-4 sm:px-6 flex-1">
-        <Link href="/cart">
+        <Link href={"/cart"}>
           <Text variant="sectionHeading">Checkout</Text>
         </Link>
 
@@ -42,11 +42,11 @@ const CheckoutSidebarView: FC = () => {
         <ShippingWidget onClick={() => setSidebarView('SHIPPING_VIEW')} />
 
         <ul className={s.lineItemsList}>
-          {data!.lineItems.map((item: any) => (
+          {data?.lineItems.map((item) => (
             <CartItem
               key={item.id}
               item={item}
-              currencyCode={data!.currency.code}
+              currencyCode={data.currency.code}
               variant="display"
             />
           ))}

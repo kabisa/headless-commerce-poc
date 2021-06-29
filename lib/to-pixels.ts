@@ -2,7 +2,7 @@
 // Helpful for styled-jsx when using a prop
 // height: ${toPixels(height)}; (supports height={20} and height="20px")
 
-const toPixels = (value: string | number) => {
+const toPixels = (value: string | number): string=> {
   if (typeof value === 'number') {
     return `${value}px`
   }

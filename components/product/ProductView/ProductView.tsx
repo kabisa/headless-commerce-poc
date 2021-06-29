@@ -5,7 +5,6 @@ import React, { FC, useEffect, useState } from 'react'
 import s from './ProductView.module.css'
 import type { Product } from '@commerce/types/product'
 import usePrice, { formatVariantPrice } from '@framework/product/use-price'
-import { WishlistButton } from '@components/wishlist'
 import { ProductSlider, ProductCard, Swatch } from '@components/product'
 import { Button, Collapse, Container, Rating, Text, useUI } from '@components/ui'
 import { useCommerce } from "@commerce";
@@ -112,13 +111,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                 ))}
               </ProductSlider>
             </div>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
-              <WishlistButton
-                className={s.wishlistButton}
-                productId={product.id}
-                variant={product.variants[0]}
-              />
-            )}
           </div>
 
           <div className={s.sidebar}>

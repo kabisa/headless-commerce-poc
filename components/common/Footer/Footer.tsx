@@ -11,7 +11,7 @@ import s from './Footer.module.css'
 
 interface Props {
   className?: string
-  children?: any
+  children?: never
   pages?: Page[]
 }
 
@@ -44,7 +44,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                  <Link href={page.url!}>
+                  <Link href={page.url || ''}>
                     <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
                       {page.name}
                     </a>

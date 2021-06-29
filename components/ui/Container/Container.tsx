@@ -18,7 +18,7 @@ const Container: FC<ContainerProps> = ({
     'mx-auto max-w-8xl px-6': !clean,
   })
 
-  let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
+  const Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
     el as any
 
   return <Component className={rootClassName}>{children}</Component>

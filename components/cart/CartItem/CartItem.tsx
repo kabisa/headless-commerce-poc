@@ -63,7 +63,7 @@ const CartItem = ({
   }
 
   // TODO: Add a type for this
-  const options = (item as any).options
+  const options = (item).options
 
   useEffect(() => {
     // Reset the quantity state if the item quantity changes
@@ -87,8 +87,8 @@ const CartItem = ({
               className={s.productImage}
               width={150}
               height={150}
-              src={item.variant.image!.url}
-              alt={item.variant.image!.altText}
+              src={item.variant.image?.url || ''}
+              alt={item.variant.image?.altText}
               unoptimized
             />
           </Link>
@@ -104,19 +104,15 @@ const CartItem = ({
           </Link>
           {options && options.length > 0 && (
             <div className="flex items-center pb-1">
-              {options.map((option: ItemOption, i: number) => (
+              {options.map((option, i) => (
                 <div
                   key={`${item.id}-${option.name}`}
                   className="text-sm font-semibold text-accent-7 inline-flex items-center justify-center"
                 >
                   {option.name}
                   {option.name === 'Color' ? (
-                    <span
-                      className="mx-2 rounded-full bg-transparent border w-5 h-5 p-1 text-accent-9 inline-flex items-center justify-center overflow-hidden"
-                      style={{
-                        backgroundColor: `${option.value}`,
-                      }}
-                    ></span>
+                    <span className="mx-2 rounded-full bg-transparent border w-5 h-5 p-1 text-accent-9 inline-flex items-center justify-center overflow-hidden"
+                      style={{ backgroundColor: `${option.value}`, }}></span>
                   ) : (
                     <span className="mx-2 rounded-full bg-transparent border h-5 p-1 text-accent-9 inline-flex items-center justify-center overflow-hidden">
                       {option.value}

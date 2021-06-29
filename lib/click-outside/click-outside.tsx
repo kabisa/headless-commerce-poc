@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, MouseEvent } from 'react'
+import React, { useRef, useEffect } from 'react'
 import hasParent from './has-parent'
 
 interface ClickOutsideProps {
   active: boolean
-  onClick: (e?: MouseEvent) => void
+  onClick: (e?: MouseEvent | TouchEvent) => void
   children: any
 }
 
@@ -14,7 +14,7 @@ const ClickOutside = ({
 }: ClickOutsideProps) => {
   const innerRef = useRef()
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: MouseEvent | TouchEvent) => {
     if (!hasParent(event.target, innerRef?.current)) {
       if (typeof onClick === 'function') {
         onClick(event)
