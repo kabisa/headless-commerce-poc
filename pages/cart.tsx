@@ -7,6 +7,10 @@ import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import Link from "next/link";
+import { InferGetStaticPropsType } from "next";
+import { Product } from "@commerce/types/product";
+import { ProductCard } from "@components/product";
+import React from "react";
 
 export async function getStaticProps({
   preview,
@@ -18,12 +22,21 @@ export async function getStaticProps({
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
+
+  const allProductsPromise = commerce.getAllProducts({
+    variables: { first: 5 },
+    config,
+    preview,
+  }) // Make these actual related products
+
+  const { products: relatedProducts } = await allProductsPromise
+
   return {
-    props: { pages, categories },
+    props: { pages, categories, relatedProducts },
   }
 }
 
-export default function Cart() {
+export default function Cart({ relatedProducts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
@@ -94,12 +107,18 @@ export default function Cart() {
                 just for you
               </Text>
               <div className="flex py-6 space-x-6">
-                {[1, 2, 3, 4, 5, 6].map((x) => ( // TODO Make these actual recommendations
-
-                  <div
-                    key={x}
-                    className="border border-accent-3 w-full h-24 bg-accent-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
-                  />
+                {relatedProducts.map((product: Product) => (
+                    <ProductCard
+                      noNameTag
+                      product={product}
+                      key={product.path}
+                      variant="simple"
+                      className="animated fadeIn"
+                      imgProps={{
+                        width: 300,
+                        height: 300,
+                      }}
+                    />
                 ))}
               </div>
             </div>
@@ -160,13 +179,13 @@ export default function Cart() {
           <div className="flex flex-row justify-end">
             <div className="w-full">
               {isEmpty ? (
-                <Link href={"/"}>
+                <Link href={"/"} passHref>
                   <Button Component="a" width="100%">
                     Continue Shopping
                   </Button>
                 </Link>
               ) : (
-                <Link href={"/checkout"}>
+                <Link href={"/checkout"} passHref>
                   <Button Component="a" width="100%">
                     Proceed to Checkout
                   </Button>
