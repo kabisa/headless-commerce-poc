@@ -13,3 +13,9 @@
 .sectionHeading {
   @apply pt-1 pb-2 text-2xl font-bold tracking-wide border-b border-accent-2 mb-3;
 }
+
+.prose {
+  & * {
+    @apply max-w-full break-words font-normal;
+  }
+}

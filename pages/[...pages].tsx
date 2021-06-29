@@ -10,6 +10,7 @@ import getSlug from '@lib/get-slug'
 import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
+import s from '@components/ui/Text/Text.module.css'
 
 export async function getStaticProps({
   preview,
@@ -78,7 +79,7 @@ export default function Pages({
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
     <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
+      {page?.body && <Text className={`${s.prose} prose prose-purple`} html={page.body} />}
     </div>
   )
 }
