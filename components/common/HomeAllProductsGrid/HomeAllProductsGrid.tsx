@@ -58,6 +58,7 @@ const HomeAllProductsGrid: FC<Props> = ({
               key={product.path}
               product={product}
               variant="simple"
+              className={"animated fadeIn"}
               imgProps={{
                 width: 480,
                 height: 480,
