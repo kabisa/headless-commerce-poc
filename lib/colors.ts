@@ -3,7 +3,7 @@ import random from 'lodash.random'
 export function getRandomPairOfColors() {
   const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
   const getRandomIdx = () => random(0, colors.length - 1)
-  let idx = getRandomIdx()
+  const idx = getRandomIdx()
   let idx2 = getRandomIdx()
 
   // Has to be a different color
@@ -15,9 +15,9 @@ export function getRandomPairOfColors() {
   return [colors[idx], colors[idx2]]
 }
 
-function hexToRgb(hex: string = '') {
+function hexToRgb(hex = '') {
   // @ts-ignore
-  const match = hex.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i)
+  const match = /[a-f0-9]{6}|[a-f0-9]{3}/i.exec(hex.toString(16))
 
   if (!match) {
     return [0, 0, 0]
@@ -42,7 +42,7 @@ function hexToRgb(hex: string = '') {
   return [r, g, b]
 }
 
-const colorMap: Record<string, string> = {
+export const colorMap: Record<string, string> = {
   aliceblue: '#F0F8FF',
   antiquewhite: '#FAEBD7',
   aqua: '#00FFFF',
@@ -56,6 +56,8 @@ const colorMap: Record<string, string> = {
   blueviolet: '#8A2BE2',
   brown: '#A52A2A',
   burlywood: '#DEB887',
+  burgandy: '#800020',
+  burgundy: '#800020',
   cadetblue: '#5F9EA0',
   chartreuse: '#7FFF00',
   chocolate: '#D2691E',
@@ -177,6 +179,8 @@ const colorMap: Record<string, string> = {
   slateblue: '#6A5ACD',
   slategray: '#708090',
   slategrey: '#708090',
+  spacegrey: '#65737e',
+  spacegray: '#65737e',
   snow: '#FFFAFA',
   springgreen: '#00FF7F',
   steelblue: '#4682B4',
@@ -193,10 +197,10 @@ const colorMap: Record<string, string> = {
   yellowgreen: '#9ACD32',
 }
 
-export function isDark(color: string = ''): boolean {
+export function isDark(color = ''): boolean {
   color = color.toLowerCase()
   // Equation from http://24ways.org/2010/calculating-color-contrast
-  let rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
+  const rgb = colorMap[color] ? hexToRgb(colorMap[color]) : hexToRgb(color)
   const res = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
   return res < 128
 }

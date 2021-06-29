@@ -58,7 +58,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   }, [display])
 
   function doLogout () {
-    logout()
+    void logout()
     setModalView('LOGOUT_VIEW')
     openModal()
     setTimeout(() => {
@@ -119,7 +119,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
               </a>
             </li>
             <li>
-              <a className={cn(s.link, 'border-t border-accents-2 mt-4')} onClick={doLogout}>
+              <a className={cn(s.link, 'border-t border-accent-2 mt-4')} onClick={doLogout}>
                 Logout
               </a>
             </li>

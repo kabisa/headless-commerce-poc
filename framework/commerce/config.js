@@ -7,7 +7,14 @@ const fs = require('fs')
 const merge = require('deepmerge')
 const prettier = require('prettier')
 
-const PROVIDERS = ['bigcommerce', 'shopify']
+const PROVIDERS = [
+  'bigcommerce',
+  'saleor',
+  'shopify',
+  'swell',
+  'vendure',
+  'local',
+]
 
 function getProviderName() {
   return (
@@ -16,7 +23,9 @@ function getProviderName() {
       ? 'bigcommerce'
       : process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
       ? 'shopify'
-      : null)
+      : process.env.NEXT_PUBLIC_SWELL_STORE_ID
+      ? 'swell'
+      : 'local')
   )
 }
 
@@ -38,7 +47,7 @@ function withCommerceConfig(nextConfig = {}) {
   }
 
   const commerceNextConfig = require(path.join('../', name, 'next.config'))
-  const config = merge(commerceNextConfig, nextConfig)
+  const config = merge(nextConfig, commerceNextConfig)
 
   config.env = config.env || {}
 
@@ -48,14 +57,11 @@ function withCommerceConfig(nextConfig = {}) {
 
   // Update paths in `tsconfig.json` to point to the selected provider
   if (config.commerce.updateTSConfig !== false) {
-    const tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
-    const tsconfig = require(tsconfigPath)
-
-    tsconfig.compilerOptions.paths['@framework'] = [`framework/${name}`]
-    tsconfig.compilerOptions.paths['@framework/*'] = [`framework/${name}/*`]
+    const staticTsconfigPath = path.join(process.cwd(), 'tsconfig.json')
+    const tsconfig = require('../../tsconfig.js')
 
     fs.writeFileSync(
-      tsconfigPath,
+      staticTsconfigPath,
       prettier.format(JSON.stringify(tsconfig), { parser: 'json' })
     )
   }

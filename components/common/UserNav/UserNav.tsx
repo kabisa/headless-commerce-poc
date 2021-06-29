@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import type { LineItem } from '@framework/types'
+import type { LineItem } from '@commerce/types/cart'
 import useCart from '@framework/cart/use-cart'
 import useCustomer from '@framework/customer/use-customer'
 import { Avatar } from '@components/common'
@@ -39,6 +39,7 @@ const UserNav: FC<Props> = ({ className }) => {
               </Link>
             </li>
           )}
+          {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
           <li className={s.item}>
             {customer ? (
               <DropdownMenu />
@@ -52,6 +53,7 @@ const UserNav: FC<Props> = ({ className }) => {
               </button>
             )}
           </li>
+          )}
         </ul>
       </div>
     </nav>

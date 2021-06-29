@@ -1,12 +1,20 @@
-import {VFC} from 'react'
+import {FC, VFC} from 'react'
 import Link from 'next/link'
+import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
-import NavbarRoot from './NavbarRoot'
 import s from './Navbar.module.css'
 import { useRouter } from "next/router";
 
-const Navbar: VFC = () => {
+interface Link {
+  href: string
+  label: string
+}
+interface NavbarProps {
+  links?: Link[]
+}
+
+const Navbar: FC<NavbarProps> = ({ links }) => {
   const router = useRouter()
 
   const menuItemClassName = (pathname: string, query: string, target: string | undefined): string => {
@@ -36,6 +44,11 @@ const Navbar: VFC = () => {
               <Link href={"/search?q=shoes"}>
                 <a className={menuItemClassName('search','q', 'shoes')}>Shoes</a>
               </Link>
+              {/*{links?.map((l) => (  // Map links received from shopify */ }
+              {/*  <Link href={l.href} key={l.href}>*/}
+              {/*    <a className={s.link}>{l.label}</a>*/}
+              {/*  </Link>*/}
+              {/*))}*/}
             </nav>
           </div>
 

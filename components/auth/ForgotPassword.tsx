@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useCallback } from 'react'
+import React, { FC, useEffect, useState, useCallback } from 'react'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
@@ -15,6 +15,7 @@ const ForgotPassword: FC<Props> = () => {
 
   const { setModalView, closeModal } = useUI()
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   const handleResetPassword = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 
@@ -61,7 +62,7 @@ const ForgotPassword: FC<Props> = () => {
         </div>
 
         <span className="pt-3 text-center text-sm">
-          <span className="text-accents-7">Do you have an account?</span>
+          <span className="text-accent-7">Do you have an account?</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
