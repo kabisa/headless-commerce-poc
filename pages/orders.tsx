@@ -14,7 +14,7 @@ export default function Orders(): JSX.Element {
   const [atBottom, setAtBottom] = useState<boolean>(false)
   const router = useRouter()
 
-  const { data } = useCustomerOrders({ numberOfOrders: 10, cursor } )
+  const { data, isLoading } = useCustomerOrders({ numberOfOrders: 10, cursor } )
 
   useEffect(() => { // When scrolled to bottom, if there are more items available, load them by setting new cursor
     if (atBottom) {
@@ -37,7 +37,7 @@ export default function Orders(): JSX.Element {
     const scrollListener = throttle(function () {
       if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
         setAtBottom(true);
-    } }, 500);
+      } }, 500);
 
     window.addEventListener('scroll', scrollListener)
 
@@ -49,6 +49,7 @@ export default function Orders(): JSX.Element {
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
+      {!isLoading &&
       <div
         className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
         {orders.length ? orders.map((order) => (
@@ -69,6 +70,7 @@ export default function Orders(): JSX.Element {
           </div>
         }
       </div>
+      }
     </Container>
   )
 }
