@@ -27,12 +27,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
+            <Link href={"/https://kabisa.nl/"}>
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-gray-700 mr-2">
+                <span className="mr-2">
                   <Logo />
                 </span>
-                <span>ACME</span>
+                <span>kabisa</span>
               </a>
             </Link>
           </div>
@@ -96,25 +96,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </div>
           </div>
         </div>
-        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4 font-normal">
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4 font-medium">
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
+            <span>&copy; 2021 Kabisa B.V. All rights reserved.</span>
           </div>
-          <div className="flex items-center text-primary font-normal">
+          <div className="flex items-center text-primary">
             <span className="text-primary">Crafted by</span>
-            <a
-              rel="noopener noreferrer"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className="text-primary"
-            >
-              <Vercel
-                className="inline-block h-6 mx-2 text-primary"
-                alt="Vercel.com Logo"
-              />
-            </a>
-            <span className="text-primary">&</span>
             <a
               rel="noopener noreferrer"
               href="https://kabisa.nl"
@@ -123,8 +110,21 @@ const Footer: FC<Props> = ({ className, pages }) => {
               className="text-primary"
             >
               <Kabisa
-                className="inline-block h-6 ml-2 text-primary"
+                className="inline-block h-6 mx-2 text-primary"
                 alt="Kabisa.nl Logo"
+              />
+            </a>
+            <span className="text-primary">&</span>
+            <a
+              rel="noopener noreferrer"
+              href="https://vercel.com"
+              aria-label="Vercel.com Link"
+              target="_blank"
+              className="text-primary"
+            >
+              <Vercel
+                className="inline-block h-6 ml-2 text-primary"
+                alt="Vercel.com Logo"
               />
             </a>
           </div>
