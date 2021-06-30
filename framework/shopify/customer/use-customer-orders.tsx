@@ -17,7 +17,7 @@ export const handler: SWRHook<CustomerOrdersHook> = {
         ...options,
         variables: { customerAccessToken: customerAccessToken, numberOfOrders: numberOfOrders, cursor: cursor },
       })
-      return data.customer as Customer
+      return data.customer
     }
     return null
   },
