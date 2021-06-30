@@ -7,8 +7,6 @@ import { OrderEdge, OrderLineItemEdge } from "@framework/schema";
 import React, { useEffect, useState } from "react";
 import useSearch from "@framework/product/use-search";
 import _ from "lodash";
-import { Product } from "@commerce/types/product";
-import { Customer } from "@commerce/types/customer";
 
 export async function getStaticProps({
   preview,
@@ -49,11 +47,9 @@ export default function Home({
   brands,
   locale
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const initialValue: string[] = []
-  const [orderedBrands, setOrderedBrands] = useState<string[]>(initialValue)
-  let recommendedProduct: Product | undefined
+  const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
 
-  const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 } ) as Customer // Get customer orders
+  const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 } ) // Get customer orders
 
   const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
     brandId: _.sample(orderedBrands),
@@ -64,20 +60,24 @@ export default function Home({
     customerOrders?.orders.edges.map((order: OrderEdge) => { // Iterate through orders and brands
       order.node.lineItems.edges.map((item: OrderLineItemEdge) => {
         if (item.node.variant?.product.vendor && orderedBrands.indexOf(item.node.variant?.product.vendor) === -1) {
-          initialValue.push(item.node.variant?.product.vendor) // Collect ordered brands
-          setOrderedBrands(initialValue)
+          orderedBrands.push(item.node.variant?.product.vendor) // Collect ordered brands
+          setOrderedBrands(orderedBrands) // Set ordered brands
         }
       })
     })
+  }, [customerOrders?.orders.edges, orderedBrands])
 
-    recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
+  useEffect(() => {
+    const recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
     if (recommendedProduct) {
-      const result = products.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
+      const result = products.findIndex(product => { return product.id === recommendedProduct?.id}) // Check if recommended product already exists in list of products
       if (result != -1) { products.splice(result, 1) } // If it exists remove it
-      recommendedProduct.name = `FOR YOU! ${recommendedProduct.name}` // Alter name of recommended product
-      products.unshift(recommendedProduct) // Add recommended product to beginning of list
+      recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
+      if (!products.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
+        products.unshift(recommendedProduct) // Add recommended product to beginning of list
+      }
     }
-  }, [customerOrders])
+  }, [products, recommendedProducts?.products])
 
   return (
     <>
