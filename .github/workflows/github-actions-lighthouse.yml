@@ -16,11 +16,12 @@ jobs:
       - name: Echo preview url
         run: echo ${{ steps.wait-for-vercel.outputs.url }}
 
+      - uses: actions/checkout@v2
+      
       - name: Sleep for 15 seconds to settle deployment
         run: sleep 15s
         shell: bash
-
-      - uses: actions/checkout@v2
+      
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v7
