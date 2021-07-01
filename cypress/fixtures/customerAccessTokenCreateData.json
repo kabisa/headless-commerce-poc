@@ -1,0 +1,11 @@
+{
+  "data": {
+    "customerAccessTokenCreate": {
+      "customerAccessToken": {
+        "accessToken": "804b28ed6f35c81e8756f0f04cc65ac8",
+        "expiresAt": "2021-08-12T10:44:27Z"
+      },
+      "customerUserErrors": []
+    }
+  }
+}
