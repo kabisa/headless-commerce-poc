@@ -24,5 +24,3 @@ describe('Add products to cart', () => {
   })
 
 })
-
-/* global cy */

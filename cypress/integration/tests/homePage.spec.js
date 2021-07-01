@@ -4,5 +4,3 @@ describe('The Home Page', () => {
     cy.visit('/')
   })
 })
-
-/* global cy */
