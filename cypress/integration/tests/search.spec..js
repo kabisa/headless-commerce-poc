@@ -1,7 +1,5 @@
 /// <reference types="cypress" />
 import { captureRequests, interceptRequests } from "../helpers/graphql-test-utils";
-import login from "../helpers/login";
-import credentials from "../../fixtures/loginCredentials.json";
 import { constants } from '../helpers/constants'
 
 const operations = { // Define GraphQL operations to intercept for this test (And differentiate between queries and mutations)
