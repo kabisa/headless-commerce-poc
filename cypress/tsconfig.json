@@ -6,7 +6,8 @@
     // to avoid clashing with Jest types
     "types": [
       "cypress",
-      "cypress-wait-until"
+      "cypress-wait-until",
+      "@testing-library/cypress"
     ]
   },
   "include": [
