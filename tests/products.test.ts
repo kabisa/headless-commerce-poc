@@ -1,8 +1,11 @@
+import { enableFetchMocks } from 'jest-fetch-mock'
+enableFetchMocks()
 import {getAllProductsQuery} from "@framework/utils";
-import { ProductConnection } from "@framework/schema";
 import doFetch from "./doFetch";
-import { expect } from '@jest/globals';
 import { config } from "dotenv";
+import getProductsData from "../cypress/fixtures/getAllProductsData.json"
+import {ProductConnection} from "@framework/schema";
+import { expect } from '@jest/globals';
 
 beforeAll(() => {
   config({path: '.env.local'})
@@ -10,7 +13,9 @@ beforeAll(() => {
 
 test('Retrieve products', async () => {
 
-  const body = { variables: { first: 12 }, query: getAllProductsQuery };
+  fetchMock.mockResponseOnce(JSON.stringify(getProductsData))
+
+  const body = { variables: { first: 4 }, query: getAllProductsQuery };
 
   const response = await doFetch('post', body);
 

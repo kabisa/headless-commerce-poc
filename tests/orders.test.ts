@@ -1,9 +1,13 @@
+import { enableFetchMocks } from 'jest-fetch-mock'
+enableFetchMocks()
 import { getCustomerOrdersQuery } from "@framework/utils";
 import { Customer } from "@framework/schema";
 import { customerAccessTokenCreate } from "./customerAccessTokenCreate";
 import doFetch from "./doFetch";
 import { expect } from '@jest/globals';
 import { config } from "dotenv";
+import customerAccessTokenCreateData from "../cypress/fixtures/customerAccessTokenCreateData.json";
+import customerOrdersData from "../cypress/fixtures/getCustomerOrdersData.json";
 
 beforeAll(() => {
   config({ path: '.env.local' })
@@ -19,10 +23,11 @@ test('customerAccessTokenCreate', async () => {
 })
 
 test('retrieve orders', async () => {
-
   if (!customerAccessToken) { customerAccessToken = await customerAccessTokenCreate(); }
 
-  const orderBody = { variables: { customerAccessToken: customerAccessToken, numberOfOrders: 5 }, query: getCustomerOrdersQuery };
+  fetchMock.mockResponseOnce(JSON.stringify(customerOrdersData))
+
+  const orderBody = { variables: { customerAccessToken: customerAccessToken, numberOfOrders: 3 }, query: getCustomerOrdersQuery };
 
   const orderResponse = await doFetch('post', orderBody);
 
