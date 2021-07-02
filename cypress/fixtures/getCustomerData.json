@@ -2,10 +2,10 @@
   "data": {
     "customer": {
       "id": "Z2lkOi8vc2hvcGlmeS9DdXN0b21lci81Mjg1ODcyNzMwMzA3",
-      "firstName": "Jan-Willem TEST",
-      "lastName": "van Bremen TEST",
-      "displayName": "Jan-Willem van Bremen",
-      "email": "janwillemvanbremen@live.nl",
+      "firstName": "TestFirstName",
+      "lastName": "TestLastName",
+      "displayName": "TestUser!",
+      "email": "testemail@test.nl",
       "phone": null,
       "tags": [],
       "acceptsMarketing": false,
