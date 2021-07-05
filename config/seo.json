@@ -1,20 +1,20 @@
 {
   "title": "Headless e-commerce POC | Powered by Next.js Commerce",
   "titleTemplate": "%s - ACME Storefront",
-  "description": "Headless e-commerce - https://www.nextjs.org/commerce",
+  "description": "Headless e-commerce proof of concept - https://www.nextjs.org/commerce",
   "openGraph": {
     "title": "Headless e-commerce POC | Powered by Next.js Commerce",
     "description": "Headless e-commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "locale": "en_IE",
-    "url": "https://nextjs.org/commerce",
+    "url": "https://kabisa.nl/",
     "site_name": "Headless e-commerce proof of concept",
     "images": [
       {
         "url": "/card.png",
         "width": 800,
         "height": 600,
-        "alt": "Next.js Commerce"
+        "alt": "kabisa headless e-commerce POC"
       }
     ]
   },
