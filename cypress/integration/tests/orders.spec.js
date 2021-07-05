@@ -18,7 +18,7 @@ describe('Retrieve orders', () => {
     cy.findByText('My Orders').click()
 
     cy.location('pathname').should('include', 'orders')
-    cy.findByText('My Orders')
+    cy.findAllByText('My Orders')
     const orders = cy.get('.mx-auto > .flex-1.justify-center').find('> div', { timeout: 5000 })
     orders.should('contain.text', 'Order: #')
     orders.should('have.length.above', 1)

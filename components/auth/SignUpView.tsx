@@ -81,7 +81,7 @@ const SignUpView: FC<Props> = () => {
           <Input placeholder="Last Name" onChange={setLastName} />
           <Input type="email" placeholder="Email" onChange={setEmail} />
           <Input type="password" placeholder="Password" onChange={setPassword} />
-          <span className="text-accents-8">
+          <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
           </span>{' '}
@@ -102,7 +102,7 @@ const SignUpView: FC<Props> = () => {
           </div>
 
           <span className="pt-1 text-center text-sm">
-          <span className="text-accents-7">Already have an account?</span>
+          <span className="text-accent-7">Already have an account?</span>
             {` `}
             <a
               className="text-accent-9 font-bold hover:underline cursor-pointer"

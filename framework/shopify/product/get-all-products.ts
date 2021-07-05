@@ -1,19 +1,21 @@
 import { GraphQLFetcherResult } from '@commerce/api'
-import { getConfig, ShopifyConfig } from '../api'
+import { ShopifyConfig } from '../api'
 import {ProductEdge, ProductSortKeys} from '../schema'
 import { getAllProductsQuery } from '../utils/queries'
 import { normalizeProduct } from '@framework/utils'
 import { Product } from '@commerce/types'
+import commerce from "@lib/api/commerce";
 
 type Variables = {
   first?: number
   field?: string
   query?: string
   sortKey?: ProductSortKeys | string
-  reverse?: Boolean
+  reverse?: boolean
 }
 
 type ReturnType = {
+  // @ts-ignore
   products: Product[]
 }
 
@@ -23,7 +25,7 @@ const getAllProducts = async (options: {
   preview?: boolean
 }): Promise<ReturnType> => {
   let { config, variables = { first: 250 } } = options ?? {}
-  config = getConfig(config)
+  config = commerce.getConfig()
 
   const { data }: GraphQLFetcherResult = await config.fetch(
     getAllProductsQuery,
