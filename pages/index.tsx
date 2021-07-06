@@ -49,7 +49,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
     const [productList, setProductList] = useState<typeof products>(products)
-    const productListCopy = [...productList]
 
     const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
 
@@ -73,7 +72,8 @@ export default function Home({
         if (customerOrders) {
             const recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
             if (recommendedProduct) {
-                const result = productListCopy.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
+              const productListCopy = [...productList]
+              const result = productListCopy.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
                 if (result != -1) { productListCopy.splice(result, 1) } // If it exists remove it
                 recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
                 if (!productListCopy.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
@@ -81,7 +81,7 @@ export default function Home({
                 }
             }
         }
-    }, [customerOrders, productList, productListCopy, products, recommendedProducts?.products])
+    }, [customerOrders, productList, products, recommendedProducts?.products])
 
   return (
     <>
