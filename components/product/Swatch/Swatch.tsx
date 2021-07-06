@@ -4,6 +4,7 @@ import s from './Swatch.module.css'
 import { Check } from '@components/icons'
 import Button, { ButtonProps } from '@components/ui/Button'
 import { isDark } from '@lib/colors'
+
 interface SwatchProps {
   active?: boolean
   children?: any
@@ -11,6 +12,7 @@ interface SwatchProps {
   variant?: 'size' | 'color' | string
   color?: string
   label?: string | null
+  round?: boolean | null
 }
 
 const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
@@ -20,6 +22,7 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
     color = '',
     label = null,
     variant = 'size',
+    round = false,
     ...props
   }) => {
     variant = variant?.toLowerCase()
@@ -32,6 +35,7 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = React.memo(
       s.swatch,
       {
         [s.color]: color,
+        [s.round]: round,
         [s.active]: active,
         [s.size]: variant === 'size',
         [s.dark]: color ? isDark(color) : false,
