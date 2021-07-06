@@ -1,0 +1,257 @@
+{
+  "data": {
+    "customer": {
+      "orders": {
+        "pageInfo": {
+          "hasNextPage": true,
+          "hasPreviousPage": false
+        },
+        "edges": [
+          {
+            "cursor": "eyJsYXN0X2lkIjozOTExNDI2MjEyMDM1LCJsYXN0X3ZhbHVlIjoiMjAyMS0wNi0yOSAxMjowMDoyOC4wMDAwMDAifQ==",
+            "node": {
+              "id": "Z2lkOi8vc2hvcGlmeS9PcmRlci8zOTExNDI2MjEyMDM1P2tleT1iZTcxOGU0NzUyZDA3ZGYzZjQ3NmFkMDYxNmUxN2NjNw==",
+              "name": "#1050",
+              "subtotalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "742.45"
+              },
+              "totalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "747.4"
+              },
+              "totalShippingPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "4.95"
+              },
+              "fulfillmentStatus": "UNFULFILLED",
+              "processedAt": "2021-06-29T12:00:28Z",
+              "lineItems": {
+                "edges": [
+                  {
+                    "node": {
+                      "quantity": 3,
+                      "title": "ASICS TIGER | GEL-LYTE V '30 YEARS OF GEL'",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg3MjM3OTg3OTYxOQ==",
+                        "priceV2": {
+                          "amount": "220.0",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDY5ODY0MzU=",
+                          "title": "ASICS TIGER | GEL-LYTE V '30 YEARS OF GEL'",
+                          "handle": "asics-tiger-gel-lyte-v-30-years-of-gel-pack",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NTA2MzU0NjA4MDM=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/343bfbfc1a10a39a528a3d34367669c2-removebg-preview_128x128.png?v=1622030186"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "quantity": 1,
+                      "title": "Beanie",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg5NjYwODg5OTI2Nw==",
+                        "priceV2": {
+                          "amount": "12.5",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDQ2NjcxNjQ4Njc=",
+                          "title": "Beanie",
+                          "handle": "beanie",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NjkxNjc4MjkxODc=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/AnyConv.com__image_7_128x128.png?v=1622196704"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "quantity": 1,
+                      "title": "VANS | CLASSIC SUPER NO SHOW SOCKS 3 PACK",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg3MjM4NTkwODkzMQ==",
+                        "priceV2": {
+                          "amount": "19.95",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDgxNjYwODM=",
+                          "title": "VANS | CLASSIC SUPER NO SHOW SOCKS 3 PACK",
+                          "handle": "vans-apparel-and-accessories-classic-super-no-show-socks-3-pack-white",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NTA3Mzg4MTEwNzU=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/ccba62c19289e4b5f14b180c05836614-removebg-preview_128x128.png?v=1622031009"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "node": {
+                      "quantity": 1,
+                      "title": "ADIDAS | CLASSIC BACKPACK | LEGEND INK",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg3MjM4NjkyNDczOQ==",
+                        "priceV2": {
+                          "amount": "50.0",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDg1NTkyOTk=",
+                          "title": "ADIDAS | CLASSIC BACKPACK | LEGEND INK",
+                          "handle": "adidas-classic-backpack-legend-ink-multicolour",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NTA1OTkwMjI3ODc=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/8072c8b5718306d4be25aac21836ce16-removebg-preview_128x128.png?v=1622029824"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "cursor": "eyJsYXN0X2lkIjozODkzMDc5MzEwNTMxLCJsYXN0X3ZhbHVlIjoiMjAyMS0wNi0yMCAxMTozMjowNC4wMDAwMDAifQ==",
+            "node": {
+              "id": "Z2lkOi8vc2hvcGlmeS9PcmRlci8zODkzMDc5MzEwNTMxP2tleT0yNzUwYjkwODVmOTJkODEzODYxNGIyODk5M2VkOTFmMA==",
+              "name": "#1049",
+              "subtotalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "12.5"
+              },
+              "totalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "17.45"
+              },
+              "totalShippingPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "4.95"
+              },
+              "fulfillmentStatus": "UNFULFILLED",
+              "processedAt": "2021-06-20T11:32:04Z",
+              "lineItems": {
+                "edges": [
+                  {
+                    "node": {
+                      "quantity": 1,
+                      "title": "Beanie",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg5NjYwODg5OTI2Nw==",
+                        "priceV2": {
+                          "amount": "12.5",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDQ2NjcxNjQ4Njc=",
+                          "title": "Beanie",
+                          "handle": "beanie",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NjkxNjc4MjkxODc=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/AnyConv.com__image_7_128x128.png?v=1622196704"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "cursor": "eyJsYXN0X2lkIjozODg3MjA2MjAzNTg3LCJsYXN0X3ZhbHVlIjoiMjAyMS0wNi0xNyAxNToyMDoyOS4wMDAwMDAifQ==",
+            "node": {
+              "id": "Z2lkOi8vc2hvcGlmeS9PcmRlci8zODg3MjA2MjAzNTg3P2tleT04YzhiMjQwMmZhNmVmODc5N2FiN2E2MGM1OWQxMjExNQ==",
+              "name": "#1047",
+              "subtotalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "50.0"
+              },
+              "totalPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "54.95"
+              },
+              "totalShippingPriceV2": {
+                "currencyCode": "EUR",
+                "amount": "4.95"
+              },
+              "fulfillmentStatus": "UNFULFILLED",
+              "processedAt": "2021-06-17T15:20:29Z",
+              "lineItems": {
+                "edges": [
+                  {
+                    "node": {
+                      "quantity": 1,
+                      "title": "NIKE | CRACKLE PRINT TB TEE",
+                      "variant": {
+                        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg3MjM4MjY2NDg5OQ==",
+                        "priceV2": {
+                          "amount": "50.0",
+                          "currencyCode": "EUR"
+                        },
+                        "product": {
+                          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDc0Nzc5NTU=",
+                          "title": "NIKE | CRACKLE PRINT TB TEE",
+                          "handle": "nike-crackle-print-tb-tee",
+                          "images": {
+                            "edges": [
+                              {
+                                "node": {
+                                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMjg2NTA2OTEzOTU3Nzk=",
+                                  "transformedSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/62a3dd0421fc5ccf4df6815b3694d734-removebg-preview_128x128.png?v=1622030676"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

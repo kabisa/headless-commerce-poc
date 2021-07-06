@@ -1,0 +1,132 @@
+{
+  "data": {
+    "products": {
+      "pageInfo": {
+        "hasNextPage": false,
+        "hasPreviousPage": false
+      },
+      "edges": [
+        {
+          "node": {
+            "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDY0MjkzNzk=",
+            "title": "VANS |AUTHENTIC | LO PRO",
+            "vendor": "VANS",
+            "handle": "vans-authentic-lo-pro-burgandy-white",
+            "priceRange": {
+              "minVariantPrice": {
+                "amount": "29.0",
+                "currencyCode": "EUR"
+              }
+            },
+            "images": {
+              "pageInfo": {
+                "hasNextPage": true,
+                "hasPreviousPage": false
+              },
+              "edges": [
+                {
+                  "node": {
+                    "originalSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/81ae3a034de733944fd314f6d27c844f-removebg-preview.png?v=1622031560",
+                    "altText": null,
+                    "width": 532,
+                    "height": 469
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDY0NjIxNDc=",
+            "title": "VANS | AUTHENTIC | (MULTI EYELETS)",
+            "vendor": "VANS",
+            "handle": "vans-authentic-multi-eyelets-gradient-crimson",
+            "priceRange": {
+              "minVariantPrice": {
+                "amount": "99.95",
+                "currencyCode": "EUR"
+              }
+            },
+            "images": {
+              "pageInfo": {
+                "hasNextPage": true,
+                "hasPreviousPage": false
+              },
+              "edges": [
+                {
+                  "node": {
+                    "originalSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/be935fef3876ebfdd8e3f0760406d363-removebg-preview.png?v=1622031669",
+                    "altText": null,
+                    "width": 458,
+                    "height": 458
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDY1NjA0NTE=",
+            "title": "VANS | AUTHENTIC (BUTTERFLY) TRUE",
+            "vendor": "VANS",
+            "handle": "vans-authentic-butterfly-true-white-black",
+            "priceRange": {
+              "minVariantPrice": {
+                "amount": "109.95",
+                "currencyCode": "EUR"
+              }
+            },
+            "images": {
+              "pageInfo": {
+                "hasNextPage": true,
+                "hasPreviousPage": false
+              },
+              "edges": [
+                {
+                  "node": {
+                    "originalSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/883c6488076367d30ddd8481164ec7e2-removebg-preview.png?v=1622031122",
+                    "altText": null,
+                    "width": 532,
+                    "height": 469
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY2OTgyMDY2OTE1MjM=",
+            "title": "VANS | ERA 59 MOROCCAN | GEO\/DRESS",
+            "vendor": "VANS",
+            "handle": "vans-era-59-moroccan-geo-dress-blues",
+            "priceRange": {
+              "minVariantPrice": {
+                "amount": "119.95",
+                "currencyCode": "EUR"
+              }
+            },
+            "images": {
+              "pageInfo": {
+                "hasNextPage": true,
+                "hasPreviousPage": false
+              },
+              "edges": [
+                {
+                  "node": {
+                    "originalSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/7902bf65776d504e75f86c8e8781d802-removebg-preview.png?v=1622031081",
+                    "altText": null,
+                    "width": 532,
+                    "height": 469
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

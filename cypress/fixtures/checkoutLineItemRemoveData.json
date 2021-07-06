@@ -1,0 +1,33 @@
+{
+  "data": {
+    "checkoutLineItemsRemove": {
+      "checkoutUserErrors": [],
+      "checkout": {
+        "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dC83ZWNkYmE5N2Q1NWQzZTU1MzM4NmIwOThlMjJkYzNjMz9rZXk9Y2VmMTg5NzliNTcwNjU1YWU5NTk0ZDAwZGU4ODdjNWQ=",
+        "webUrl": "https:\/\/kabisa-poc.myshopify.com\/57208209603\/checkouts\/7ecdba97d55d3e553386b098e22dc3c3?key=cef18979b570655ae9594d00de887c5d",
+        "subtotalPriceV2": {
+          "amount": "0.0",
+          "currencyCode": "EUR"
+        },
+        "totalTaxV2": {
+          "amount": "0.0",
+          "currencyCode": "EUR"
+        },
+        "totalPriceV2": {
+          "amount": "0.0",
+          "currencyCode": "EUR"
+        },
+        "completedAt": null,
+        "createdAt": "2021-07-02T12:02:40Z",
+        "taxesIncluded": true,
+        "lineItems": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "hasPreviousPage": false
+          },
+          "edges": []
+        }
+      }
+    }
+  }
+}

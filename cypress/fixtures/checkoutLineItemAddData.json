@@ -1,0 +1,66 @@
+{
+  "data": {
+    "checkoutLineItemsAdd": {
+      "checkoutUserErrors": [],
+      "checkout": {
+        "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dC83NzJjM2EyMGY2NGVjYmU4OWQwZDY3YzZjMDE4Yjg0Nj9rZXk9NTI2NWY0ZWEzMWRlNjYzOWZlMTZiYWI0Yzk4MGViY2E=",
+        "webUrl": "https:\/\/kabisa-poc.myshopify.com\/57208209603\/checkouts\/772c3a20f64ecbe89d0d67c6c018b846?key=5265f4ea31de6639fe16bab4c980ebca",
+        "subtotalPriceV2": {
+          "amount": "25.0",
+          "currencyCode": "EUR"
+        },
+        "totalTaxV2": {
+          "amount": "0.0",
+          "currencyCode": "EUR"
+        },
+        "totalPriceV2": {
+          "amount": "25.0",
+          "currencyCode": "EUR"
+        },
+        "completedAt": null,
+        "createdAt": "2021-07-02T11:58:45Z",
+        "taxesIncluded": true,
+        "lineItems": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "hasPreviousPage": false
+          },
+          "edges": [
+            {
+              "node": {
+                "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzM5ODk2NzQ1NTc0NTk1MD9jaGVja291dD03NzJjM2EyMGY2NGVjYmU4OWQwZDY3YzZjMDE4Yjg0Ng==",
+                "title": "Short sleeve T-Shirt",
+                "variant": {
+                  "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTg5Njc0NTU3NDU5NQ==",
+                  "sku": "",
+                  "title": "White",
+                  "selectedOptions": [
+                    {
+                      "name": "Color",
+                      "value": "White"
+                    }
+                  ],
+                  "image": {
+                    "originalSrc": "https:\/\/cdn.shopify.com\/s\/files\/1\/0572\/0820\/9603\/products\/AnyConv.com__image_10.png?v=1622198934",
+                    "altText": null,
+                    "width": 1080,
+                    "height": 1080
+                  },
+                  "priceV2": {
+                    "amount": "25.0",
+                    "currencyCode": "EUR"
+                  },
+                  "compareAtPriceV2": null,
+                  "product": {
+                    "handle": "short-sleeve-t-shirt"
+                  }
+                },
+                "quantity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

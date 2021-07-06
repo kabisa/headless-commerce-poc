@@ -1,8 +1,11 @@
 import customerAccessTokenCreateMutation from "../framework/shopify/utils/mutations/customer-access-token-create";
 import doFetch from "./doFetch";
-import {CustomerAccessToken} from "@framework/schema";
+import { CustomerAccessToken } from "@framework/schema";
+import customerAccessTokenCreateData from "../cypress/fixtures/customerAccessTokenCreateData.json";
 
 export const customerAccessTokenCreate = async (): Promise<string> => {
+
+  fetchMock.mockResponseOnce(JSON.stringify(customerAccessTokenCreateData))
 
   const tokenBody = {
     variables: { input: { email: "janwillemvanbremen@live.nl", password: "JanWillem123" }},
