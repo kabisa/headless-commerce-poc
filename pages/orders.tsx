@@ -10,8 +10,8 @@ import { useRouter } from "next/router";
 import _ from "lodash";
 
 
-const loadingPlaceholder = _.times(3, (i) => {
-  return <Skeleton key={i} style={{width: '100%', height: '600px'}} duration={'4s'}/>
+const loadingPlaceholder = _.times(4, (i) => {
+  return <Skeleton key={i} style={{width: '100%', minHeight: '600px', marginTop: '1em', flexShrink: 1, flexBasis: '49%'}} duration={'4s'}/>
 });
 
 export default function Orders(): JSX.Element {
@@ -57,8 +57,8 @@ export default function Orders(): JSX.Element {
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
-      {!isLoading || hasLoaded ?
       <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+        {!isLoading || hasLoaded ? <>
         {orders.length ? orders.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
@@ -76,9 +76,9 @@ export default function Orders(): JSX.Element {
             </p>
           </div>
         }
-      </div> : <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
-          {loadingPlaceholder}
-        </div> }
+          </>
+          : loadingPlaceholder }
+      </div>
     </Container>
   )
 }
