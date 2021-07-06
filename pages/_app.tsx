@@ -25,7 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </Layout>
         <NextNprogress
-          color="var(--secondary)"
+          color="var(--kabisa)"
           startPosition={0.3}
           stopDelayMs={200}
           height={3}

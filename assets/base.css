@@ -41,6 +41,8 @@
 
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Helvetica', sans-serif;
+
+  --kabisa: #55cd96;
 }
 
 [data-theme='dark'] {

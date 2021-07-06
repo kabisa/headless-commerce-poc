@@ -8,6 +8,7 @@ import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
+import Kabisa from "@components/icons/Kabisa";
 
 interface Props {
   className?: string
@@ -31,12 +32,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
+            <Link href="https://kabisa.nl/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-accent-6 mr-2">
+                <span className="mr-2">
                   <Logo />
                 </span>
-                <span>ACME</span>
+                <span>Kabisa</span>
               </a>
             </Link>
           </div>
@@ -58,7 +59,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <a
                 className={s.link}
                 aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
+                href="https://github.com/kabisa/headless-commerce-poc"
               >
                 <Github />
               </a>
@@ -66,12 +67,25 @@ const Footer: FC<Props> = ({ className, pages }) => {
             </div>
           </div>
         </div>
-        <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
+        <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4 font-medium">
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
+            <span>&copy; 2021 Kabisa B.V. All rights reserved.</span>
           </div>
           <div className="flex items-center text-primary text-sm">
             <span className="text-primary">Created by</span>
+            <a
+              rel="noopener noreferrer"
+              href="https://kabisa.nl"
+              aria-label="Kabisa.nl Link"
+              target="_blank"
+              className="text-primary"
+            >
+              <Kabisa
+                className="inline-block h-6 mx-2 text-primary"
+                alt="Kabisa.nl Logo"
+              />
+            </a>
+            <span className="text-primary hidden xsm:inline-block">&</span>
             <a
               rel="noopener noreferrer"
               href="https://vercel.com"
@@ -80,7 +94,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               className="text-primary"
             >
               <Vercel
-                className="inline-block h-6 ml-3 text-primary"
+                className="hidden h-6 ml-2 text-primary xsm:inline-block"
                 alt="Vercel.com Logo"
               />
             </a>

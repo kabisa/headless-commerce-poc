@@ -1,5 +1,6 @@
 import { VFC } from 'react'
 import { Logo, Input } from '@components/ui'
+import Kabisa from "@components/icons/Kabisa";
 
 const LogoutView: VFC = () => {
   return (
@@ -7,7 +8,7 @@ const LogoutView: VFC = () => {
       className="w-80 flex flex-col justify-between p-3"
     >
       <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
+        <Kabisa/>
       </div>
       <div className="flex flex-col space-y-3">
           <span className="text-center text-xl">Successfully logged out!</span>
