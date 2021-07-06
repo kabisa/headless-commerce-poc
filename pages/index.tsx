@@ -7,7 +7,6 @@ import { OrderEdge, OrderLineItemEdge } from "@framework/schema";
 import React, { useEffect, useState } from "react";
 import useSearch from "@framework/product/use-search";
 import _ from "lodash";
-import {Product} from "@commerce/types/product";
 
 export async function getStaticProps({
   preview,
@@ -49,9 +48,10 @@ export default function Home({
   locale
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
-  const [productList, setProductList] = useState<Array<Product>>(products)
+  const [productList, setProductList] = useState<typeof products>(products)
+  const productListCopy = [...productList]
 
-  const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 } ) // Get customer orders
+    const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 } ) // Get customer orders
 
   const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
     brandId: _.sample(orderedBrands),
@@ -59,12 +59,11 @@ export default function Home({
   })
 
   useEffect(() => {
-    customerOrders?.orders.edges.map((order: OrderEdge) => { // Iterate through orders and brands
-      order.node.lineItems.edges.map((item: OrderLineItemEdge) => {
-        if (item.node.variant?.product.vendor && orderedBrands.indexOf(item.node.variant?.product.vendor) === -1) {
-            const orderedBrandsCopy = orderedBrands;
-            orderedBrandsCopy.push(item.node.variant?.product.vendor) // Collect ordered brands
-            setOrderedBrands(orderedBrandsCopy) // Set ordered brands
+    customerOrders?.orders.edges.map((order: OrderEdge) => { // Iterate through orders
+      order.node.lineItems.edges.map((item: OrderLineItemEdge) => { // Iterate through ordered items
+        if (item.node.variant?.product.vendor && orderedBrands.indexOf(item.node.variant.product.vendor) === -1) { // If vendor is known and doesn't exist in orderedBrands list yet
+            const vendor = item.node.variant.product.vendor
+            setOrderedBrands(previousOrderedBrands => [...previousOrderedBrands, vendor]) // Collect list of ordered brands
         }
       })
     })
@@ -72,17 +71,15 @@ export default function Home({
 
   useEffect(() => {
     const recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
-    if (recommendedProduct) {
-      const result = productList.findIndex(product => { return product.id === recommendedProduct?.id}) // Check if recommended product already exists in list of products
-      if (result != -1) { productList.splice(result, 1) } // If it exists remove it
-      recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
-      if (!productList.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
-          const productListCopy = productList
-          productListCopy.unshift(recommendedProduct)
-          setProductList(productListCopy) // Add recommended product to beginning of list
+      if (recommendedProduct) {
+          const result = productListCopy.findIndex(product => { return product.id === recommendedProduct?.id}) // Check if recommended product already exists in list of products
+          if (result != -1) { productListCopy.splice(result, 1) } // If it exists remove it
+          recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
+          if (!productListCopy.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
+              setProductList([recommendedProduct ,...productListCopy]) // Add recommended product to beginning of list
+          }
       }
-    }
-  }, [products, recommendedProducts?.products])
+  }, [productList, productListCopy, products, recommendedProducts?.products])
 
   return (
     <>
@@ -126,7 +123,7 @@ export default function Home({
       {/*  ))}*/}
       {/*</Marquee>*/}
        <HomeAllProductsGrid
-        products={products}
+        products={productList}
         categories={categories}
         brands={brands}
       />
