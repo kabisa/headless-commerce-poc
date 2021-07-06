@@ -32,7 +32,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
-            <Link href={"https://kabisa.nl/"}>
+            <Link href="https://kabisa.nl/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
                 <span className="mr-2">
                   <Logo />
