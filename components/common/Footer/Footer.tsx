@@ -37,7 +37,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <span className="mr-2">
                   <Logo />
                 </span>
-                <span>kabisa</span>
+                <span>Kabisa</span>
               </a>
             </Link>
           </div>
@@ -85,7 +85,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 alt="Kabisa.nl Logo"
               />
             </a>
-            <span className="text-primary">&</span>
+            <span className="text-primary hidden xsm:inline-block">&</span>
             <a
               rel="noopener noreferrer"
               href="https://vercel.com"
@@ -94,7 +94,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               className="text-primary"
             >
               <Vercel
-                className="inline-block h-6 ml-2 text-primary"
+                className="hidden h-6 ml-2 text-primary xsm:inline-block"
                 alt="Vercel.com Logo"
               />
             </a>
