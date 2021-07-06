@@ -12,7 +12,7 @@ jobs:
           prod-url: https://headless-commerce-poc-alianza.vercel.app/
           token: yXpD9B1UQ48ixgz5PaHbtC9j # Should be secret!
           await-build: true
-          timeout: 300
+          timeout: 360
       - name: Echo preview url
         run: echo ${{ steps.wait-for-vercel.outputs.url }}
 
