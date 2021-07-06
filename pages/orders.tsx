@@ -1,5 +1,5 @@
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
+import { Container, Skeleton, Text } from '@components/ui'
 import { useCustomerOrders } from "@framework/customer";
 import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
@@ -7,11 +7,17 @@ import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
 import throttle from "lodash.throttle";
 import { useRouter } from "next/router";
+import _ from "lodash";
+
+const loadingPlaceholder = _.times(3, (i) => {
+  return <Skeleton key={i} style={{width: '100%', height: '600px'}}/>
+});
 
 export default function Orders(): JSX.Element {
   const [cursor, setCursor]     = useState<string | null>(null);
   const [orders, setOrders]     = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
+  const [hasLoaded, setHasLoaded] = useState<boolean>(false)
   const router = useRouter()
 
   const { data, isLoading } = useCustomerOrders({ numberOfOrders: 10, cursor } )
@@ -28,6 +34,7 @@ export default function Orders(): JSX.Element {
 
   useEffect(() => { // Append new orders to previous orders
     if (!data?.orders.edges) return;
+    setHasLoaded(true)
     setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
   }, [data?.orders.edges])
 
@@ -49,9 +56,8 @@ export default function Orders(): JSX.Element {
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
-      {!isLoading &&
-      <div
-        className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+      {!isLoading || hasLoaded ?
+      <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
         {orders.length ? orders.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
@@ -69,8 +75,9 @@ export default function Orders(): JSX.Element {
             </p>
           </div>
         }
-      </div>
-      }
+      </div> : <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+          {loadingPlaceholder}
+        </div> }
     </Container>
   )
 }

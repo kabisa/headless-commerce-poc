@@ -2,7 +2,11 @@
   @apply block w-full rounded-md p-4 border border-solid border-border-1 relative my-4 flex-grow flex-shrink-0;
   flex-basis: 49%;
 
-  &:last-child {
+  &:first-of-type {
+    @apply mt-0;
+  }
+
+  &:last-of-type {
     @apply mb-0;
   }
 
