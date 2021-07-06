@@ -26,7 +26,6 @@ const links = [
 
 const Footer: FC<Props> = ({ className, pages }) => {
   const { theme, setTheme } = useTheme()
-  
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
 
@@ -61,11 +60,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
             <div className="flex space-x-3 items-center h-10">
               <a className={cn(s.link, 'cursor-pointer')}
                 onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark')}} >
-                  {theme == 'dark' ? (
-                    <Moon width={24} height={24} />
-                  ) : (
-                    <Sun width={24} height={24} />
-                  )}
+                {theme === 'dark' ? <Moon width={24} height={24} /> : <Sun width={24} height={24}/> }
               </a>
               <a className={s.link}
                 aria-label="Github Repository"
