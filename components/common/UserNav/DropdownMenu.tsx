@@ -113,7 +113,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   {theme == 'dark' ? (
                     <Moon width={20} height={20} />
                   ) : (
-                    <Sun width="20" height={20} />
+                    <Sun width={20} height={20} />
                   )}
                 </div>
               </a>
