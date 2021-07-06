@@ -9,8 +9,9 @@ import throttle from "lodash.throttle";
 import { useRouter } from "next/router";
 import _ from "lodash";
 
+
 const loadingPlaceholder = _.times(3, (i) => {
-  return <Skeleton key={i} style={{width: '100%', height: '600px'}}/>
+  return <Skeleton key={i} style={{width: '100%', height: '600px'}} duration={'4s'}/>
 });
 
 export default function Orders(): JSX.Element {
