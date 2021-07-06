@@ -7,6 +7,7 @@ import { OrderEdge, OrderLineItemEdge } from "@framework/schema";
 import React, { useEffect, useState } from "react";
 import useSearch from "@framework/product/use-search";
 import _ from "lodash";
+import {Product} from "@commerce/types/product";
 
 export async function getStaticProps({
   preview,
@@ -48,6 +49,7 @@ export default function Home({
   locale
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
+  const [productList, setProductList] = useState<Array<Product>>(products)
 
   const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 } ) // Get customer orders
 
@@ -60,8 +62,9 @@ export default function Home({
     customerOrders?.orders.edges.map((order: OrderEdge) => { // Iterate through orders and brands
       order.node.lineItems.edges.map((item: OrderLineItemEdge) => {
         if (item.node.variant?.product.vendor && orderedBrands.indexOf(item.node.variant?.product.vendor) === -1) {
-          orderedBrands.push(item.node.variant?.product.vendor) // Collect ordered brands
-          setOrderedBrands(orderedBrands) // Set ordered brands
+            const orderedBrandsCopy = orderedBrands;
+            orderedBrandsCopy.push(item.node.variant?.product.vendor) // Collect ordered brands
+            setOrderedBrands(orderedBrandsCopy) // Set ordered brands
         }
       })
     })
@@ -70,11 +73,13 @@ export default function Home({
   useEffect(() => {
     const recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
     if (recommendedProduct) {
-      const result = products.findIndex(product => { return product.id === recommendedProduct?.id}) // Check if recommended product already exists in list of products
-      if (result != -1) { products.splice(result, 1) } // If it exists remove it
+      const result = productList.findIndex(product => { return product.id === recommendedProduct?.id}) // Check if recommended product already exists in list of products
+      if (result != -1) { productList.splice(result, 1) } // If it exists remove it
       recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
-      if (!products.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
-        products.unshift(recommendedProduct) // Add recommended product to beginning of list
+      if (!productList.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
+          const productListCopy = productList
+          productListCopy.unshift(recommendedProduct)
+          setProductList(productListCopy) // Add recommended product to beginning of list
       }
     }
   }, [products, recommendedProducts?.products])
