@@ -35,9 +35,6 @@ test('Normalize products', async () => {
     products.edges.forEach(product => {
         const normalizedProduct = normalizeProduct(product.node);
 
-        console.log(product);
-        console.log(normalizedProduct);
-
         expect(normalizedProduct.name).toBe(product.node.title)
         expect(normalizedProduct.slug).toBe(product.node.handle)
         expect(normalizedProduct.price).toStrictEqual({
