@@ -1,17 +1,9 @@
-import { enableFetchMocks } from 'jest-fetch-mock'
-enableFetchMocks()
+import fetchMock from 'jest-fetch-mock'
 import { getCustomerOrdersQuery } from "@framework/utils";
 import { Customer } from "@framework/schema";
 import { customerAccessTokenCreate } from "./customerAccessTokenCreate";
 import doFetch from "./doFetch";
-import { expect } from '@jest/globals';
-import { config } from "dotenv";
-import customerAccessTokenCreateData from "../cypress/fixtures/customerAccessTokenCreateData.json";
 import customerOrdersData from "../cypress/fixtures/getCustomerOrdersData.json";
-
-beforeAll(() => {
-  config({ path: '.env.local' })
-})
 
 let customerAccessToken: string;
 
