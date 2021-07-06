@@ -51,7 +51,7 @@ export default function Home({
     const [productList, setProductList] = useState<typeof products>(products)
     const productListCopy = [...productList]
 
-    const { data: customerOrders } = useCustomerOrders({numberOfOrders: 3}) // Get customer orders
+    const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
 
     const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
         brandId: _.sample(orderedBrands),
