@@ -1,5 +1,5 @@
-import { enableFetchMocks } from 'jest-fetch-mock'
-import { config } from "dotenv";
+const fetchMock = require('jest-fetch-mock');
+const dotenv = require("dotenv");
 
-config({path: '.env.local'})
-enableFetchMocks()
+dotenv.config({path: '.env.local'})
+fetchMock.enableFetchMocks()
