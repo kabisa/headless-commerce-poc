@@ -1,3 +1,17 @@
-.listItem {
-  @apply block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8;
+.listContainer {
+  @apply origin-top-left absolute lg:relative left-0 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block;
+
+  & .list {
+    & .listTitle {
+      & .listLink {
+        @apply block lg:inline-block py-2 px-4 text-base font-bold tracking-wide lg:hover:bg-transparent hover:bg-primary-2 lg:px-0 lg:py-1;
+      }
+    }
+
+    & .listItem {
+      & .listLink {
+        @apply block lg:inline-block py-1 px-4 text-accent-8 text-base hover:underline lg:hover:bg-transparent hover:bg-primary-2 lg:px-0;
+      }
+    }
+  }
 }
