@@ -69,6 +69,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-20">
         <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
+          <div className="top-[74px] static lg:sticky">
           {/* Categories */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
@@ -86,7 +87,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
             <div
-              className={cn(s.listContainer, 'mt-1', activeFilter !== 'categories' || !toggleFilter ? 'hidden' : '')}>
+              className={cn(s.listContainer, activeFilter !== 'categories' || !toggleFilter ? 'hidden' : '')}>
               <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
                 <div
                   role="menu"
@@ -153,6 +154,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </div>
             </div>
           </div>
+        </div>
         </div>
         {/* Products */}
         <div className="col-span-8 order-3 lg:order-none">
