@@ -1,5 +1,5 @@
 .root {
-  @apply pb-12 pt-4 flex flex-col w-full px-6;
+  @apply pb-12 flex flex-col w-full px-6;
 
   @screen md {
     @apply flex-row;
@@ -14,10 +14,22 @@
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12;
+    @apply flex flex-row w-full justify-around mb-12 mt-1;
 
     @screen md {
-      @apply mb-0 block sticky top-20;
+      @apply mb-0 block sticky;
+    }
+
+    & .listTitle {
+      & .listLink {
+        @apply block lg:inline-block py-2 px-4 text-base font-bold tracking-wide lg:hover:bg-transparent hover:bg-primary-2 lg:px-0 lg:py-1;
+      }
+    }
+
+    & .listItem {
+      & .listLink {
+        @apply block lg:inline-block py-1 px-4 text-accent-8 text-base hover:underline lg:hover:bg-transparent hover:bg-primary-2 lg:px-0;
+      }
     }
   }
 }
