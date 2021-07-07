@@ -6,17 +6,17 @@
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12 mt-1 md:mb-0 md:block md:sticky;
+    @apply flex flex-row w-full justify-around mb-12 mt-1 md:mb-0 md:block md:sticky md:top-[74px];
 
     & .listTitle {
       & .listLink {
-        @apply block lg:inline-block py-2 px-4 text-base font-bold tracking-wide lg:hover:bg-transparent hover:bg-primary-2 lg:px-0 lg:py-1;
+        @apply inline-block py-2 px-4 text-base font-bold tracking-wide hover:underline px-0 py-1;
       }
     }
 
     & .listItem {
       & .listLink {
-        @apply block lg:inline-block py-1 px-4 text-accent-8 text-base hover:underline lg:hover:bg-transparent hover:bg-primary-2 lg:px-0;
+        @apply inline-block py-1 px-4 text-accent-8 text-base hover:underline px-0;
       }
     }
   }
