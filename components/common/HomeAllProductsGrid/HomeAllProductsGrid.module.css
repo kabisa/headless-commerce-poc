@@ -6,7 +6,7 @@
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12 mt-1 md:mb-0 md:block md:sticky md:top-[74px];
+    @apply flex flex-row w-full justify-around mb-12 md:mb-0 md:block md:sticky md:top-[126px] lg:top-[74px];
 
     & .listTitle {
       & .listLink {
