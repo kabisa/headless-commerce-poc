@@ -44,7 +44,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               <Link href={"/search?q=shoes"}>
                 <a className={menuItemClassName('search','q', 'shoes')}>Shoes</a>
               </Link>
-              {/*{links?.map((l) => (  // Map links received from shopify */ }
+              {/*{links?.map((l) => ( // Map links received from shopify*/}
               {/*  <Link href={l.href} key={l.href}>*/}
               {/*    <a className={s.link}>{l.label}</a>*/}
               {/*  </Link>*/}
