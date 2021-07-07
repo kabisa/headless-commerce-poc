@@ -23,8 +23,6 @@
   }
 }
 
-@screen xl {
-  .title {
-    @apply text-6xl;
-  }
+.title {
+  @apply xl:text-6xl;
 }

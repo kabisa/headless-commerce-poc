@@ -1,24 +1,12 @@
 .root {
-  @apply pb-12 flex flex-col w-full px-6;
-
-  @screen md {
-    @apply flex-row;
-  }
+  @apply pb-12 flex flex-col w-full px-6 md:flex-row;
 
   & .asideWrapper {
-    @apply pr-3 w-full relative;
-
-    @screen md {
-      @apply w-48;
-    }
+    @apply pr-3 w-full relative md:w-48;
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12 mt-1;
-
-    @screen md {
-      @apply mb-0 block sticky;
-    }
+    @apply flex flex-row w-full justify-around mb-12 mt-1 md:mb-0 md:block md:sticky;
 
     & .listTitle {
       & .listLink {
