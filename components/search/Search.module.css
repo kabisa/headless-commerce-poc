@@ -3,14 +3,18 @@
 
   & .list {
     & .listTitle {
+      @apply py-2 px-4 lg:px-0 lg:py-1 lg:hover:bg-transparent hover:bg-primary-2;
+
       & .listLink {
-        @apply block py-2 px-4 text-base font-bold tracking-wide lg:hover:bg-transparent hover:bg-primary-2 lg:px-0 lg:py-1;
+        @apply block text-base font-bold tracking-wide;
       }
     }
 
     & .listItem {
+      @apply py-1 px-4 lg:px-0 lg:hover:bg-transparent hover:bg-primary-2;
+
       & .listLink {
-        @apply block py-1 px-4 text-accent-8 text-base hover:underline lg:hover:bg-transparent hover:bg-primary-2 lg:px-0;
+        @apply block text-accent-8 text-base hover:underline;
       }
     }
   }
