@@ -81,7 +81,7 @@ export default function Home({
                 }
             }
         }
-    }, [customerOrders, productList, products, recommendedProducts?.products])
+    }, [customerOrders, productList, recommendedProducts?.products])
 
   return (
     <>
