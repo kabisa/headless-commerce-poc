@@ -11,6 +11,7 @@ interface SkeletonProps {
   width?: string | number
   height?: string | number
   boxHeight?: string | number
+  duration?: string
 }
 
 const Skeleton: React.FC<SkeletonProps> = ({
@@ -21,6 +22,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   className,
   show = true,
   boxHeight = height,
+  duration,
 }) => {
   // Automatically calculate the size if there are children
   // and no fixed sizes are specified
@@ -45,6 +47,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
               minWidth: px(width),
               minHeight: px(height),
               marginBottom: `calc(${px(boxHeight)} - ${px(height)})`,
+              animationDuration: duration,
               ...style,
             }
       }

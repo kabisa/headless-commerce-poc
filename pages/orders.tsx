@@ -1,5 +1,5 @@
 import { Layout } from '@components/common'
-import { Container, Text } from '@components/ui'
+import { Container, Skeleton, Text } from '@components/ui'
 import { useCustomerOrders } from "@framework/customer";
 import { Bag } from "@components/icons";
 import OrderCard from "@components/orders/OrderCard";
@@ -7,14 +7,21 @@ import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
 import throttle from "lodash.throttle";
 import { useRouter } from "next/router";
+import _ from "lodash";
+
+
+const loadingPlaceholder = _.times(4, (i) => {
+  return <Skeleton key={i} style={{width: '100%', minHeight: '600px', marginTop: '1em', flexShrink: 1, flexBasis: '49%'}} duration={'4s'}/>
+});
 
 export default function Orders(): JSX.Element {
   const [cursor, setCursor]     = useState<string | null>(null);
   const [orders, setOrders]     = useState<OrderEdge[]>([])
   const [atBottom, setAtBottom] = useState<boolean>(false)
+  const [hasLoaded, setHasLoaded] = useState<boolean>(false)
   const router = useRouter()
 
-  const { data } = useCustomerOrders({ numberOfOrders: 10, cursor } )
+  const { data, isLoading } = useCustomerOrders({ numberOfOrders: 10, cursor } )
 
   useEffect(() => { // When scrolled to bottom, if there are more items available, load them by setting new cursor
     if (atBottom) {
@@ -28,6 +35,7 @@ export default function Orders(): JSX.Element {
 
   useEffect(() => { // Append new orders to previous orders
     if (!data?.orders.edges) return;
+    setHasLoaded(true)
     setOrders(prevOrders => [...prevOrders, ...data.orders.edges])
   }, [data?.orders.edges])
 
@@ -37,7 +45,7 @@ export default function Orders(): JSX.Element {
     const scrollListener = throttle(function () {
       if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footer.offsetHeight)) {
         setAtBottom(true);
-    } }, 500);
+      } }, 500);
 
     window.addEventListener('scroll', scrollListener)
 
@@ -49,8 +57,8 @@ export default function Orders(): JSX.Element {
   return (
     <Container>
       <Text variant="pageHeading">My Orders</Text>
-      <div
-        className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+      <div className="flex-1 pt-4 lg:px-24 sm:px-12 flex flex-col flex-wrap 2xl:flex-row justify-center md:items-start gap-4 items-center">
+        {!isLoading || hasLoaded ? <>
         {orders.length ? orders.map((order) => (
             <OrderCard key={order.node.id} order={order}/>
           ))
@@ -68,6 +76,8 @@ export default function Orders(): JSX.Element {
             </p>
           </div>
         }
+          </>
+          : loadingPlaceholder }
       </div>
     </Container>
   )

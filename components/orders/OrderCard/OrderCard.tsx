@@ -3,7 +3,6 @@ import { OrderEdge } from "@framework/schema";
 import s from './OrderCard.module.css'
 import { capitalize } from "@lib/capitalize";
 import { displayAmount } from "@lib/displayAmount";
-import Image from "next/image";
 
 interface Props {
   order: OrderEdge
