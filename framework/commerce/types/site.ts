@@ -5,7 +5,13 @@ export type Category = {
   path: string
 }
 
-export type Brand = any
+export type Brand = {
+  node: {
+    entityId: string,
+    name: string,
+    path: string
+  }
+}
 
 export type SiteTypes = {
   category: Category
