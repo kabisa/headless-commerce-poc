@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types/product'
+import { Category } from "@commerce/types/site";
 import { Container, Skeleton } from '@components/ui'
 import s from './Search.module.css'
 import { ChevronDown, ChevronUp } from "@components/icons";
@@ -99,10 +100,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         <a className={s.listLink} onClick={() => handleClick('categories')}> All Categories</a>
                       </Link>
                     </li>
-                    {categories.map((cat) => (
-                      <li key={cat.path} className={cn(s.listItem, { underline: activeCategory?.id === cat.id, } )}>
-                        <Link href={{ pathname: getCategoryPath(cat.path, brand), query,}}>
-                          <a className={s.listLink} onClick={() => handleClick('categories')}>{cat.name}</a>
+                    {categories.map((category: Category) => (
+                      <li key={category.path} className={cn(s.listItem, { underline: activeCategory?.id === category.id, } )}>
+                        <Link href={{ pathname: getCategoryPath(category.path, brand), query,}}>
+                          <a className={s.listLink} onClick={() => handleClick('categories')}>{category.name}</a>
                         </Link>
                       </li>
                     ))}
