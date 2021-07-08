@@ -6,7 +6,7 @@
       @apply py-2 px-4 lg:px-0 lg:py-1 lg:hover:bg-transparent hover:bg-primary-2;
 
       & .listLink {
-        @apply block text-base font-bold tracking-wide;
+        @apply block text-base font-bold tracking-wide hover:underline;
       }
     }
 
