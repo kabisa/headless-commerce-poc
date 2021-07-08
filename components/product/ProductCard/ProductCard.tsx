@@ -34,6 +34,7 @@ const ProductCard: FC<Props> = ({
   const rootClassName = cn(
     s.root,
     { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    { [s.recommended]: product.description?.includes('-recommended-') },
     className
   )
 

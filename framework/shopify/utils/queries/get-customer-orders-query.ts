@@ -40,6 +40,7 @@ query getCustomerOrders($customerAccessToken: String!, $cursor: String = null, $
                     id
                     title
                     handle
+                    vendor
                     images(first: 1) {
                       edges {
                         node {

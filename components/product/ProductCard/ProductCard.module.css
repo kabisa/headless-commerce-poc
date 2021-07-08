@@ -103,3 +103,11 @@
 .root:global(.secondary) .header span {
   @apply bg-accent-0 text-accent-9;
 }
+
+.recommended {
+
+  &:before {
+    content: 'Recommended for you';
+    @apply bg-secondary text-secondary font-bold transition-colors ease-in-out duration-500 py-2 px-6 bottom-0 right-0 absolute z-10;
+  }
+}
