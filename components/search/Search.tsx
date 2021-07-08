@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types/product'
-import { Category } from "@commerce/types/site";
 import { Container, Skeleton } from '@components/ui'
 import s from './Search.module.css'
 import { ChevronDown, ChevronUp } from "@components/icons";
@@ -44,10 +43,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const query = filterQuery({ sort })
 
   const { pathname, category, brand } = useSearchMeta(asPath)
-  const activeCategory = categories.find((cat: any) => cat.slug === category)
-  const activeBrand = brands.find(
-    (b: any) => getSlug(b.node.path) === `brands/${brand}`
-  )?.node
+  const activeCategory = categories.find((cat) => cat.slug === category)
+  const activeBrand = brands.find((b) => getSlug(b.node.path) === `brands/${brand}`)?.node
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
@@ -100,7 +97,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         <a className={s.listLink} onClick={() => handleClick('categories')}> All Categories</a>
                       </Link>
                     </li>
-                    {categories.map((category: Category) => (
+                    {categories.map((category) => (
                       <li key={category.path} className={cn(s.listItem, { underline: activeCategory?.id === category.id, } )}>
                         <Link href={{ pathname: getCategoryPath(category.path, brand), query,}}>
                           <a className={s.listLink} onClick={() => handleClick('categories')}>{category.name}</a>
@@ -142,10 +139,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         <a className={s.listLink} onClick={() => handleClick('brands')}>All Designers</a>
                       </Link>
                     </li>
-                    {brands.flatMap(({ node }: { node: any }) => (
-                      <li key={node.path} className={cn(s.listItem, {underline: activeBrand?.entityId === node.entityId,})}>
-                        <Link href={{pathname: getDesignerPath(node.path, category), query,}}>
-                          <a className={s.listLink} onClick={() => handleClick( 'brands')}>{node.name}</a>
+                    {brands.map((brand) => (
+                      <li key={brand.node.path} className={cn(s.listItem, {underline: activeBrand?.entityId === brand.node.entityId,})}>
+                        <Link href={{pathname: getDesignerPath(brand.node.path, category), query,}}>
+                          <a className={s.listLink} onClick={() => handleClick( 'brands')}>{brand.node.name}</a>
                         </Link>
                       </li>
                     ))}
