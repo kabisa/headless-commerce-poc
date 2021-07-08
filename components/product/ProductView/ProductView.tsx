@@ -120,7 +120,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                   <h2 className="uppercase font-medium text-sm tracking-wide">
                     {opt.displayName}
                   </h2>
-                  <div className="flex flex-row py-4">
+                  <div className="flex flex-row py-4 pl-1 overflow-auto">
                     {opt.values.map((v, i: number) => {
                       const active = selectedOptions[opt.displayName.toLowerCase()]
                       return (
@@ -130,6 +130,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                           variant={opt.displayName}
                           color={v.hexColors ? v.hexColors[0] : ''}
                           label={v.label}
+                          round={true}
                           onClick={() => {
                             setSelectedOptions((selectedOptions) => {
                               return {

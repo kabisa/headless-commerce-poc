@@ -145,6 +145,11 @@ a {
 div#nprogress .spinner {
   top: 23px;
   right: 31px;
+
+  & .spinner-icon {
+    border-top-color: var(--secondary);
+    border-left-color: var(--secondary);
+  }
 }
 
 /* Scrollbar styles */
