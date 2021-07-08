@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import type { Product } from '@commerce/types/product'
 import { Container, Skeleton } from '@components/ui'
 import s from './Search.module.css'
 import { ChevronDown, ChevronUp } from "@components/icons";
@@ -183,7 +182,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
           )}
           {data ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {data.products.map((product: Product) => (
+              {data.products.map((product) => (
                 <ProductCard
                   variant="simple"
                   key={product.path}
