@@ -1,23 +1,27 @@
 .root {
-  @apply pb-12 pt-4 flex flex-col w-full px-6;
-
-  @screen md {
-    @apply flex-row;
-  }
+  @apply pb-12 flex flex-col w-full px-6 md:flex-row;
 
   & .asideWrapper {
-    @apply pr-3 w-full relative;
-
-    @screen md {
-      @apply w-48;
-    }
+    @apply pr-3 w-full relative md:w-48;
   }
 
   & .aside {
-    @apply flex flex-row w-full justify-around mb-12;
+    @apply flex flex-row w-full justify-around mb-12 md:mb-0 md:block md:sticky md:top-[132px] lg:top-[86px];
 
-    @screen md {
-      @apply mb-0 block sticky top-20;
+    & .listTitle {
+      @apply px-0 py-1;
+
+      & .listLink {
+        @apply block text-base font-bold tracking-wide hover:underline;
+      }
+    }
+
+    & .listItem {
+      @apply py-1 px-0;
+
+      & .listLink {
+        @apply block text-accent-8 text-base hover:underline;
+      }
     }
   }
 }

@@ -22,29 +22,29 @@ const HomeAllProductsGrid: FC<Props> = ({
       <div className={s.asideWrapper}>
         <div className={s.aside}>
           <ul className="mb-10">
-            <li className="py-1 text-base font-bold tracking-wide">
+            <li className={s.listTitle}>
               <Link href={getCategoryPath('')}>
-                <a>All Categories</a>
+                <a className={s.listLink}>All Categories</a>
               </Link>
             </li>
             {categories.map((cat: any) => (
-              <li key={cat.path} className="py-1 text-accent-8 text-base">
+              <li key={cat.path} className={s.listItem}>
                 <Link href={getCategoryPath(cat.path)}>
-                  <a>{cat.name}</a>
+                  <a className={s.listLink}>{cat.name}</a>
                 </Link>
               </li>
             ))}
           </ul>
-          <ul className="">
-            <li className="py-1 text-base font-bold tracking-wide">
+          <ul>
+            <li className={s.listTitle}>
               <Link href={getDesignerPath('')}>
-                <a>All Designers</a>
+                <a className={s.listLink}>All Designers</a>
               </Link>
             </li>
             {brands.flatMap(({ node }: any) => (
-              <li key={node.path} className="py-1 text-accent-8 text-base">
+              <li key={node.path} className={s.listItem}>
                 <Link href={getDesignerPath(node.path)}>
-                  <a>{node.name}</a>
+                  <a className={s.listLink}>{node.name}</a>
                 </Link>
               </li>
             ))}
