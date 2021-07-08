@@ -40,7 +40,7 @@ describe('Login and access profile page', () => {
     })
     cy.fixture(`${operations.Query.getProducts}Data`).then(productsData => {
 
-      cy.get('.mb-12 > .fadeIn').should('contain.html', `Showing ${productsData.data.products.edges.length} results for "<strong>${searchTerm}</strong>`)
+      cy.get('.mb-4 > .fadeIn').should('contain.html', `Showing ${productsData.data.products.edges.length} results for "<strong>${searchTerm}</strong>`)
 
       const searchResults = cy.get('.order-3 > .grid').find('> a', { timeout: 5000 })
       searchResults.should('have.length', productsData.data.products.edges.length)
