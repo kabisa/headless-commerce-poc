@@ -56,7 +56,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     locale,
   })
 
-  const handleClick = (event: any, filter: string) => {
+  const handleClick = (filter: string) => {
     if (filter !== activeFilter) {
       setToggleFilter(true)
     } else {
@@ -76,7 +76,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               <span className="rounded-md shadow-sm">
                 <button
                   type="button"
-                  onClick={(e) => handleClick(e, 'categories')}
+                  onClick={() => handleClick('categories')}
                   className={s.sortButton}
                   id="options-menu"
                   aria-haspopup="true"
@@ -96,14 +96,13 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   <ul className={s.list}>
                     <li className={cn(s.listTitle, { underline: !activeCategory?.name, } )} >
                       <Link href={{ pathname: getCategoryPath('', brand), query }}>
-                        <a className={s.listLink} onClick={(e) => handleClick(e, 'categories')}> All Categories</a>
+                        <a className={s.listLink} onClick={() => handleClick('categories')}> All Categories</a>
                       </Link>
                     </li>
-                    {categories.map((cat: any) => (
+                    {categories.map((cat) => (
                       <li key={cat.path} className={cn(s.listItem, { underline: activeCategory?.id === cat.id, } )}>
-                        <Link
-                          href={{ pathname: getCategoryPath(cat.path, brand), query,}}>
-                          <a className={s.listLink} onClick={(e) => handleClick(e, 'categories')}>{cat.name}</a>
+                        <Link href={{ pathname: getCategoryPath(cat.path, brand), query,}}>
+                          <a className={s.listLink} onClick={() => handleClick('categories')}>{cat.name}</a>
                         </Link>
                       </li>
                     ))}
@@ -119,7 +118,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               <span className="rounded-md shadow-sm">
                 <button
                   type="button"
-                  onClick={(e) => handleClick(e, 'brands')}
+                  onClick={() => handleClick('brands')}
                   className={s.sortButton}
                   id="options-menu"
                   aria-haspopup="true"
@@ -139,13 +138,13 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   <ul className={s.list}>
                     <li className={cn(s.listTitle, { underline: !activeBrand?.name, })}>
                       <Link href={{pathname: getDesignerPath('', category), query,}}>
-                        <a className={s.listLink} onClick={(e) => handleClick(e, 'brands')}>All Designers</a>
+                        <a className={s.listLink} onClick={() => handleClick('brands')}>All Designers</a>
                       </Link>
                     </li>
                     {brands.flatMap(({ node }: { node: any }) => (
                       <li key={node.path} className={cn(s.listItem, {underline: activeBrand?.entityId === node.entityId,})}>
                         <Link href={{pathname: getDesignerPath(node.path, category), query,}}>
-                          <a className={s.listLink} onClick={(e) => handleClick(e, 'brands')}>{node.name}</a>
+                          <a className={s.listLink} onClick={() => handleClick( 'brands')}>{node.name}</a>
                         </Link>
                       </li>
                     ))}
@@ -216,7 +215,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               <span className="rounded-md shadow-sm">
                 <button
                   type="button"
-                  onClick={(e) => handleClick(e, 'sort')}
+                  onClick={() => handleClick('sort')}
                   className={s.sortButton}
                   id="options-menu"
                   aria-haspopup="true"
@@ -236,14 +235,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   <ul className={s.list}>
                     <li className={cn(s.listTitle, {underline: !sort,})}>
                       <Link href={{ pathname, query: filterQuery({ q }) }}>
-                        <a className={s.listLink} onClick={(e) => handleClick(e, 'sort')}>Relevance</a>
+                        <a className={s.listLink} onClick={() => handleClick('sort')}>Relevance</a>
                       </Link>
                     </li>
                     {Object.entries(SORT).map(([key, text]) => (
                       <li key={key} className={cn(s.listItem, { underline: sort === key, })}>
                         <Link
                           href={{pathname, query: filterQuery({ q, sort: key }),}}>
-                          <a className={s.listLink} onClick={(e) => handleClick(e, 'sort')}>{text}</a>
+                          <a className={s.listLink} onClick={() => handleClick('sort')}>{text}</a>
                         </Link>
                       </li>
                     ))}
