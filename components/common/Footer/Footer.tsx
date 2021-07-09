@@ -30,9 +30,9 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
 
   return (
-    <footer className={`${rootClassName} bg-black text-white`}>
+    <footer className={rootClassName}>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-white transition-colors duration-150">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b dark:border-t border-accent-2 py-12 text-white transition-colors duration-150">
           <div className="col-span-1 lg:col-span-2">
             <Link href="https://kabisa.nl/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
