@@ -81,6 +81,8 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
+        kabisa: 'var(--kabisa)',
+        'kabisa-dark': 'var(--kabisa-dark)',
       },
       textColor: {
         base: 'var(--text-base)',

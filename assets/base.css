@@ -42,6 +42,7 @@
   --font-sans: Poppins, sans-serif;
 
   --kabisa: #55cd96;
+  --kabisa-dark: #41c387;
 }
 
 [data-theme='dark'] {
