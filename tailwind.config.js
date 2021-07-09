@@ -16,6 +16,11 @@ module.exports = {
     },
   },
   theme: {
+      fontFamily: {
+        'sans': ['Poppins, sans-serif'],
+        'serif': ['Poppins, serif'],
+        'mono': ['Poppins, monospace'],
+      },
     extend: {
       typography: {
         DEFAULT: {
