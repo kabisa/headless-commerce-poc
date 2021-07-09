@@ -39,8 +39,7 @@
 
   --border-1: #ced4da;
 
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
+  --font-sans: Poppins, sans-serif;
 
   --kabisa: #55cd96;
 }
