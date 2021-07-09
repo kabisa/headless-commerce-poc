@@ -4,24 +4,17 @@
 }
 
 .root .name {
-  @apply pt-0 max-w-full w-full leading-extra-loose;
-  font-size: 2rem;
-  letter-spacing: 0.4px;
-  line-height: 2.2em;
+  @apply pt-0 max-w-full w-full leading-extra-loose text-[1.8em] tracking-[0.4px] leading-[2.2em];
 }
 
 .root .name span {
-  @apply py-4 px-6 bg-primary text-primary font-bold;
-  min-height: 70px;
+  @apply py-4 px-6 bg-primary text-primary font-bold min-h-[70px] decoration-clone	;
   font-size: inherit;
   letter-spacing: inherit;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 .root .name span.fontsizing {
-  display: flex;
-  padding-top: 1.5rem;
+  @apply flex pt-6;
 }
 
 .root .price {
