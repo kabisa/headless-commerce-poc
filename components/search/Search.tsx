@@ -66,7 +66,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-20">
         <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
-          <div className="top-[86px] static lg:sticky">
+          <div className="top-[86px] static lg:sticky block">
           {/* Categories */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
@@ -153,7 +153,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         </div>
         </div>
         {/* Products */}
-        <div className="col-span-8 order-3 lg:order-none">
+        <div className="col-span-8 order-3 lg:order-none min-h-full">
           {(q || activeCategory || activeBrand) && (
             <div className="mb-4 transition ease-in duration-75">
               {data ? (
