@@ -181,7 +181,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
           )}
           {data ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 min-h-[20em]">
               {data.products.map((product) => (
                 <ProductCard
                   variant="simple"
@@ -198,7 +198,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {rangeMap(12, (i) => (
                 <Skeleton key={i}>
-                  <div className="w-60 h-60" />
+                  <div className="w-60 h-80" />
                 </Skeleton>
               ))}
             </div>
