@@ -12,7 +12,6 @@ import ProductTag from '../ProductTag'
 import { SelectedOptions, getProductVariant, selectDefaultOptionFromProduct } from "@components/product/helpers";
 import { useAddItem } from '@framework/cart'
 
-
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -23,15 +22,15 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   let { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
+    currencyCode: product.price.currencyCode || 'Eur',
   })
-
+  const provider = useCommerce()
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
-  const [choices, setChoices] = useState<SelectedOptions>({})
-  const [choice, setChoice] = useState<{optionName: string, optionValue: string}>(
-    { optionName: product.variants[0].options[0].displayName,
-      optionValue: product.variants[0].options[0].values[0].label })
+  const [choice, setChoice] = useState<Array<{displayName: string, label: string}>>(
+    product.variants[0].options.map(option => {
+      return { displayName: option.displayName, label: option.values[0].label }
+    }))
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
   useEffect(() => {
@@ -39,34 +38,26 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   }, [product])
 
   product.variants.map(variant => {
+    let matchedOptions = 0
     variant.options.map(option => {
-      if (option.displayName.toLowerCase() == choice.optionName.toLowerCase()) {
-        option.values.map(value => {
-            if (value.label.toLowerCase() == choice.optionValue.toLowerCase()) {
+      choice.map(choice => {
+        if (option.displayName === choice.displayName) {
+          if (option.values[0].label.toUpperCase() === choice.label.toUpperCase()) {
+            matchedOptions++;
+            if (matchedOptions === variant.options.length) {
               price = formatVariantPrice(
                 {
-                  amount: variant.price!,
-                  baseAmount: product.price.retailPrice!,
-                  currencyCode: product.price.currencyCode!,
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  locale: useCommerce().locale
+                  amount: variant.price || 0,
+                  baseAmount: product.price.retailPrice || 0,
+                  currencyCode: product.price.currencyCode || 'Eur',
+                  locale: provider.locale
                 }).price
             }
           }
-        )
-      }
+        }
+      })
     })
   })
-
-  useEffect(() => {
-    // Selects the default option
-    product.variants[0].options?.forEach((v) => {
-      setChoices((choices) => ({
-        ...choices,
-        [v.displayName.toLowerCase()]: v.values[0].label.toLowerCase(),
-      }))
-    })
-  }, [product.variants])
 
   const variant = getProductVariant(product, selectedOptions)
 
@@ -133,13 +124,11 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                           round={true}
                           onClick={() => {
                             setSelectedOptions((selectedOptions) => {
-                              return {
-                                ...selectedOptions,
-                                [opt.displayName.toLowerCase()]:
-                                  v.label.toLowerCase(),
-                              }
+                              return {...selectedOptions, [opt.displayName.toLowerCase()]: v.label.toLowerCase()}
                             })
-                            setChoice({optionName: opt.displayName.toLowerCase(), optionValue: v.label.toLowerCase()})
+                            const index = choice.findIndex(item => item.displayName.toUpperCase() === opt.displayName.toUpperCase());
+                            if (index === -1) { setChoice([...choice, { displayName: opt.displayName.toLowerCase(), label: v.label.toLowerCase() }]) }
+                            else { choice[index].label = v.label.toLowerCase() }
                           }}
                         />
                       )
