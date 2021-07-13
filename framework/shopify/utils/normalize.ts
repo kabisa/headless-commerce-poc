@@ -15,6 +15,7 @@ import {
   Page as ShopifyPage,
   PageEdge,
   Collection,
+  CollectionConnection,
 } from '../schema'
 import { colorMap } from '@lib/colors'
 
@@ -94,6 +95,30 @@ const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
   )
 }
 
+function normalizeProductCollections({edges}: CollectionConnection) {
+  return edges?.map(
+    ({
+       node: {
+         id,
+         description,
+         descriptionHtml,
+         handle,
+         title,
+         updatedAt
+       },
+     }) => {
+      return {
+        id,
+        title,
+        handle,
+        description,
+        descriptionHtml,
+        updatedAt,
+      }
+    }
+  )
+}
+
 export function normalizeProduct({
   id,
   title: name,
@@ -106,6 +131,7 @@ export function normalizeProduct({
   priceRange,
   options,
   metafields,
+  collections,
   ...rest
 }: ShopifyProduct): Product {
   return {
@@ -117,6 +143,7 @@ export function normalizeProduct({
     price: money(priceRange?.minVariantPrice),
     images: normalizeProductImages(images),
     variants: variants ? normalizeProductVariants(variants) : [],
+    categories: collections ? normalizeProductCollections(collections) : [],
     options: options
       ? options
           .filter((o) => o.name !== 'Title') // By default Shopify adds a 'Title' name when there's only one option. We don't need it. https://community.shopify.com/c/Shopify-APIs-SDKs/Adding-new-product-variant-is-automatically-adding-quot-Default/td-p/358095
@@ -159,7 +186,7 @@ function normalizeLineItem({
     variant: {
       id: String(variant?.id),
       sku: variant?.sku ?? '',
-      name: variant?.title!,
+      name: variant?.title ?? '',
       image: {
         url: variant?.image?.originalSrc || '/product-img-placeholder.svg',
       },
@@ -175,7 +202,7 @@ function normalizeLineItem({
 
 export const normalizePage = (
   { title: name, handle, ...page }: ShopifyPage,
-  locale: string = 'en-US'
+  locale = 'en-US'
 ): Page => ({
   ...page,
   url: `/${locale}/${handle}`,
