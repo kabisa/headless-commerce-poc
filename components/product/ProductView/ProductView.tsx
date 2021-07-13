@@ -11,7 +11,7 @@ import { useCommerce } from "@commerce";
 import ProductTag from '../ProductTag'
 import { SelectedOptions, getProductVariant, selectDefaultOptionFromProduct } from "@components/product/helpers";
 import { useAddItem } from '@framework/cart'
-
+import Link from "@components/ui/Link";
 
 interface ProductViewProps {
   product: Product
@@ -152,7 +152,15 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               className="pb-4 break-words w-full max-w-xl"
               html={product.descriptionHtml || product.description}
             />
-            <div className="flex flex-row justify-between items-center">
+            <hr />
+            {product.vendor &&
+            <div className={'pt-4 break-words w-full max-w-xl'}>
+              Brand: <div className={'inline-block hover:underline'}>
+              <Link href={`/search/designers/${product.vendor}`}>{product.vendor}</Link>
+            </div>
+            </div>
+            }
+          <div className="flex flex-row justify-between items-center">
               <Rating value={4} />
               <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
             </div>
@@ -173,14 +181,12 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               )}
             </div>
             <div className="mt-6">
-              <Collapse title="Care">
-                This is a limited edition production run. Printing starts when the
-                drop ends.
-              </Collapse>
-              <Collapse title="Details">
-                This is a limited edition production run. Printing starts when the
-                drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
-                to COVID-19.
+              <Collapse title="Categories">
+                {product.categories && product.categories.map(category => { return (
+                  <div key={category.id} className={'py-2 break-words w-full max-w-xl hover:underline'}>
+                    <Link href={`/search/${category.handle}`}>{category.title}</Link>
+                  </div>
+                )})}
               </Collapse>
             </div>
           </div>
