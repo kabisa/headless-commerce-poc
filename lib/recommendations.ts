@@ -28,3 +28,7 @@ export function getRecommendedProduct(customerOrders: Customer, recommendedProdu
     }
   }
 }
+
+export function getRandomBrandId(orderedBrands: Array<string>) {
+  return _.sample(orderedBrands) || '***---***';
+}

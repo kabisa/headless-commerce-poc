@@ -5,8 +5,7 @@ import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useCustomerOrders } from "@framework/customer";
 import React, { useEffect, useState } from "react";
 import useSearch from "@framework/product/use-search";
-import { collectOrderedBrands, getRecommendedProduct } from "@lib/recommendations";
-import _ from "lodash";
+import { collectOrderedBrands, getRandomBrandId, getRecommendedProduct } from "@lib/recommendations";
 
 export async function getStaticProps({
   preview,
@@ -53,7 +52,7 @@ export default function Home({
   const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
 
   const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
-    brandId: _.sample(orderedBrands) || '***---***', // If no ordered brands search for placeholder string (No results)
+    brandId: getRandomBrandId(orderedBrands), // If no ordered brands search for placeholder string (No results)
     locale,
   })
 
