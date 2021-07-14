@@ -31,7 +31,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   const { price } = usePrice({
     amount: variant?.price || 0,
     baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode || 'Eur',
+    currencyCode: product.price.currencyCode,
   })
 
   const addToCart = async () => {
