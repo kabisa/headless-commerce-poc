@@ -156,7 +156,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
             {product.vendor &&
             <div className={'pt-4 break-words w-full max-w-xl'}>
               Brand: <div className={'inline-block hover:underline'}>
-              <Link href={`/search/designers/${product.vendor}`}>{product.vendor}</Link>
+              <Link href={`/search/designers/${product.vendor.toLowerCase()}`}>{product.vendor}</Link>
             </div>
             </div>
             }
