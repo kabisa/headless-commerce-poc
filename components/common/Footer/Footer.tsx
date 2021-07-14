@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
-import { Moon, Sun, Vercel } from '@components/icons'
+import { Moon, Sun } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import s from './Footer.module.css'
 import Kabisa from "@components/icons/Kabisa";
@@ -80,19 +80,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <Kabisa
                 className="inline-block h-6 mx-2 text-primary"
                 alt="Kabisa.nl Logo"
-              />
-            </a>
-            <span className="text-primary hidden xsm:inline-block">&</span>
-            <a
-              rel="noopener noreferrer"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className="text-primary"
-            >
-              <Vercel
-                className="hidden h-6 ml-2 text-primary xsm:inline-block"
-                alt="Vercel.com Logo"
               />
             </a>
           </div>
