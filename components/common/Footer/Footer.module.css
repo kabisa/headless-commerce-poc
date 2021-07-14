@@ -7,3 +7,7 @@
     @apply scale-110;
   }
 }
+
+.active {
+  @apply underline;
+}

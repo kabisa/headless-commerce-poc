@@ -28,6 +28,12 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const { theme, setTheme } = useTheme()
   const { sitePages } = usePages(pages)
   const rootClassName = cn(s.root, className)
+  const router = useRouter()
+
+  const menuItemClassName = (pathname: string | undefined): string => {
+    if (!pathname) { return '' }
+    return router.asPath == `/${pathname.substring(1).substring(pathname.substring(1).indexOf("/") + 1)}` ? s.active : '';
+  }
 
   return (
     <footer className={rootClassName}>
@@ -48,7 +54,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url || ''}>
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
+                    <a className={`text-accent-9 hover:text-accent-6 transition ease-in-out duration-150 ${menuItemClassName(page.url)}`}>
                       {page.name}
                     </a>
                   </Link>
