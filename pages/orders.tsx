@@ -9,7 +9,6 @@ import throttle from "lodash.throttle";
 import { useRouter } from "next/router";
 import _ from "lodash";
 
-
 const loadingPlaceholder = _.times(4, (i) => {
   return <Skeleton key={i} style={{width: '100%', minHeight: '600px', marginTop: '1em', flexShrink: 1, flexBasis: '49%'}} duration={'4s'}/>
 });
