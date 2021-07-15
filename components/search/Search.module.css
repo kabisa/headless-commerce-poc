@@ -23,3 +23,7 @@
 .sortButton {
   @apply flex justify-between w-full rounded-sm border border-accent-3 px-4 py-3 bg-accent-0 text-sm leading-5 font-medium text-accent-8 hover:text-accent-5 focus:outline-none focus:border-border-1 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150;
 }
+
+.sortOptions {
+  @apply rounded-sm bg-accent-1 lg:bg-primary lg:shadow-none;
+}
