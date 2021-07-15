@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { OrderEdge } from "@framework/schema";
 import throttle from "lodash.throttle";
 import { useRouter } from "next/router";
-import _ from "lodash";
+import rangeMap from "@lib/range-map";
 
-const loadingPlaceholder = _.times(4, (i) => {
+const loadingPlaceholder = rangeMap(4, (i) => {
   return <Skeleton key={i} style={{width: '100%', minHeight: '600px', marginTop: '1em', flexShrink: 1, flexBasis: '49%'}} duration={'4s'}/>
 });
 

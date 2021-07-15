@@ -1,11 +1,10 @@
-.link {
-  & > svg {
-    @apply transform duration-75 ease-linear;
-  }
+.root {
+  @apply bg-kabisa-dark text-white;
+  box-shadow: rgba(0, 0, 0, .25) 0 0 12px;
+}
 
-  &:hover > svg {
-    @apply scale-110;
-  }
+.themeButton {
+  @apply transform duration-75 ease-linear hover:scale-110;
 }
 
 .active {

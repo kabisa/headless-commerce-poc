@@ -1,3 +1,5 @@
+import {CurrencyCode} from "@framework/schema";
+
 export type ProductImage = {
   url: string
   alt?: string
@@ -5,7 +7,7 @@ export type ProductImage = {
 
 export type ProductPrice = {
   value: number
-  currencyCode?: 'USD' | 'EUR' | 'ARS' | string
+  currencyCode: CurrencyCode
   retailPrice?: number
   salePrice?: number
   listPrice?: number

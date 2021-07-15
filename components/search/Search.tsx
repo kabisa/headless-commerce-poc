@@ -85,7 +85,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'categories' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
@@ -127,7 +127,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'brands' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
@@ -224,7 +224,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'sort' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
