@@ -32,7 +32,7 @@ describe('Add products to cart', () => {
 
     cy.get('[class^="ProductCard"]').first().click() // Click first product
 
-    cy.contains('Add To Cart').click()
+    cy.contains('Add To Cart').scrollIntoView().click()
 
     cy.wait('@checkoutLineItemAddMutation').then(interception => {
       assert.isNotNull(interception.response.body, 'checkoutLineItemAddMutation API call has mockData')

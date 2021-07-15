@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: 'jit',
   future: {
@@ -17,6 +19,11 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Poppins, sans-serif', ...defaultTheme.fontFamily.sans],
+        'serif': ['Poppins, serif' , ...defaultTheme.fontFamily.serif],
+        'mono': ['Poppins, monospace' , ...defaultTheme.fontFamily.mono],
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -76,6 +83,11 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
+        kabisa: 'var(--kabisa)',
+        'kabisa-dark': 'var(--kabisa-dark)',
+        'kabisa-accent': 'var(--kabisa-accent)',
+        'product-card-bg': 'var(--product-card-bg)',
+        'order-card-bg': 'var(--order-card-bg)',
       },
       textColor: {
         base: 'var(--text-base)',

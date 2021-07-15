@@ -66,7 +66,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     <Container>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-20">
         <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
-          <div className="top-[86px] static lg:sticky">
+          <div className="top-[86px] static lg:sticky block">
           {/* Categories */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
@@ -85,7 +85,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'categories' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
@@ -127,7 +127,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'brands' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
@@ -153,7 +153,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         </div>
         </div>
         {/* Products */}
-        <div className="col-span-8 order-3 lg:order-none">
+        <div className="col-span-8 z-0 order-3 lg:order-none min-h-full">
           {(q || activeCategory || activeBrand) && (
             <div className="mb-4 transition ease-in duration-75">
               {data ? (
@@ -195,7 +195,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 opacity-50">
               {rangeMap(12, (i) => (
                 <Skeleton key={i}>
                   <div className="w-60 h-60" />
@@ -224,7 +224,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
             <div
               className={cn(s.listContainer, activeFilter !== 'sort' || !toggleFilter ? 'hidden' : '')}>
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={cn(s.sortOptions, 'shadow')}>
                 <div
                   role="menu"
                   aria-orientation="vertical"

@@ -1,3 +1,5 @@
+import {CurrencyCode} from "@framework/schema";
+
 export type ProductImage = {
   url: string
   alt?: string
@@ -5,7 +7,7 @@ export type ProductImage = {
 
 export type ProductPrice = {
   value: number
-  currencyCode?: 'USD' | 'EUR' | 'ARS' | string
+  currencyCode: CurrencyCode
   retailPrice?: number
   salePrice?: number
   listPrice?: number
@@ -32,6 +34,14 @@ export type ProductVariant = {
   price?: number | undefined
 }
 
+export type ProductCategory = {
+  id: string | number
+  handle: string
+  title: string
+  description: string
+  descriptionHtml?: string
+}
+
 export type Product = {
   id: string
   name: string
@@ -44,6 +54,8 @@ export type Product = {
   variants: ProductVariant[]
   price: ProductPrice
   options: ProductOption[]
+  vendor?: string
+  categories?: ProductCategory[]
   recommended?: boolean
 }
 
@@ -79,9 +91,7 @@ export type ProductsSchema<T extends ProductTypes = ProductTypes> = {
   }
 }
 
-export type GetAllProductPathsOperation<
-  T extends ProductTypes = ProductTypes
-> = {
+export type GetAllProductPathsOperation<T extends ProductTypes = ProductTypes> = {
   data: { products: Pick<T['product'], 'path'>[] }
   variables: { first?: number }
 }

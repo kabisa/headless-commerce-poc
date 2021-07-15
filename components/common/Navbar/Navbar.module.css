@@ -14,7 +14,7 @@
   @apply inline-flex items-center text-primary leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accent-6;
 
   &:hover {
-    @apply text-accent-9;
+    @apply text-accent-9 underline;
   }
 
   &:focus {
@@ -22,7 +22,7 @@
   }
 
   &.active {
-    @apply underline text-accent-9;
+    @apply underline text-accent-9 font-semibold;
   }
 }
 

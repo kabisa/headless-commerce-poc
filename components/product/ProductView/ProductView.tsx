@@ -4,15 +4,13 @@ import { NextSeo } from 'next-seo'
 import React, { FC, useEffect, useState } from 'react'
 import s from './ProductView.module.css'
 import type { Product } from '@commerce/types/product'
-import usePrice, { formatVariantPrice } from '@framework/product/use-price'
+import usePrice from '@framework/product/use-price'
 import { ProductSlider, ProductCard, Swatch } from '@components/product'
 import { Button, Collapse, Container, Rating, Text, useUI } from '@components/ui'
-import { useCommerce } from "@commerce";
 import ProductTag from '../ProductTag'
 import { SelectedOptions, getProductVariant, selectDefaultOptionFromProduct } from "@components/product/helpers";
 import { useAddItem } from '@framework/cart'
-
-
+import Link from "@components/ui/Link";
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -20,55 +18,21 @@ interface ProductViewProps {
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   const addItem = useAddItem()
-  let { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
-
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
-  const [choices, setChoices] = useState<SelectedOptions>({})
-  const [choice, setChoice] = useState<{optionName: string, optionValue: string}>(
-    { optionName: product.variants[0].options[0].displayName,
-      optionValue: product.variants[0].options[0].values[0].label })
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
   useEffect(() => {
     selectDefaultOptionFromProduct(product, setSelectedOptions)
   }, [product])
 
-  product.variants.map(variant => {
-    variant.options.map(option => {
-      if (option.displayName.toLowerCase() == choice.optionName.toLowerCase()) {
-        option.values.map(value => {
-            if (value.label.toLowerCase() == choice.optionValue.toLowerCase()) {
-              price = formatVariantPrice(
-                {
-                  amount: variant.price!,
-                  baseAmount: product.price.retailPrice!,
-                  currencyCode: product.price.currencyCode!,
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  locale: useCommerce().locale
-                }).price
-            }
-          }
-        )
-      }
-    })
-  })
-
-  useEffect(() => {
-    // Selects the default option
-    product.variants[0].options?.forEach((v) => {
-      setChoices((choices) => ({
-        ...choices,
-        [v.displayName.toLowerCase()]: v.values[0].label.toLowerCase(),
-      }))
-    })
-  }, [product.variants])
-
   const variant = getProductVariant(product, selectedOptions)
+
+  const { price } = usePrice({
+    amount: variant?.price || 0,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode,
+  })
 
   const addToCart = async () => {
     setLoading(true)
@@ -133,13 +97,8 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                           round={true}
                           onClick={() => {
                             setSelectedOptions((selectedOptions) => {
-                              return {
-                                ...selectedOptions,
-                                [opt.displayName.toLowerCase()]:
-                                  v.label.toLowerCase(),
-                              }
+                              return {...selectedOptions, [opt.displayName.toLowerCase()]: v.label.toLowerCase()}
                             })
-                            setChoice({optionName: opt.displayName.toLowerCase(), optionValue: v.label.toLowerCase()})
                           }}
                         />
                       )
@@ -152,7 +111,15 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               className="pb-4 break-words w-full max-w-xl"
               html={product.descriptionHtml || product.description}
             />
-            <div className="flex flex-row justify-between items-center">
+            <hr />
+            {product.vendor &&
+            <div className={'pt-4 break-words w-full max-w-xl'}>
+              Brand: <div className={'inline-block hover:underline'}>
+              <Link href={`/search/designers/${product.vendor.toLowerCase()}`}>{product.vendor}</Link>
+            </div>
+            </div>
+            }
+          <div className="flex flex-row justify-between items-center">
               <Rating value={4} />
               <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
             </div>
@@ -166,21 +133,17 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                   loading={loading}
                   disabled={variant?.availableForSale === false}
                 >
-                  {variant?.availableForSale === false
-                    ? 'Not Available'
-                    : 'Add To Cart'}
+                  { variant?.availableForSale === false ? 'Not Available' : 'Add To Cart' }
                 </Button>
               )}
             </div>
             <div className="mt-6">
-              <Collapse title="Care">
-                This is a limited edition production run. Printing starts when the
-                drop ends.
-              </Collapse>
-              <Collapse title="Details">
-                This is a limited edition production run. Printing starts when the
-                drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
-                to COVID-19.
+              <Collapse title="Categories">
+                {product.categories && product.categories.map(category => { return (
+                  <div key={category.id} className={'py-2 break-words w-full max-w-xl hover:underline'}>
+                    <Link href={`/search/${category.handle}`}>{category.title}</Link>
+                  </div>
+                )})}
               </Collapse>
             </div>
           </div>
