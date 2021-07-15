@@ -11,7 +11,7 @@
 
 .leftControl:hover,
 .rightControl:hover {
-  @apply bg-kabisa-dark;
+  @apply bg-kabisa-accent;
 }
 
 .leftControl:focus,

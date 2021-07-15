@@ -13,7 +13,7 @@
 }
 
 .sliderContainer {
-  @apply flex items-center justify-center overflow-x-hidden bg-kabisa-dark;
+  @apply flex items-center justify-center overflow-x-hidden bg-kabisa-accent;
 }
 
 .imageContainer {

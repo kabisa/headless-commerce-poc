@@ -85,6 +85,7 @@ module.exports = {
         red: 'var(--red)',
         kabisa: 'var(--kabisa)',
         'kabisa-dark': 'var(--kabisa-dark)',
+        'kabisa-accent': 'var(--kabisa-accent)',
         'product-card-bg': 'var(--product-card-bg)',
         'order-card-bg': 'var(--order-card-bg)',
       },
