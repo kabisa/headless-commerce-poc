@@ -153,7 +153,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         </div>
         </div>
         {/* Products */}
-        <div className="col-span-8 order-3 lg:order-none min-h-full">
+        <div className="col-span-8 z-0 order-3 lg:order-none min-h-full">
           {(q || activeCategory || activeBrand) && (
             <div className="mb-4 transition ease-in duration-75">
               {data ? (
@@ -180,19 +180,19 @@ export default function Search({ categories, brands }: SearchPropsType) {
               )}
             </div>
           )}
-          {data ? (
+          {!data ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {data.products.map((product) => (
-                <ProductCard
-                  variant="simple"
-                  key={product.path}
-                  className="animated fadeIn"
-                  product={product}
-                  imgProps={{
-                    width: 480,
-                    height: 480,
-                  }}/>
-              ))}
+              {/*{data.products.map((product) => (*/}
+              {/*  <ProductCard*/}
+              {/*    variant="simple"*/}
+              {/*    key={product.path}*/}
+              {/*    className="animated fadeIn"*/}
+              {/*    product={product}*/}
+              {/*    imgProps={{*/}
+              {/*      width: 480,*/}
+              {/*      height: 480,*/}
+              {/*    }}/>*/}
+              {/*))}*/}
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
