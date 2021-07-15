@@ -34,6 +34,14 @@ export type ProductVariant = {
   price?: number | undefined
 }
 
+export type ProductCategory = {
+  id: string | number
+  handle: string
+  title: string
+  description: string
+  descriptionHtml?: string
+}
+
 export type Product = {
   id: string
   name: string
@@ -46,6 +54,8 @@ export type Product = {
   variants: ProductVariant[]
   price: ProductPrice
   options: ProductOption[]
+  vendor?: string
+  categories?: ProductCategory[]
 }
 
 export type SearchProductsBody = {
@@ -80,9 +90,7 @@ export type ProductsSchema<T extends ProductTypes = ProductTypes> = {
   }
 }
 
-export type GetAllProductPathsOperation<
-  T extends ProductTypes = ProductTypes
-> = {
+export type GetAllProductPathsOperation<T extends ProductTypes = ProductTypes> = {
   data: { products: Pick<T['product'], 'path'>[] }
   variables: { first?: number }
 }

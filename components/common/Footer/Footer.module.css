@@ -6,3 +6,7 @@
 .themeButton {
   @apply transform duration-75 ease-linear hover:scale-110;
 }
+
+.active {
+  @apply underline;
+}
