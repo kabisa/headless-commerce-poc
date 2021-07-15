@@ -65,6 +65,18 @@ const getProductQuery = /* GraphQL */ `
           }
         }
       }
+    collections(first: 5) {
+      edges {
+        node {
+          id
+          handle
+          title
+          descriptionHtml
+          description
+          updatedAt
+        }
+      }
+    }
     }
   }
 `

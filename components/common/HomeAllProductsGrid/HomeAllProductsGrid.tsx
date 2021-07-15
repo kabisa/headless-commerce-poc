@@ -5,10 +5,11 @@ import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 import { getCategoryPath, getDesignerPath } from '@lib/search'
+import { Brand, Category } from "@commerce/types/site";
 
 interface Props {
-  categories?: any
-  brands?: any
+  categories?: Category[]
+  brands?: Brand[]
   products?: Product[]
 }
 
@@ -27,7 +28,7 @@ const HomeAllProductsGrid: FC<Props> = ({
                 <a className={s.listLink}>All Categories</a>
               </Link>
             </li>
-            {categories.map((cat: any) => (
+            {categories?.map((cat) => (
               <li key={cat.path} className={s.listItem}>
                 <Link href={getCategoryPath(cat.path)}>
                   <a className={s.listLink}>{cat.name}</a>
@@ -41,7 +42,7 @@ const HomeAllProductsGrid: FC<Props> = ({
                 <a className={s.listLink}>All Designers</a>
               </Link>
             </li>
-            {brands.flatMap(({ node }: any) => (
+            {brands?.flatMap(({ node }) => (
               <li key={node.path} className={s.listItem}>
                 <Link href={getDesignerPath(node.path)}>
                   <a className={s.listLink}>{node.name}</a>
