@@ -1,11 +1,3 @@
-.link {
-  @apply cursor-pointer;
-
-  & > svg {
-    @apply transform duration-75 ease-linear;
-  }
-
-  &:hover > svg {
-    @apply scale-110;
-  }
+.themeButton {
+  @apply transform duration-75 ease-linear hover:scale-110;
 }

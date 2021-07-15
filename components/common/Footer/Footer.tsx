@@ -57,10 +57,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-3 items-center h-10">
-              <a className={s.link} onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark')}} >
-                {(theme === 'dark') && <Moon width={24} height={24} /> }
-                {(theme === 'light' || theme === 'system') && <Sun width={24} height={24} /> }
-              </a>
+              <button onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark')}} >
+                {(theme === 'dark') && <Moon className={s.themeButton} width={24} height={24} /> }
+                {(theme === 'light' || theme === 'system') && <Sun className={s.themeButton} width={24} height={24} /> }
+              </button>
             </div>
           </div>
         </div>
