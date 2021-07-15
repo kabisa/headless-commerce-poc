@@ -44,6 +44,7 @@ export type Product = {
   variants: ProductVariant[]
   price: ProductPrice
   options: ProductOption[]
+  recommended?: boolean
 }
 
 export type SearchProductsBody = {
