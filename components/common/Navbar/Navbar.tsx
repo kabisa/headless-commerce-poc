@@ -18,7 +18,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
   const router = useRouter()
 
   const menuItemClassName = (pathname: string, query: string, target: string | undefined): string => {
-    return `${s.link} ${router.pathname == `/${pathname}` && router.query[query] == target ? s.active : ''}`
+    return `${router.pathname == `/${pathname}` && router.query[query] == target ? s.active : ''}`
   }
 
   return(
@@ -33,16 +33,16 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             </Link>
             <nav className="hidden ml-6 space-x-4 lg:block">
               <Link href={"/search?sort=latest-desc"}>
-                <a className={menuItemClassName('search','q', undefined)}>All</a>
+                <a className={`${s.link} ${menuItemClassName('search','q', undefined)}`}>All</a>
               </Link>
               <Link href={"/search?q=clothes"}>
-                <a className={menuItemClassName('search','q', 'clothes')}>Clothes</a>
+                <a className={`${s.link} ${menuItemClassName('search','q', 'clothes')}`}>Clothes</a>
               </Link>
               <Link href={"/search?q=accessories"}>
-                <a className={menuItemClassName('search','q', 'accessories')}>Accessories</a>
+                <a className={`${s.link} ${menuItemClassName('search','q', 'accessories')}`}>Accessories</a>
               </Link>
               <Link href={"/search?q=shoes"}>
-                <a className={menuItemClassName('search','q', 'shoes')}>Shoes</a>
+                <a className={`${s.link} ${menuItemClassName('search','q', 'shoes')}`}>Shoes</a>
               </Link>
               {/*{links?.map((l) => ( // Map links received from shopify*/}
               {/*  <Link href={l.href} key={l.href}>*/}

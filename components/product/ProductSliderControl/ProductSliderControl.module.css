@@ -1,7 +1,6 @@
 .control {
-  @apply bg-violet absolute bottom-10 right-10 flex flex-row
-  border-accent-0 border text-accent-0 z-30 shadow-xl select-none;
-  height: 48px;
+  @apply bg-kabisa absolute bottom-10 right-10 flex flex-row
+  border-accent-0 border text-accent-0 z-30 shadow-xl select-none h-[48px];
 }
 
 .leftControl,
@@ -12,7 +11,7 @@
 
 .leftControl:hover,
 .rightControl:hover {
-  background-color: var(--violet-dark);
+  @apply bg-kabisa-dark;
 }
 
 .leftControl:focus,

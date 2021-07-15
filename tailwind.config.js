@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   mode: 'jit',
   future: {
@@ -17,6 +19,11 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Poppins, sans-serif', ...defaultTheme.fontFamily.sans],
+        'serif': ['Poppins, serif' , ...defaultTheme.fontFamily.serif],
+        'mono': ['Poppins, monospace' , ...defaultTheme.fontFamily.mono],
+      },
       typography: {
         DEFAULT: {
           css: {

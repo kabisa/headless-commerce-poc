@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import { inherits } from 'util'
 import s from './ProductTag.module.css'
 
 interface ProductTagProps {

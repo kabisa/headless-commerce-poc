@@ -1,9 +1,8 @@
-import { ChangeEvent, FocusEventHandler, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import s from './CartItem.module.css'
-import { Trash, Plus, Minus, Cross } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import type { LineItem } from '@commerce/types/cart'
 import usePrice from '@framework/product/use-price'
@@ -80,7 +79,7 @@ const CartItem = ({
       {...rest}
     >
       <div className="flex flex-row space-x-4 py-4">
-        <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
+        <div className="w-16 h-16 bg-kabisa relative overflow-hidden cursor-pointer z-0">
           <Link href={`/product/${item.path}`}>
             <Image
               onClick={() => closeSidebarIfPresent()}
