@@ -4,14 +4,12 @@ import { NextSeo } from 'next-seo'
 import React, { FC, useEffect, useState } from 'react'
 import s from './ProductView.module.css'
 import type { Product } from '@commerce/types/product'
-import usePrice, { formatVariantPrice } from '@framework/product/use-price'
+import usePrice from '@framework/product/use-price'
 import { ProductSlider, ProductCard, Swatch } from '@components/product'
 import { Button, Collapse, Container, Rating, Text, useUI } from '@components/ui'
-import { useCommerce } from "@commerce";
 import ProductTag from '../ProductTag'
 import { SelectedOptions, getProductVariant, selectDefaultOptionFromProduct } from "@components/product/helpers";
 import { useAddItem } from '@framework/cart'
-
 
 interface ProductViewProps {
   product: Product
@@ -20,55 +18,21 @@ interface ProductViewProps {
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   const addItem = useAddItem()
-  let { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
-
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
-  const [choices, setChoices] = useState<SelectedOptions>({})
-  const [choice, setChoice] = useState<{optionName: string, optionValue: string}>(
-    { optionName: product.variants[0].options[0].displayName,
-      optionValue: product.variants[0].options[0].values[0].label })
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
 
   useEffect(() => {
     selectDefaultOptionFromProduct(product, setSelectedOptions)
   }, [product])
 
-  product.variants.map(variant => {
-    variant.options.map(option => {
-      if (option.displayName.toLowerCase() == choice.optionName.toLowerCase()) {
-        option.values.map(value => {
-            if (value.label.toLowerCase() == choice.optionValue.toLowerCase()) {
-              price = formatVariantPrice(
-                {
-                  amount: variant.price!,
-                  baseAmount: product.price.retailPrice!,
-                  currencyCode: product.price.currencyCode!,
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  locale: useCommerce().locale
-                }).price
-            }
-          }
-        )
-      }
-    })
-  })
-
-  useEffect(() => {
-    // Selects the default option
-    product.variants[0].options?.forEach((v) => {
-      setChoices((choices) => ({
-        ...choices,
-        [v.displayName.toLowerCase()]: v.values[0].label.toLowerCase(),
-      }))
-    })
-  }, [product.variants])
-
   const variant = getProductVariant(product, selectedOptions)
+
+  const { price } = usePrice({
+    amount: variant?.price || 0,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode,
+  })
 
   const addToCart = async () => {
     setLoading(true)
@@ -133,13 +97,8 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                           round={true}
                           onClick={() => {
                             setSelectedOptions((selectedOptions) => {
-                              return {
-                                ...selectedOptions,
-                                [opt.displayName.toLowerCase()]:
-                                  v.label.toLowerCase(),
-                              }
+                              return {...selectedOptions, [opt.displayName.toLowerCase()]: v.label.toLowerCase()}
                             })
-                            setChoice({optionName: opt.displayName.toLowerCase(), optionValue: v.label.toLowerCase()})
                           }}
                         />
                       )

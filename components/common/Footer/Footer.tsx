@@ -4,9 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
-import { Github, Moon, Sun, Vercel } from '@components/icons'
+import { Moon, Sun } from '@components/icons'
 import { Logo, Container } from '@components/ui'
-import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
 import Kabisa from "@components/icons/Kabisa";
 import { useTheme } from "next-themes";
@@ -58,17 +57,11 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-white">
             <div className="flex space-x-3 items-center h-10">
-              <a className={cn(s.link, 'cursor-pointer')}
+              <button
                  onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark')}} >
-                {theme === 'dark' && (<Moon width={24} height={24} />) }
-                {theme === 'light' && (<Sun width={24} height={24} />) }
-              </a>
-              <a className={s.link}
-                 aria-label="Github Repository"
-                 href="https://github.com/kabisa/headless-commerce-poc">
-                <Github />
-              </a>
-              <I18nWidget />
+                {(theme === 'dark') && <Moon className={s.themeButton} width={24} height={24} /> }
+                {(theme === 'light' || theme === 'system') && <Sun className={s.themeButton} width={24} height={24} /> }
+              </button>
             </div>
           </div>
         </div>
@@ -88,19 +81,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <Kabisa
                 className="inline-block h-6 mx-2 text-white"
                 alt="Kabisa.nl Logo"
-              />
-            </a>
-            <span className="text-white hidden xsm:inline-block">&</span>
-            <a
-              rel="noopener noreferrer"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className="text-white"
-            >
-              <Vercel
-                className="hidden h-6 ml-2 text-white xsm:inline-block"
-                alt="Vercel.com Logo"
               />
             </a>
           </div>

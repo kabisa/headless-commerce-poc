@@ -33,7 +33,6 @@
     "./framework/bigcommerce",
     "./framework/swell",
     "./framework/vendure",
-    "./framework/saleor",
-    "tests/*.test.ts"
+    "./framework/saleor"
   ]
 }
