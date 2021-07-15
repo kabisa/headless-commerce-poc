@@ -4,7 +4,7 @@
 :root {
   --primary: #ffffff;
   --primary-2: #f1f3f5;
-  --secondary: #000000;
+  --secondary: var(--kabisa-dark);
   --secondary-2: #111;
   --selection: var(--cyan);
 
@@ -42,15 +42,18 @@
 
   --border-1: #ced4da;
 
+  --product-card-bg: var(--accent-2);
+  --order-card-bg: var(--accent-1);
+
   --font-sans: 'Poppins', sans-serif;
   --font-heading: 'Montserrat', sans-serif;
 
   --kabisa: #55cd96;
-  --kabisa-dark: #41c387;
+  --kabisa-dark: #2d2837;
 }
 
 [data-theme='dark'] {
-  --primary: #000000;
+  --primary: var(--kabisa-dark);
   --primary-2: #111;
   --secondary: #ffffff;
   --secondary-2: #f1f3f5;
@@ -75,6 +78,9 @@
   --accent-0: #000;
 
   --border-1: #adb5bd;
+
+  --product-card-bg: #322d3c;
+  --order-card-bg: var(--product-card-bg)
 }
 
 *,
@@ -150,11 +156,12 @@ a {
   }
 }
 
+ /* Loading spinner placement */
 div#nprogress .spinner {
-  top: 23px;
-  right: 31px;
+  @apply max-w-8xl m-auto left-0 right-0 top-[23px];
 
   & .spinner-icon {
+    @apply float-right mr-[31px];
     border-top-color: var(--secondary);
     border-left-color: var(--secondary);
   }

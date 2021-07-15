@@ -85,6 +85,8 @@ module.exports = {
         red: 'var(--red)',
         kabisa: 'var(--kabisa)',
         'kabisa-dark': 'var(--kabisa-dark)',
+        'product-card-bg': 'var(--product-card-bg)',
+        'order-card-bg': 'var(--order-card-bg)',
       },
       textColor: {
         base: 'var(--text-base)',

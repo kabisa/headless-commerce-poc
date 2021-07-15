@@ -51,8 +51,7 @@
   }
 
   & .orderItems {
-    @apply overflow-auto;
-    max-height: 518px;
+    @apply overflow-auto max-h-[518px];
 
     &.atBottom .fadeout, &.atTop .fadein {
       @apply opacity-0;
@@ -75,7 +74,7 @@
     }
 
     & .orderItem {
-      @apply rounded-md p-4 border border-solid border-border-1 my-4 transition-colors duration-200 hover:bg-accent-1;
+      @apply rounded-md p-4 border border-solid border-border-1 my-4 transition-colors duration-200 hover:bg-order-card-bg;
 
       &:first-child {
         @apply mt-0;
