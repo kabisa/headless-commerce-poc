@@ -20,7 +20,7 @@
 }
 
 .loading {
-  @apply bg-accent-1 text-accent-3 border-accent-2 cursor-not-allowed;
+  @apply bg-accent-5 text-accent-8 border-accent-2 cursor-not-allowed;
 }
 
 .slim {
