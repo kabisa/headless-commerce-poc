@@ -1,11 +1,12 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { useCustomerOrders } from "@framework/customer";
+import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
 import React, { useEffect, useState } from "react";
-import useSearch from "@framework/product/use-search";
-import { collectOrderedBrands, getRandomBrandId, getRecommendedProduct } from "@lib/recommendations";
+import {addRecommendedProduct, useRecommendedProduct} from "@lib/recommendations";
+import { useCustomerOrders } from "@framework/customer";
+import { useSearch } from "../framework/local/product";
+import {Product} from "@commerce/types/product";
 
 export async function getStaticProps({
   preview,
@@ -46,23 +47,9 @@ export default function Home({
   brands,
   locale
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
-  const [productList, setProductList] = useState<typeof products>(products)
+  const recommendedProduct = useRecommendedProduct(locale)
 
-  const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
-
-  const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
-    brandId: getRandomBrandId(orderedBrands), // If no ordered brands search for placeholder string (No results)
-    locale,
-  })
-
-  useEffect(() => {
-    collectOrderedBrands(customerOrders, orderedBrands, setOrderedBrands);
-  }, [customerOrders?.orders.edges, orderedBrands])
-
-  useEffect(() => {
-    getRecommendedProduct(customerOrders, recommendedProducts, productList, setProductList);
-  }, [customerOrders, productList, recommendedProducts])
+  addRecommendedProduct(products, recommendedProduct);
 
   return (
     <>
@@ -105,8 +92,8 @@ export default function Home({
       {/*    <ProductCard key={product.id} product={product} variant="slim" />*/}
       {/*  ))}*/}
       {/*</Marquee>*/}
-       <HomeAllProductsGrid
-        products={productList}
+      <HomeAllProductsGrid
+        products={products}
         categories={categories}
         brands={brands}
       />
