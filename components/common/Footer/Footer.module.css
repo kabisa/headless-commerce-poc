@@ -1,5 +1,5 @@
 .root {
-  @apply bg-black text-white;
+  @apply bg-kabisa-dark text-white;
   box-shadow: rgba(0, 0, 0, .25) 0 0 12px;
 }
 

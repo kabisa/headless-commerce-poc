@@ -48,7 +48,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               {[...links, ...sitePages].map((page) => (
                 <span key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url || ''}>
-                    <a className="text-white hover:text-accent-3 transition ease-in-out duration-150">
+                    <a className="text-white hover:text-accent-4 transition ease-in-out duration-150">
                       {page.name}
                     </a>
                   </Link>
