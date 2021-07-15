@@ -149,18 +149,14 @@ a {
   }
 }
 
+ /* Loading spinner placement */
 div#nprogress .spinner {
-  max-width: 1920px;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 23px;
+  @apply max-w-8xl m-auto left-0 right-0 top-[23px];
 
   & .spinner-icon {
+    @apply float-right mr-[31px];
     border-top-color: var(--secondary);
     border-left-color: var(--secondary);
-    float: right;
-    margin-right: 31px;
   }
 }
 
