@@ -30,7 +30,9 @@ describe('Add products to cart', () => {
 
     constants.dismissCookies()
 
-    cy.get('[class^="ProductCard"]').first().click() // Click first product
+    cy.get('[class^="ProductCard_root"]').first().click() // Click first product
+
+    cy.location('pathname').should('include', 'product')
 
     cy.contains('Add To Cart').scrollIntoView().click()
 
