@@ -1,18 +1,18 @@
 import {OrderEdge, OrderLineItemEdge} from "@framework/schema";
 import {Product} from "@commerce/types/product";
-import _ from "lodash";
 import {useCustomerOrders} from "@framework/customer";
 import {useSearch} from "../framework/local/product";
 import {useEffect, useState} from "react";
 
-export function useRecommendedProduct(locale: string | undefined): Product | undefined {
+export function useProductsWithRecommendation(products: Product[], locale: string | undefined): Product[] {
   const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
   const [recommendedProduct, setRecommendedProduct] = useState<Product>()
+  const [productsToRecommend, setProductsToRecommend] = useState<Product[]>(products)
 
   const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
 
   const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
-    brandId: getRandomBrandId(orderedBrands), // If no ordered brands search for placeholder string (No results)
+    brandId: orderedBrands[Math.floor(Math.random() * orderedBrands.length)] || '***---***', // If no ordered brands search for placeholder string (No results)
     locale,
   })
 
@@ -29,25 +29,23 @@ export function useRecommendedProduct(locale: string | undefined): Product | und
 
   useEffect(() => {
     if (customerOrders?.orders.edges.length) {
-      const randomProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
+      const randomProduct = recommendedProducts?.products[Math.floor(Math.random() * recommendedProducts?.products.length)]; // Take random recommended product from brand
       if (randomProduct) {
         randomProduct.recommended = true // Alter description of recommended product to mark it as recommended
-        setRecommendedProduct(randomProduct)
+        if (randomProduct) {
+          setRecommendedProduct(randomProduct)
+        }
       }
     }
   }, [customerOrders?.orders.edges, orderedBrands, recommendedProducts?.products])
 
-  return recommendedProduct
-}
+  useEffect(() => {
+    if (recommendedProduct && !productsToRecommend.some(product => product.recommended)) { // Check if no product has been recommended already
+      const result = products.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
+      if (result != -1) { products.splice(result, 1) } // If it exists remove it
+      setProductsToRecommend(prevProductsToRecommend => [recommendedProduct, ...prevProductsToRecommend])
+    }
+  }, [products, productsToRecommend, recommendedProduct])
 
-export function addRecommendedProduct(products: Product[], recommendedProduct: Product | undefined): void {
-  if (!products.some(product => product.recommended)) { // Check if no product has been recommended already
-    const result = products.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
-    if (result != -1) { products.splice(result, 1) } // If it exists remove it
-    if (recommendedProduct) { products.unshift(recommendedProduct) } // Add recommended product
-  }
-}
-
-export function getRandomBrandId(orderedBrands: Array<string>) {
-  return _.sample(orderedBrands) || '***---***';
+  return productsToRecommend
 }
