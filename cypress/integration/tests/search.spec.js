@@ -12,14 +12,14 @@ const operations = { // Define GraphQL operations to intercept for this test (An
   }
 }
 
-describe('Login and access profile page', () => {
+describe('Perform search', () => {
   beforeEach(() => {
     captureRequests(operations)
 
     cy.visit('/') // Uses baseUrl: 'http://localhost:3000' Run project with `yarn run build` & `yarn run start`
   })
 
-  it('successfully loads', () => {
+  it('Performs search query and assert results', () => {
     const searchTerm = 'shoes';
 
     interceptRequests(operations);
