@@ -3,7 +3,7 @@
   flex-basis: 49%;
 
   &:last-of-type {
-    @apply mb-0;
+    @apply mb-20;
   }
 
   & .orderName {
