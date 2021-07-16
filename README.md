@@ -57,4 +57,6 @@ cp framework/shopify/.env.template .env.local
 - Standardized Data Hooks
 - Dark Mode Support
 
-## Integrations
+## Test payments
+
+To test Shopify payment use the information provided here: [Testing Shopify Payments](https://help.shopify.com/en/manual/payments/shopify-payments/testing-shopify-payments#simulate-successful-transactions)
