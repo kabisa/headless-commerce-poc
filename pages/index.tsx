@@ -3,6 +3,7 @@ import { Layout } from '@components/common'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
 import React from "react";
+import {useProductsWithRecommendation} from "@lib/productRecommendations";
 
 export async function getStaticProps({
   preview,
@@ -40,9 +41,12 @@ export async function getStaticProps({
 export default function Home({
   products,
   categories,
-  brands,
-  locale
+  brands
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const productsWithRecommendation = useProductsWithRecommendation(products);
+
+  // console.log(productsWithRecommendation);
+
   return (
     <>
       {/*Commented because of alternate homepage layout*/}
@@ -85,10 +89,9 @@ export default function Home({
       {/*  ))}*/}
       {/*</Marquee>*/}
       <HomeAllProductsGrid
-        products={products}
+        products={productsWithRecommendation}
         categories={categories}
         brands={brands}
-        locale={locale}
       />
     </>
   )
