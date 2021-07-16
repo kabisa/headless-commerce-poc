@@ -6,18 +6,23 @@ import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 import { getCategoryPath, getDesignerPath } from '@lib/search'
 import { Brand, Category } from "@commerce/types/site";
+import {useProductsWithRecommendation} from "@lib/recommendations";
 
 interface Props {
   categories?: Category[]
   brands?: Brand[]
   products?: Product[]
+  locale?: string | undefined
 }
 
 const HomeAllProductsGrid: FC<Props> = ({
   categories,
   brands,
   products = [],
+  locale
 }) => {
+  const productsWithRecommendation = useProductsWithRecommendation(products ,locale);
+
   return (
     <div className={s.root}>
       <div className={s.asideWrapper}>
@@ -54,7 +59,7 @@ const HomeAllProductsGrid: FC<Props> = ({
       </div>
       <div className="flex-1">
         <Grid layout="normal">
-          {products.map((product) => (
+          {productsWithRecommendation.map((product) => (
             <ProductCard
               key={product.path}
               product={product}
