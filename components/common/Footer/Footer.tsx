@@ -63,7 +63,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-white">
             <div className="flex space-x-3 items-center h-10">
-              <button
+              <button aria-label={'Toggle light/dark theme'}
                  onClick={() => { theme === 'dark' ? setTheme('light') : setTheme('dark')}} >
                 {(theme === 'dark') && <Moon className={s.themeButton} width={24} height={24} /> }
                 {(theme === 'light' || theme === 'system') && <Sun className={s.themeButton} width={24} height={24} /> }
