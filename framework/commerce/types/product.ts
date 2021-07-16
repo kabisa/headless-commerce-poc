@@ -56,6 +56,7 @@ export type Product = {
   options: ProductOption[]
   vendor?: string
   categories?: ProductCategory[]
+  recommended?: boolean
 }
 
 export type SearchProductsBody = {
