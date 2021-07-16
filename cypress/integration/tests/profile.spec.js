@@ -13,14 +13,14 @@ const operations = { // Define GraphQL operations to intercept for this test (An
   }
 }
 
-describe('Login and access profile page', () => {
+describe('Profile page', () => {
   beforeEach(() => {
     captureRequests(operations)
 
     cy.visit('/') // Uses baseUrl: 'http://localhost:3000' Run project with `yarn run build` & `yarn run start`
   })
 
-  it('successfully loads', () => {
+  it('Logs in and access profile page', () => {
     interceptRequests(operations);
 
     cy.wait('@checkoutCreateMutation').then(interception => {
