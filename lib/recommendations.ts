@@ -41,7 +41,7 @@ export function useProductsWithRecommendation(products: Product[], locale: strin
 
   useEffect(() => {
     if (recommendedProduct && !productsToRecommend.some(product => product.recommended)) { // Check if no product has been recommended already
-      const result = products.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
+      const result = products.findIndex(product => { return product.id === recommendedProduct.id }) // Check if recommended product already exists in list of products
       if (result != -1) { products.splice(result, 1) } // If it exists remove it
       setProductsToRecommend(prevProductsToRecommend => [recommendedProduct, ...prevProductsToRecommend])
     }
