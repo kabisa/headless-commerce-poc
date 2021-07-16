@@ -2,11 +2,7 @@ import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
-import React, { useEffect, useState } from "react";
-import {addRecommendedProduct, useRecommendedProduct} from "@lib/recommendations";
-import { useCustomerOrders } from "@framework/customer";
-import { useSearch } from "../framework/local/product";
-import {Product} from "@commerce/types/product";
+import React from "react";
 
 export async function getStaticProps({
   preview,
@@ -47,10 +43,6 @@ export default function Home({
   brands,
   locale
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const recommendedProduct = useRecommendedProduct(locale)
-
-  addRecommendedProduct(products, recommendedProduct);
-
   return (
     <>
       {/*Commented because of alternate homepage layout*/}
@@ -96,6 +88,7 @@ export default function Home({
         products={products}
         categories={categories}
         brands={brands}
+        locale={locale}
       />
     </>
   )
