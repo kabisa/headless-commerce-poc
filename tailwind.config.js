@@ -97,8 +97,8 @@ module.exports = {
       boxShadow: {
         'outline-normal': '0 0 0 2px var(--accent-2)',
         'outline-theme': '0 0 0 2px var(--kabisa)',
-        magical:
-          'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
+        magical: 'rgba(0, 0, 0, .02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
+        'all-round': 'rgba(0, 0, 0, .25) 0 0 16px;',
       },
       lineHeight: {
         'extra-loose': '2.2',
