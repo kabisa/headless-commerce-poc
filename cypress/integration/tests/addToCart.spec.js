@@ -24,6 +24,8 @@ describe('Add products to cart', () => {
   it('Adds product to cart and asserts shopping cart contents', () => {
     interceptRequests(operations);
 
+    cy.waitUntil(() => cy.get('[class^="ProductCard_root"]'))
+
     cy.wait('@checkoutCreateMutation').then(interception => {
       assert.isNotNull(interception.response.body, 'checkoutCreateQuery API call has mockData')
     })
