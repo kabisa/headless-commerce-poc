@@ -37,7 +37,7 @@ describe('Profile page', () => {
 
     cy.location('pathname').should('include', 'profile')
 
-    cy.fixture('getCustomerData').then(customerData => {
+    cy.fixture(`${operations.Query.getCustomer}Data`).then(customerData => {
       cy.findByText(`${customerData.data.customer.firstName} ${customerData.data.customer.lastName}`).should('exist')
       cy.findByText(customerData.data.customer.email).should('exist')
       cy.findByText(new Date(Date.parse(customerData.data.customer.createdAt)).toDateString()).should('exist')
