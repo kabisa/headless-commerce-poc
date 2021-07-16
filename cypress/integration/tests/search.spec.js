@@ -40,6 +40,8 @@ describe('Perform search', () => {
     })
     cy.fixture(`${operations.Query.getProducts}Data`).then(productsData => {
 
+      cy.waitUntil(() => cy.get('.mb-4 > .fadeIn'))
+
       cy.get('.mb-4 > .fadeIn').should('contain.html', `Showing ${productsData.data.products.edges.length} results for "<strong>${searchTerm}</strong>`)
 
       const searchResults = cy.get('.order-3 > .grid').find('> a', { timeout: 5000 })
