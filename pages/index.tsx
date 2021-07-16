@@ -1,12 +1,9 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { useCustomerOrders } from "@framework/customer";
-import { OrderEdge, OrderLineItemEdge } from "@framework/schema";
-import React, { useEffect, useState } from "react";
-import useSearch from "@framework/product/use-search";
-import _ from "lodash";
+import type {GetStaticPropsContext, InferGetStaticPropsType} from 'next'
+import React from "react";
+import {useProductsWithRecommendation} from "@lib/productRecommendations";
 
 export async function getStaticProps({
   preview,
@@ -44,44 +41,9 @@ export async function getStaticProps({
 export default function Home({
   products,
   categories,
-  brands,
-  locale
+  brands
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-    const [orderedBrands, setOrderedBrands] = useState<Array<string>>([])
-    const [productList, setProductList] = useState<typeof products>(products)
-
-    const { data: customerOrders } = useCustomerOrders({ numberOfOrders: 3 }) // Get customer orders
-
-    const { data: recommendedProducts } = useSearch({ // Get products based on random ordered brand
-        brandId: _.sample(orderedBrands),
-        locale,
-    })
-
-    useEffect(() => {
-        customerOrders?.orders.edges.map((order: OrderEdge) => { // Iterate through orders
-            order.node.lineItems.edges.map((item: OrderLineItemEdge) => { // Iterate through ordered items
-                if (item.node.variant?.product.vendor && orderedBrands.indexOf(item.node.variant.product.vendor) === -1) { // If vendor is known and doesn't exist in orderedBrands list yet
-                    const vendor = item.node.variant.product.vendor
-                    setOrderedBrands(previousOrderedBrands => [...previousOrderedBrands, vendor]) // Collect list of ordered brands
-                }
-            })
-        })
-    }, [customerOrders?.orders.edges, orderedBrands])
-
-    useEffect(() => {
-        if (customerOrders) {
-            const recommendedProduct = _.sample(recommendedProducts?.products) // Take random recommended product from brand
-            if (recommendedProduct) {
-              const productListCopy = [...productList]
-              const result = productListCopy.findIndex(product => { return product.id === recommendedProduct?.id }) // Check if recommended product already exists in list of products
-                if (result != -1) { productListCopy.splice(result, 1) } // If it exists remove it
-                recommendedProduct.description += '-recommended-' // Alter description of recommended product to mark it as recommended
-                if (!productListCopy.some(product => product.description?.includes('-recommended-'))) { // Check if no product has been recommended already
-                    setProductList([recommendedProduct, ...productListCopy]) // Add recommended product to beginning of list
-                }
-            }
-        }
-    }, [customerOrders, productList, recommendedProducts?.products])
+  const productsWithRecommendation = useProductsWithRecommendation(products);
 
   return (
     <>
@@ -124,8 +86,8 @@ export default function Home({
       {/*    <ProductCard key={product.id} product={product} variant="slim" />*/}
       {/*  ))}*/}
       {/*</Marquee>*/}
-       <HomeAllProductsGrid
-        products={productList}
+      <HomeAllProductsGrid
+        products={productsWithRecommendation}
         categories={categories}
         brands={brands}
       />

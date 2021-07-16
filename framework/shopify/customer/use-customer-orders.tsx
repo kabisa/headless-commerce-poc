@@ -1,7 +1,7 @@
 import useCustomerOrders, { UseCustomerOrders } from "@commerce/customer/use-customer-orders";
 import { SWRHook } from "@commerce/utils/types";
 import { getCustomerOrdersQuery, getCustomerToken } from "@framework/utils";
-import {Customer, GetCustomerOrdersQuery, GetCustomerOrdersQueryVariables} from "@framework/schema";
+import { GetCustomerOrdersQuery, GetCustomerOrdersQueryVariables } from "@framework/schema";
 import { CustomerOrdersHook } from "@commerce/types/customer";
 
 export default useCustomerOrders as UseCustomerOrders<typeof handler>
