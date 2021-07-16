@@ -45,7 +45,6 @@ cp framework/shopify/.env.template .env.local
     "jest:watch" : Run jest file watcher
     "cypress:open" : Open cypress e2e testing
     "cypress:test" : Run cypress e2e tests
-    "cypress:test-ci" : Run cypress e2e tests in continuous integration mode
 
 ## Features
 
