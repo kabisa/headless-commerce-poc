@@ -45,8 +45,6 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const productsWithRecommendation = useProductsWithRecommendation(products);
 
-  // console.log(productsWithRecommendation);
-
   return (
     <>
       {/*Commented because of alternate homepage layout*/}
