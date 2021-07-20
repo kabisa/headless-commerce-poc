@@ -7,19 +7,20 @@ const Head: VFC = () => {
   const [primaryColor, setPrimaryColor] = useState<string>('')
 
   useEffect(() => {
+    let observer: MutationObserver
     const root = document.querySelector(':root')
-    const style = getComputedStyle(root!)
-    setPrimaryColor(style.getPropertyValue('--primary'))
-
-    const observer = new MutationObserver(function(mutations) {
-      mutations.map(function(mutation) {
-        if (mutation.type == "attributes" && mutation.attributeName == "data-theme") {
-          setPrimaryColor(style.getPropertyValue('--primary'))
-        }
+    if (root) {
+      const style = getComputedStyle(root)
+      setPrimaryColor(style.getPropertyValue('--primary').trim())
+      observer = new MutationObserver(function(mutations) {
+        mutations.map(function(mutation) {
+          if (mutation.type == "attributes" && mutation.attributeName == "data-theme") {
+            setPrimaryColor(style.getPropertyValue('--primary').trim())
+          }
+        });
       });
-    });
-
-    observer.observe(document.documentElement, { attributes: true })
+      observer.observe(document.documentElement, { attributes: true })
+    }
 
     return function cleanup() {
       observer.disconnect()
@@ -27,15 +28,15 @@ const Head: VFC = () => {
   }, [])
 
   return (
-    <>
-      <DefaultSeo {...config} />
-      <NextHead>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="manifest" href={"/site.webmanifest"} key="site-manifest" />
-        <meta name="theme-color" content={primaryColor} />
-        <link rel="apple-touch-icon" href={"icon-192x192.png"} />
-      </NextHead>
-    </>
+      <>
+        <DefaultSeo {...config} />
+        <NextHead>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="manifest" href={"/site.webmanifest"} key="site-manifest" />
+          <meta name="theme-color" content={primaryColor} />
+          <link rel="apple-touch-icon" href={"icon-192x192.png"} />
+        </NextHead>
+      </>
   )
 }
 
